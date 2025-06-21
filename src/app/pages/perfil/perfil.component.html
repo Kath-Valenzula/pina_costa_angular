@@ -4,15 +4,46 @@
   <div *ngIf="!editando; else editForm">
     <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
     <p><strong>Email:</strong> {{ usuario.email }}</p>
-    <p><strong>Dirección de despacho:</strong> {{ usuario.direccionDespacho || '—' }}</p>
+    <p>
+      <strong>Dirección de despacho:</strong>
+      {{ usuario.direccionDespacho || '—' }}
+    </p>
     <p><strong>Fecha de nacimiento:</strong> {{ usuario.fechaNacimiento }}</p>
+
     <button class="btn btn-pink me-2" (click)="editar()">Editar</button>
-    <button class="btn btn-outline-dark" (click)="cerrarSesion()">Cerrar sesión</button>
+    <button class="btn btn-outline-dark" (click)="cerrarSesion()">
+      Cerrar sesión
+    </button>
   </div>
 
   <ng-template #editForm>
     <form [formGroup]="perfilForm" (ngSubmit)="guardarCambios()">
- 
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input
+          type="text"
+          formControlName="nombre"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Dirección de despacho</label>
+        <input
+          type="text"
+          formControlName="direccionDespacho"
+          class="form-control"
+        />
+      </div>
 
       <div class="mb-3">
         <label class="form-label">Fecha de nacimiento</label>
@@ -20,21 +51,41 @@
           type="date"
           formControlName="fechaNacimiento"
           class="form-control"
-          [class.is-invalid]="perfilForm.get('fechaNacimiento')?.invalid && perfilForm.get('fechaNacimiento')?.touched"
+          [class.is-invalid]="
+            perfilForm.get('fechaNacimiento')?.invalid &&
+            perfilForm.get('fechaNacimiento')?.touched
+          "
         />
-        <div class="invalid-feedback" *ngIf="perfilForm.get('fechaNacimiento')?.hasError('required')">
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            perfilForm.get('fechaNacimiento')?.hasError('required')
+          "
+        >
           La fecha de nacimiento es obligatoria.
         </div>
       </div>
 
       <div class="d-flex flex-column">
-        <button type="submit" class="btn btn-pink mb-2" [disabled]="perfilForm.invalid">
+        <button
+          type="submit"
+          class="btn btn-pink mb-2"
+          [disabled]="perfilForm.invalid"
+        >
           Guardar
         </button>
-        <button type="button" class="btn btn-outline-dark mb-2" (click)="cancelar()">
+        <button
+          type="button"
+          class="btn btn-outline-dark mb-2"
+          (click)="cancelar()"
+        >
           Cancelar
         </button>
-        <button type="button" class="btn btn-outline-secondary" (click)="limpiar()">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="limpiar()"
+        >
           Limpiar
         </button>
       </div>

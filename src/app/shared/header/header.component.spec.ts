@@ -1,13 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SharedModule } from '../shared.module';
-import { CartService } from 'src/app/services/cart.service';
 import { HeaderComponent } from './header.component';
-
-class MockCartService {
-  items$ = of([]);
-}
+import { CartService } from 'src/app/services/cart.service';
+import { of } from 'rxjs';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -15,10 +10,13 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, SharedModule ],
-      declarations: [ HeaderComponent ],
+      declarations: [HeaderComponent],
+      imports: [RouterTestingModule],
       providers: [
-        { provide: CartService, useClass: MockCartService }
+        {
+          provide: CartService,
+          useValue: { obtenerCarritoObservable: () => of([]) }
+        }
       ]
     }).compileComponents();
   });
