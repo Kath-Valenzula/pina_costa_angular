@@ -79,6 +79,20 @@ export class AdminComponent implements OnInit {
     }
 
     localStorage.setItem('productos', JSON.stringify(this.productos));
-    this.nuevoProducto = { id: null, nombre: '', imagen: '', descripcion: '', precio: null };
+    this.nuevoProducto = {
+      id: null,
+      nombre: '',
+      imagen: '',
+      descripcion: '',
+      precio: null
+    };
+  }
+
+
+  cerrarSesion(): void {
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
   }
 }

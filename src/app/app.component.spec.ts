@@ -17,7 +17,10 @@ describe('AppComponent', () => {
         SharedModule
       ],
       providers: [
-        { provide: CartService, useValue: { items$: of([]) } }
+        {
+          provide: CartService,
+          useValue: { obtenerCarritoObservable: () => of([]) }
+        }
       ]
     }).compileComponents();
   });

@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-  [x: string]: any;
   private items: Producto[] = [];
   private carritoSubject = new BehaviorSubject<Producto[]>([]);
 

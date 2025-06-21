@@ -5,12 +5,12 @@ import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  cantidad: number = 0;
-  estaAutenticado: boolean = false;
-  nombreUsuario: string = '';
+  cantidad = 0;
+  estaAutenticado = false;
+  nombreUsuario = '';
 
   constructor(
     private cartService: CartService,
@@ -18,39 +18,39 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Mantén el contador del carrito
-    this.cartService['items$'].subscribe((items: any[]) => {
+ 
+    
+      this.cartService.obtenerCarritoObservable().subscribe((items: any[]) => {
       this.cantidad = items.length;
     });
 
-    // Verifica sesión activa
+
     const usuario = localStorage.getItem('usuario');
     if (usuario) {
-      const datos = JSON.parse(usuario);
       this.estaAutenticado = true;
+      const datos = JSON.parse(usuario);
       this.nombreUsuario = datos.nombre || datos.email;
     }
   }
 
-  /** En función del estado/rol del usuario, navega a la ruta correcta */
-  irAPerfil(): void {
+
+  irALogin(): void {
+    this.router.navigate(['/login']);
+  }
+  
+ 
+  get rutaPerfil(): string {
     const raw = localStorage.getItem('usuario');
-    if (!raw) {
-      this.router.navigate(['/login']);
-    } else {
-      const datos = JSON.parse(raw);
-      if (datos.email === 'admin@example.com') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/perfil']);
-      }
-    }
+    if (!raw) return '/login';
+    const datos = JSON.parse(raw);
+    return datos.email === 'admin@example.com' ? '/admin' : '/perfil';
   }
 
+ 
   cerrarSesion(): void {
     localStorage.removeItem('usuario');
     this.estaAutenticado = false;
     this.nombreUsuario = '';
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }
