@@ -93,11 +93,60 @@
             ],
             "scripts": []
           }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "pinna-costa:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pinna-costa:serve:production"
+            }
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "pinna-costa:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pinna-costa:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "pinna-costa:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "pinna-costa:serve:development"
+            }
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "a057e99e-c3ad-40e5-a036-bff1473d1592"
+    "analytics": "a057e99e-c3ad-40e5-a036-bff1473d1592",
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   }
 }
