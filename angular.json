@@ -139,6 +139,15 @@
               "devServerTarget": "pinna-costa:serve:development"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
@@ -146,6 +155,7 @@
   "cli": {
     "analytics": "a057e99e-c3ad-40e5-a036-bff1473d1592",
     "schematicCollections": [
+      "@angular-eslint/schematics",
       "@cypress/schematic",
       "@schematics/angular"
     ]
