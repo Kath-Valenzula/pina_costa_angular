@@ -1,4 +1,6 @@
-// Vista para mostrar y editar datos del usuario.
+/**
+ * @description Vista para mostrar y editar datos del usuario.
+ */
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -24,10 +26,17 @@ export class PerfilComponent implements OnInit {
   usuario!: Usuario;
   editando = false;
 
-  // Obtiene formularios y router por inyección
+  /**
+   * @description Obtiene formularios y router por inyección
+   * @param fb FormBuilder para construir el formulario
+   * @param router Navegación entre rutas
+   */
   constructor(private fb: FormBuilder, private router: Router) {}
 
-  // Carga el usuario guardado y crea el formulario
+  /**
+   * @description Carga el usuario guardado y crea el formulario
+   * @returns void
+   */
   ngOnInit(): void {
     this.usuario = JSON.parse(
       localStorage.getItem('usuario') || '{}'
@@ -47,12 +56,18 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  // Pone el formulario en modo edición
+  /**
+   * @description Pone el formulario en modo edición
+   * @returns void
+   */
   editar(): void {
     this.editando = true;
   }
 
-  // Guarda los cambios en localStorage
+  /**
+   * @description Guarda los cambios en localStorage
+   * @returns void
+   */
   guardarCambios(): void {
     if (this.perfilForm.invalid) {
       this.perfilForm.markAllAsTouched();
@@ -69,7 +84,10 @@ export class PerfilComponent implements OnInit {
     this.editando = false;
   }
 
-  // Restaura los valores sin guardar
+  /**
+   * @description Restaura los valores sin guardar
+   * @returns void
+   */
   cancelar(): void {
     this.editando = false;
     this.perfilForm.reset({
@@ -80,7 +98,10 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  // Limpia el formulario dejando datos actuales
+  /**
+   * @description Limpia el formulario dejando datos actuales
+   * @returns void
+   */
   limpiar(): void {
     this.perfilForm.reset({
       nombre: this.usuario.nombre,
@@ -90,7 +111,10 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  // Elimina la sesión actual
+  /**
+   * @description Elimina la sesión actual
+   * @returns void
+   */
   cerrarSesion(): void {
     localStorage.removeItem('usuario');
     this.router.navigate(['/']);

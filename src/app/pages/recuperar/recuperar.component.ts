@@ -1,4 +1,6 @@
-// Formulario para solicitar recuperación de cuenta.
+/**
+ * @description Formulario para solicitar recuperación de cuenta.
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -12,10 +14,16 @@ export class RecuperarComponent implements OnInit {
   enviado = false;
   error = '';
 
-  // FormBuilder para crear el formulario
+  /**
+   * @description FormBuilder para crear el formulario
+   * @param fb FormBuilder inyectado
+   */
   constructor(private fb: FormBuilder) {}
 
-  // Inicializa el formulario de recuperación
+  /**
+   * @description Inicializa el formulario de recuperación
+   * @returns void
+   */
   ngOnInit(): void {
     this.recuperarForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -24,7 +32,10 @@ export class RecuperarComponent implements OnInit {
     });
   }
 
-  // Envía la solicitud de recuperación
+  /**
+   * @description Envía la solicitud de recuperación
+   * @returns void
+   */
   onSubmit(): void {
     if (this.recuperarForm.invalid) {
       this.error = 'Revisa los campos marcados.';
@@ -36,7 +47,10 @@ export class RecuperarComponent implements OnInit {
     this.recuperarForm.reset();
   }
 
-  // Reinicia el formulario
+  /**
+   * @description Reinicia el formulario
+   * @returns void
+   */
   limpiar(): void {
     this.recuperarForm.reset();
     this.error = '';

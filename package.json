@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "docs": "compodoc -p tsconfig.app.json -d documentation"
+    "docs": "compodoc -p tsconfig.app.json -d documentation --minimal"
   },
   "private": true,
   "dependencies": {

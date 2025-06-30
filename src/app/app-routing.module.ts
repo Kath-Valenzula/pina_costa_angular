@@ -1,4 +1,6 @@
-// Define las rutas principales que mapean URLs a componentes.
+/**
+ * @description Define las rutas principales que mapean URLs a componentes.
+ */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -15,7 +17,9 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { AcercaComponent } from './pages/acerca/acerca.component';
 
-// Arreglo de rutas utilizado por el enrutador
+/**
+ * @description Arreglo de rutas utilizado por el enrutador
+ */
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'catalogo', component: CatalogoComponent },
@@ -37,5 +41,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-// Módulo que configura el enrutador de la app
+/**
+ * @description Módulo que configura el enrutador de la app
+ */
 export class AppRoutingModule { }

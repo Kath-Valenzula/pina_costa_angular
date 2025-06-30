@@ -1,4 +1,6 @@
-// Barra superior con navegación y login.
+/**
+ * @description Barra superior con navegación y login.
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,13 +15,20 @@ export class HeaderComponent implements OnInit {
   estaAutenticado = false;
   nombreUsuario = '';
 
-  // Inyecta el servicio de carrito y router
+  /**
+   * @description Inyecta el servicio de carrito y router
+   * @param cartService Servicio del carrito
+   * @param router Manejador de rutas
+   */
   constructor(
     private cartService: CartService,
     private router: Router
   ) {}
 
-  // Se suscribe al carrito y lee la sesión
+  /**
+   * @description Se suscribe al carrito y lee la sesión
+   * @returns void
+   */
   ngOnInit(): void {
  
     
@@ -37,13 +46,19 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  // Navega a la página de login
+  /**
+   * @description Navega a la página de login
+   * @returns void
+   */
   irALogin(): void {
     this.router.navigate(['/login']);
   }
   
  
-  // Devuelve la ruta al perfil según el usuario
+  /**
+   * @description Devuelve la ruta al perfil según el usuario
+   * @returns ruta de perfil
+   */
   get rutaPerfil(): string {
     const raw = localStorage.getItem('usuario');
     if (!raw) return '/login';
@@ -52,7 +67,10 @@ export class HeaderComponent implements OnInit {
   }
 
  
-  // Limpia la sesión actual
+  /**
+   * @description Limpia la sesión actual
+   * @returns void
+   */
   cerrarSesion(): void {
     localStorage.removeItem('usuario');
     this.estaAutenticado = false;

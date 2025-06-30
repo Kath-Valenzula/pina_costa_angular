@@ -1,4 +1,6 @@
-// Componente para autenticar usuarios.
+/**
+ * @description Componente para autenticar usuarios.
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,12 +22,20 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   error: string = '';
 
+  /**
+   * @description Constructor con inyección de dependencias
+   * @param fb FormBuilder para crear el formulario
+   * @param router Controlador de rutas
+   */
   constructor(
     private fb: FormBuilder,
     private router: Router
   ) {}
 
-  // Inicializa usuarios de ejemplo y el formulario
+  /**
+   * @description Inicializa usuarios de ejemplo y el formulario
+   * @returns void
+   */
   ngOnInit(): void {
 
     const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'admin123' };
@@ -41,7 +51,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // Valida credenciales y navega según el rol
+  /**
+   * @description Valida credenciales y navega según el rol
+   * @returns void
+   */
   iniciarSesion(): void {
     if (this.loginForm.invalid) {
       this.error = 'Revisa los campos marcados.';
@@ -58,18 +71,27 @@ export class LoginComponent implements OnInit {
     this.router.navigate([ usuario.email === 'admin@example.com' ? '/admin' : '/perfil' ]);
   }
 
-  // Limpia el formulario y errores
+  /**
+   * @description Limpia el formulario y errores
+   * @returns void
+   */
   limpiar(): void {
     this.loginForm.reset();
     this.error = '';
   }
 
-  // Redirige a recuperación de contraseña
+  /**
+   * @description Redirige a recuperación de contraseña
+   * @returns void
+   */
   recuperarPassword(): void {
     this.router.navigate(['/recuperar']);
   }
 
-  // Redirige a la página de registro
+  /**
+   * @description Redirige a la página de registro
+   * @returns void
+   */
   registrarse(): void {
     this.router.navigate(['/registro']);
   }
