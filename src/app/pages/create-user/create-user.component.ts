@@ -1,3 +1,4 @@
+// Formulario para crear un usuario desde Admin.
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,8 +13,10 @@ export class CreateUserComponent {
   password: string = '';
   rol: string = '';
 
+  // Router para volver al panel
   constructor(private router: Router) {}
 
+  // Guarda un nuevo usuario en localStorage
   crearUsuario(): void {
     if (!this.nombre || !this.email || !this.password || !this.rol) {
       alert('Todos los campos son obligatorios.');

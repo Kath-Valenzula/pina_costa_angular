@@ -1,3 +1,4 @@
+// Módulo principal que reúne componentes y servicios.
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
@@ -21,6 +22,7 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { AcercaComponent } from './pages/acerca/acerca.component';
 
 @NgModule({
+  // Componentes de la aplicación
   declarations: [
     AppComponent,
     HomeComponent,
@@ -36,6 +38,7 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
     CreateUserComponent,
     AcercaComponent
   ],
+  // Módulos que se utilizan
   imports: [
     BrowserModule,
     FormsModule,
@@ -47,4 +50,5 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+// Módulo raíz de Angular
 export class AppModule { }

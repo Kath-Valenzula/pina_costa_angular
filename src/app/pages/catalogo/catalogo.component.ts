@@ -1,3 +1,4 @@
+// Listado de productos disponibles en la tienda.
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from 'src/app/models/producto.model';
@@ -16,10 +17,12 @@ export class CatalogoComponent implements OnInit {
     private cartService: CartService
   ) {}
 
+  // Al iniciar, carga la lista de productos
   ngOnInit(): void {
     this.cargarProductos();
   }
 
+  // Obtiene los productos desde un archivo
   cargarProductos(): void {
     this.http.get<Producto[]>('assets/data/productos.json').subscribe({
       next: (data) => {
@@ -31,6 +34,7 @@ export class CatalogoComponent implements OnInit {
     });
   }
 
+  // Añade un producto al carrito
   agregarAlCarrito(producto: Producto): void {
     this.cartService.agregar(producto);
   }

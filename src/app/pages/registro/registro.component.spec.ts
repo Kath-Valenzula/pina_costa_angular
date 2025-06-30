@@ -1,3 +1,4 @@
+// Pruebas del formulario de registro.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormBuilder, AbstractControl, ValidationErrors } from '@angular/forms';
 import { RegistroComponent } from './registro.component';
@@ -6,6 +7,7 @@ describe('RegistroComponent', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
 
+  // Configura el módulo de pruebas
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RegistroComponent ],
@@ -14,17 +16,20 @@ describe('RegistroComponent', () => {
     }).compileComponents();
   });
 
+  // Crea el componente para cada caso
   beforeEach(() => {
     fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
+  // Debe incluir los campos de contraseña
   it('debe tener controles password y confirmPassword', () => {
     expect(component.registroForm.contains('password')).toBeTrue();
     expect(component.registroForm.contains('confirmPassword')).toBeTrue();
   });
 
+  // Validador no falla cuando coinciden
   it('passwordsMatchValidator devuelve null si coinciden', () => {
     component.registroForm.get('password')!.setValue('Abc123!');
     component.registroForm.get('confirmPassword')!.setValue('Abc123!');
@@ -32,6 +37,7 @@ describe('RegistroComponent', () => {
     expect(errors).toBeNull();
   });
 
+  // Validador produce error si difieren
   it('passwordsMatchValidator marca error si difieren', () => {
     component.registroForm.get('password')!.setValue('Abc123');
     component.registroForm.get('confirmPassword')!.setValue('Xyz789');
@@ -39,6 +45,7 @@ describe('RegistroComponent', () => {
     expect(errors!['passwordsMismatch']).toBeTrue();
   });
 
+  // Formulario inválido no registra
   it('registrar no procede si el formulario es inválido', () => {
     component.registroForm.get('nombre')!.setValue('');   
     component.registroForm.get('email')!.setValue('');    

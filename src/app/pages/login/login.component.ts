@@ -1,3 +1,4 @@
+// Componente para autenticar usuarios.
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
+  // Inicializa usuarios de ejemplo y el formulario
   ngOnInit(): void {
 
     const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'admin123' };
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // Valida credenciales y navega según el rol
   iniciarSesion(): void {
     if (this.loginForm.invalid) {
       this.error = 'Revisa los campos marcados.';
@@ -55,15 +58,18 @@ export class LoginComponent implements OnInit {
     this.router.navigate([ usuario.email === 'admin@example.com' ? '/admin' : '/perfil' ]);
   }
 
+  // Limpia el formulario y errores
   limpiar(): void {
     this.loginForm.reset();
     this.error = '';
   }
 
+  // Redirige a recuperación de contraseña
   recuperarPassword(): void {
     this.router.navigate(['/recuperar']);
   }
 
+  // Redirige a la página de registro
   registrarse(): void {
     this.router.navigate(['/registro']);
   }

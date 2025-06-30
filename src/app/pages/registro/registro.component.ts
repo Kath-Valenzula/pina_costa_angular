@@ -1,3 +1,4 @@
+// Pantalla para registrar nuevos usuarios.
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
@@ -20,8 +21,10 @@ export class RegistroComponent implements OnInit {
   error: string = '';
   mensaje: string = '';
 
+  // FormBuilder para crear controles
   constructor(private fb: FormBuilder) {}
 
+  // Inicializa el formulario de registro
   ngOnInit(): void {
     this.registroForm = this.fb.group({
       nombre:            ['', Validators.required],
@@ -36,12 +39,14 @@ export class RegistroComponent implements OnInit {
     }, { validators: this.passwordsMatchValidator });
   }
 
+  // Verifica que las contraseñas coincidan
   private passwordsMatchValidator(group: AbstractControl): ValidationErrors|null {
     const p = group.get('password')?.value;
     const c = group.get('confirmPassword')?.value;
     return p && c && p !== c ? { passwordsMismatch: true } : null;
   }
 
+  // Comprueba que la edad sea mayor o igual a 13
   private ageValidator(control: AbstractControl): ValidationErrors|null {
     const val = control.value;
     if (!val) return null;
@@ -55,6 +60,7 @@ export class RegistroComponent implements OnInit {
     return age < 13 ? { ageTooLow: true } : null;
   }
 
+  // Guarda el usuario si el formulario es válido
   registrar(): void {
     if (this.registroForm.invalid) {
       if (this.registroForm.errors?.['passwordsMismatch']) {
@@ -87,6 +93,7 @@ export class RegistroComponent implements OnInit {
     this.registroForm.reset();
   }
 
+  // Limpia el formulario y mensajes
   limpiar(): void {
     this.registroForm.reset();
     this.error = '';

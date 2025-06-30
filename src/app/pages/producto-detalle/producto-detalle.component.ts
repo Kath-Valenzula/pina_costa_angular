@@ -1,3 +1,4 @@
+// Muestra la información de un producto concreto.
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models/producto.model';
@@ -18,6 +19,7 @@ export class ProductoDetalleComponent implements OnInit {
     private cartService: CartService
   ) {}
 
+  // Busca el producto según el id de la URL
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
@@ -29,6 +31,7 @@ export class ProductoDetalleComponent implements OnInit {
     }
   }
 
+  // Añade el producto actual al carrito
   agregarAlCarrito(): void {
     if (this.producto) {
       this.cartService.agregar(this.producto);
