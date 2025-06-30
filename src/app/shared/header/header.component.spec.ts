@@ -2,7 +2,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './header.component';
-import { CartService } from 'src/app/services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { of } from 'rxjs';
 
 describe('HeaderComponent', () => {
