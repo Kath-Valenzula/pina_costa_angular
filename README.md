@@ -59,6 +59,15 @@ ng test
 Pruebas e2e:
 ng e2e
 
+## Pruebas con navegador headless
+
+1. Instala Chromium/Chrome y su driver:
+   `sudo apt-get install -y chromium-browser chromium-chromedriver`
+2. Ejecuta las pruebas unitarias en modo headless:
+   `npm test -- --browsers=ChromeHeadlessCustom --watch=false`
+3. Si Karma no encuentra Chrome, usa la ruta que provee Puppeteer:
+   `CHROME_BIN=$(node -p "require('puppeteer').executablePath()") npm test -- --browsers=ChromeHeadlessCustom --watch=false`
+
 ## Más info
 Documentación oficial de Angular: https://angular.io
 
