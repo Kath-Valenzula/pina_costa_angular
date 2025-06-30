@@ -10,7 +10,7 @@
 <div class="container-fluid py-5">
   <h2 class="mb-4">Productos Destacados</h2>
   <div class="row">
-    <div *ngFor="let p of productos" class="col-md-4 mb-3">
+    <div *ngFor="let p of productos" class="col-12 col-sm-6 col-lg-4 mb-3">
       <div class="card">
         <img [src]="p.imagen" class="card-img-top" alt="{{ p.nombre }}">
         <div class="card-body">
