@@ -139,6 +139,12 @@
               "devServerTarget": "pinna-costa:serve:development"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/pinna-costa-angular/"
+          }
         }
       }
     }

@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "docs": "compodoc -p tsconfig.app.json -d documentation --minimal"
+    "docs": "compodoc -p tsconfig.app.json -d documentation --minimal",
+    "deploy": "ng deploy --base-href=/pinna-costa-angular/"
   },
   "private": true,
   "dependencies": {
@@ -34,10 +35,9 @@
     "@compodoc/compodoc": "^1.1.26",
     "@cypress/schematic": "^2.5.2",
     "@types/jasmine": "~4.3.0",
+    "angular-cli-ghpages": "^2.0.3",
     "cypress": "13.2.0",
-
     "is-ci": "^3.0.1",
-
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
