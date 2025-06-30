@@ -2,7 +2,7 @@
  * @description Barra superior con navegación y login.
  */
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -14,6 +14,12 @@ export class HeaderComponent implements OnInit {
   cantidad = 0;
   estaAutenticado = false;
   nombreUsuario = '';
+
+  private leerSesion(): void {
+    const usuario = localStorage.getItem('usuario');
+    this.estaAutenticado = !!usuario;
+    this.nombreUsuario = usuario ? JSON.parse(usuario).nombre || JSON.parse(usuario).email : '';
+  }
 
   /**
    * @description Inyecta el servicio de carrito y router
@@ -30,19 +36,17 @@ export class HeaderComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
- 
-    
-      this.cartService.obtenerCarritoObservable().subscribe((items: any[]) => {
+    this.cartService.obtenerCarritoObservable().subscribe((items: any[]) => {
       this.cantidad = items.length;
     });
 
+    this.leerSesion();
 
-    const usuario = localStorage.getItem('usuario');
-    if (usuario) {
-      this.estaAutenticado = true;
-      const datos = JSON.parse(usuario);
-      this.nombreUsuario = datos.nombre || datos.email;
-    }
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.leerSesion();
+      }
+    });
   }
 
 
