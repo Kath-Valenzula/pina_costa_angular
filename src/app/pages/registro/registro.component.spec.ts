@@ -26,8 +26,8 @@ describe('RegistroComponent', () => {
   });
 
   it('passwordsMatchValidator devuelve null si coinciden', () => {
-    component.registroForm.get('password')!.setValue('Abc123');
-    component.registroForm.get('confirmPassword')!.setValue('Abc123');
+    component.registroForm.get('password')!.setValue('Abc123!');
+    component.registroForm.get('confirmPassword')!.setValue('Abc123!');
     const errors: ValidationErrors | null = component.registroForm.errors as ValidationErrors;
     expect(errors).toBeNull();
   });
@@ -49,7 +49,7 @@ describe('RegistroComponent', () => {
     component.registroForm.markAllAsTouched();
 
     component.registrar();
-    expect(component.error).toBe('Revisa los campos obligatorios.');
+    expect(component.error).toBe('La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.');
     expect(component.mensaje).toBe('');
   });
 });

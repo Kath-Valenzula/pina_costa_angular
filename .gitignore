@@ -10,3 +10,4 @@ dist/
 # Ajustes de editor (opcional)
 .vscode/
 .idea/
+documentation/

@@ -37,7 +37,7 @@
         La contraseña es obligatoria.
       </div>
       <div class="invalid-feedback" *ngIf="registroForm.get('password')?.hasError('pattern')">
-        Debe tener 6-18 chars, 1 mayúscula y 1 dígito.
+        Debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.
       </div>
     </div>
 
