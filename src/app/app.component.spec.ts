@@ -1,3 +1,4 @@
+// Pruebas unitarias para el componente principal.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from './shared/shared.module';
@@ -9,6 +10,7 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
 
+  // Prepara el módulo de pruebas
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -25,12 +27,14 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
+  // Instancia el componente antes de cada prueba
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
+  // Verifica que la app se cree
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });

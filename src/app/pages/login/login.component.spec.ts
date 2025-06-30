@@ -1,3 +1,4 @@
+// Pruebas de la pantalla de inicio de sesión.
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,6 +10,7 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let router: Router;
 
+  // Configura el entorno de pruebas
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
@@ -16,14 +18,16 @@ describe('LoginComponent', () => {
     }).compileComponents();
   });
 
+  // Instancia el componente en cada prueba
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
     fixture.detectChanges();
-    localStorage.clear(); 
+    localStorage.clear();
   });
 
+  // Formulario vacío debe mostrar error
   it('no debe iniciar sesión si el formulario es inválido', () => {
     component.loginForm.get('email')!.setValue('');
     component.loginForm.get('password')!.setValue('');
@@ -31,6 +35,7 @@ describe('LoginComponent', () => {
     expect(component.error).toBe('Revisa los campos marcados.');
   });
 
+  // Admin válido redirige al panel
   it('debe navegar a /admin con credenciales admin@example.com/admin123', () => {
     spyOn(router, 'navigate');
     localStorage.setItem('usuarios', JSON.stringify([
@@ -42,6 +47,7 @@ describe('LoginComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/admin']);
   });
 
+  // Usuario normal redirige a su perfil
   it('debe navegar a /perfil con credenciales de usuario normal', () => {
     spyOn(router, 'navigate');
     localStorage.setItem('usuarios', JSON.stringify([

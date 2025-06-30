@@ -1,3 +1,4 @@
+// Vista para mostrar y editar datos del usuario.
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -23,8 +24,10 @@ export class PerfilComponent implements OnInit {
   usuario!: Usuario;
   editando = false;
 
+  // Obtiene formularios y router por inyección
   constructor(private fb: FormBuilder, private router: Router) {}
 
+  // Carga el usuario guardado y crea el formulario
   ngOnInit(): void {
     this.usuario = JSON.parse(
       localStorage.getItem('usuario') || '{}'
@@ -44,10 +47,12 @@ export class PerfilComponent implements OnInit {
     });
   }
 
+  // Pone el formulario en modo edición
   editar(): void {
     this.editando = true;
   }
 
+  // Guarda los cambios en localStorage
   guardarCambios(): void {
     if (this.perfilForm.invalid) {
       this.perfilForm.markAllAsTouched();
@@ -64,6 +69,7 @@ export class PerfilComponent implements OnInit {
     this.editando = false;
   }
 
+  // Restaura los valores sin guardar
   cancelar(): void {
     this.editando = false;
     this.perfilForm.reset({
@@ -74,6 +80,7 @@ export class PerfilComponent implements OnInit {
     });
   }
 
+  // Limpia el formulario dejando datos actuales
   limpiar(): void {
     this.perfilForm.reset({
       nombre: this.usuario.nombre,
@@ -83,6 +90,7 @@ export class PerfilComponent implements OnInit {
     });
   }
 
+  // Elimina la sesión actual
   cerrarSesion(): void {
     localStorage.removeItem('usuario');
     this.router.navigate(['/']);
