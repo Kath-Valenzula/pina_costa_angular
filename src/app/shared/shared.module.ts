@@ -1,4 +1,6 @@
-// Módulo que exporta componentes compartidos.
+/**
+ * @description Módulo que exporta componentes compartidos.
+ */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
@@ -24,5 +26,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent
   ]
 })
-// Módulo de componentes reutilizables
+/**
+ * @description Módulo de componentes reutilizables
+ */
 export class SharedModule { }

@@ -1,4 +1,6 @@
-// Módulo principal que reúne componentes y servicios.
+/**
+ * @description Módulo principal que reúne componentes y servicios.
+ */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
@@ -50,5 +52,7 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-// Módulo raíz de Angular
+/**
+ * @description Módulo raíz de Angular
+ */
 export class AppModule { }

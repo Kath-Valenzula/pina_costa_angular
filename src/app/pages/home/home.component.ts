@@ -1,4 +1,6 @@
-// Página principal con productos destacados.
+/**
+ * @description Página principal con productos destacados.
+ */
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/productos.service';
 import { Producto } from '../../models/producto.model';
@@ -10,9 +12,17 @@ import { Producto } from '../../models/producto.model';
 })
 export class HomeComponent implements OnInit {
   productos: Producto[] = [];
-  // Servicio para obtener productos
+
+  /**
+   * @description Servicio para obtener productos
+   * @param productSvc Servicio de productos
+   */
   constructor(private productSvc: ProductService) { }
-  // Carga los productos al iniciar
+
+  /**
+   * @description Carga los productos al iniciar
+   * @returns void
+   */
   ngOnInit(): void {
     this.productSvc.getAll().subscribe((data: Producto[]) => {
       this.productos = data;

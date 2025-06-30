@@ -1,4 +1,6 @@
-// Pantalla para registrar nuevos usuarios.
+/**
+ * @description Pantalla para registrar nuevos usuarios.
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
@@ -21,10 +23,16 @@ export class RegistroComponent implements OnInit {
   error: string = '';
   mensaje: string = '';
 
-  // FormBuilder para crear controles
+  /**
+   * @description FormBuilder para crear controles
+   * @param fb Servicio FormBuilder
+   */
   constructor(private fb: FormBuilder) {}
 
-  // Inicializa el formulario de registro
+  /**
+   * @description Inicializa el formulario de registro
+   * @returns void
+   */
   ngOnInit(): void {
     this.registroForm = this.fb.group({
       nombre:            ['', Validators.required],
@@ -39,14 +47,22 @@ export class RegistroComponent implements OnInit {
     }, { validators: this.passwordsMatchValidator });
   }
 
-  // Verifica que las contraseñas coincidan
+  /**
+   * @description Verifica que las contraseñas coincidan
+   * @param group Grupo de controles
+   * @returns Errores o null
+   */
   private passwordsMatchValidator(group: AbstractControl): ValidationErrors|null {
     const p = group.get('password')?.value;
     const c = group.get('confirmPassword')?.value;
     return p && c && p !== c ? { passwordsMismatch: true } : null;
   }
 
-  // Comprueba que la edad sea mayor o igual a 13
+  /**
+   * @description Comprueba que la edad sea mayor o igual a 13
+   * @param control Control con la fecha
+   * @returns Errores o null
+   */
   private ageValidator(control: AbstractControl): ValidationErrors|null {
     const val = control.value;
     if (!val) return null;
@@ -60,7 +76,10 @@ export class RegistroComponent implements OnInit {
     return age < 13 ? { ageTooLow: true } : null;
   }
 
-  // Guarda el usuario si el formulario es válido
+  /**
+   * @description Guarda el usuario si el formulario es válido
+   * @returns void
+   */
   registrar(): void {
     if (this.registroForm.invalid) {
       if (this.registroForm.errors?.['passwordsMismatch']) {
@@ -93,7 +112,10 @@ export class RegistroComponent implements OnInit {
     this.registroForm.reset();
   }
 
-  // Limpia el formulario y mensajes
+  /**
+   * @description Limpia el formulario y mensajes
+   * @returns void
+   */
   limpiar(): void {
     this.registroForm.reset();
     this.error = '';

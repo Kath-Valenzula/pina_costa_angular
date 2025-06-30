@@ -1,4 +1,6 @@
-// Panel para gestionar usuarios y productos.
+/**
+ * @description Panel para gestionar usuarios y productos.
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -19,39 +21,62 @@ export class AdminComponent implements OnInit {
     precio: null
   };
 
-  // Recibe Router para navegar
+  /**
+   * @description Recibe Router para navegar
+   * @param router Manejador de rutas
+   */
   constructor(private router: Router) {}
 
-  // Carga datos iniciales del panel
+  /**
+   * @description Carga datos iniciales del panel
+   * @returns void
+   */
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
     this.cargarUsuarios();
     this.cargarProductos();
   }
 
-  // Obtiene la lista de usuarios almacenados
+  /**
+   * @description Obtiene la lista de usuarios almacenados
+   * @returns void
+   */
   cargarUsuarios(): void {
     const data = localStorage.getItem('usuarios');
     this.usuarios = data ? JSON.parse(data) : [];
   }
 
-  // Obtiene los productos guardados
+  /**
+   * @description Obtiene los productos guardados
+   * @returns void
+   */
   cargarProductos(): void {
     const data = localStorage.getItem('productos');
     this.productos = data ? JSON.parse(data) : [];
   }
 
-  // Redirige al formulario de registro
+  /**
+   * @description Redirige al formulario de registro
+   * @returns void
+   */
   crearUsuario(): void {
     this.router.navigate(['/registro']);
   }
 
-  // Muestra un aviso para editar un usuario
+  /**
+   * @description Muestra un aviso para editar un usuario
+   * @param usuario Usuario seleccionado
+   * @returns void
+   */
   editarUsuario(usuario: any): void {
     alert(`Editar usuario: ${usuario.nombre}`);
   }
 
-  // Elimina un usuario tras confirmar
+  /**
+   * @description Elimina un usuario tras confirmar
+   * @param usuario Usuario a eliminar
+   * @returns void
+   */
   eliminarUsuario(usuario: any): void {
     if (confirm(`¿Eliminar a ${usuario.nombre}?`)) {
       this.usuarios = this.usuarios.filter(u => u.id !== usuario.id);
@@ -59,12 +84,20 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  // Carga el producto seleccionado en el formulario
+  /**
+   * @description Carga el producto seleccionado en el formulario
+   * @param producto Producto a editar
+   * @returns void
+   */
   editarProducto(producto: any): void {
     this.nuevoProducto = { ...producto };
   }
 
-  // Elimina un producto tras confirmar
+  /**
+   * @description Elimina un producto tras confirmar
+   * @param producto Producto a eliminar
+   * @returns void
+   */
   eliminarProducto(producto: any): void {
     if (confirm(`¿Eliminar producto "${producto.nombre}"?`)) {
       this.productos = this.productos.filter(p => p.id !== producto.id);
@@ -72,7 +105,10 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  // Guarda el producto nuevo o editado
+  /**
+   * @description Guarda el producto nuevo o editado
+   * @returns void
+   */
   guardarProducto(): void {
     if (!this.nuevoProducto.nombre || !this.nuevoProducto.precio) {
       alert('Por favor completa todos los campos');
@@ -100,7 +136,10 @@ export class AdminComponent implements OnInit {
   }
 
 
-  // Quita la sesión y vuelve a login
+  /**
+   * @description Quita la sesión y vuelve a login
+   * @returns void
+   */
   cerrarSesion(): void {
     localStorage.removeItem('usuario');
     this.router.navigate(['/login']).then(() => {
