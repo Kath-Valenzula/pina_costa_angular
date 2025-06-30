@@ -1,6 +1,8 @@
 // Define las rutas principales que mapean URLs a componentes.
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 import { HomeComponent } from './pages/home/home.component';
 import { CatalogoComponent } from './pages/catalogo/catalogo.component';
@@ -24,9 +26,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'recuperar', component: RecuperarComponent },
-  { path: 'perfil', component: PerfilComponent },
+  { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'acerca', component: AcercaComponent },
   // Ruta por defecto si no existe coincidencia
