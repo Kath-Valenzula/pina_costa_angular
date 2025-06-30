@@ -21,6 +21,7 @@ describe('RegistroComponent', () => {
     fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    localStorage.clear();
   });
 
   // Debe incluir los campos de contraseña
@@ -47,8 +48,9 @@ describe('RegistroComponent', () => {
 
   // Formulario inválido no registra
   it('registrar no procede si el formulario es inválido', () => {
-    component.registroForm.get('nombre')!.setValue('');   
-    component.registroForm.get('email')!.setValue('');    
+    const setSpy = spyOn(localStorage, 'setItem');
+    component.registroForm.get('nombre')!.setValue('');
+    component.registroForm.get('email')!.setValue('');
     component.registroForm.get('password')!.setValue('Abc123');
     component.registroForm.get('confirmPassword')!.setValue('Abc123');
     component.registroForm.get('fechaNacimiento')!.setValue('2000-01-01');
@@ -58,5 +60,33 @@ describe('RegistroComponent', () => {
     component.registrar();
     expect(component.error).toBe('La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.');
     expect(component.mensaje).toBe('');
+    expect(setSpy).not.toHaveBeenCalled();
+  });
+
+  it('debe aceptar contraseña que cumple el patrón', () => {
+    const control = component.registroForm.get('password')!;
+    control.setValue('Valid1!A');
+    expect(control.valid).toBeTrue();
+  });
+
+  it('debe rechazar contraseña que no cumple el patrón', () => {
+    const control = component.registroForm.get('password')!;
+    control.setValue('invalida');
+    expect(control.hasError('pattern')).toBeTrue();
+  });
+
+  it('debe registrar usuario si el formulario es válido', () => {
+    const setSpy = spyOn(localStorage, 'setItem').and.callThrough();
+    component.registroForm.get('nombre')!.setValue('Juan');
+    component.registroForm.get('email')!.setValue('juan@example.com');
+    component.registroForm.get('password')!.setValue('Valid1!A');
+    component.registroForm.get('confirmPassword')!.setValue('Valid1!A');
+    component.registroForm.get('fechaNacimiento')!.setValue('2000-01-01');
+    component.registroForm.get('direccionDespacho')!.setValue('Dir 1');
+
+    component.registrar();
+    expect(component.mensaje).toBe('Cuenta creada correctamente.');
+    expect(component.error).toBe('');
+    expect(setSpy).toHaveBeenCalled();
   });
 });

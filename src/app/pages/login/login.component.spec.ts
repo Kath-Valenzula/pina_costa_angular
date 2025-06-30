@@ -27,12 +27,14 @@ describe('LoginComponent', () => {
     localStorage.clear();
   });
 
-  // Formulario vacío debe mostrar error
+  // Formulario vacío debe mostrar error y no navegar
   it('no debe iniciar sesión si el formulario es inválido', () => {
+    spyOn(router, 'navigate');
     component.loginForm.get('email')!.setValue('');
     component.loginForm.get('password')!.setValue('');
     component.iniciarSesion();
     expect(component.error).toBe('Revisa los campos marcados.');
+    expect(router.navigate).not.toHaveBeenCalled();
   });
 
   // Admin válido redirige al panel
