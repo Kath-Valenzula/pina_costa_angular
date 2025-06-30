@@ -28,7 +28,7 @@ export class RegistroComponent implements OnInit {
       email:             ['', [Validators.required, Validators.email]],
       password:          ['', [
         Validators.required,
-        Validators.pattern(/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,18}$/)
+        Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/)
       ]],
       confirmPassword:   ['', Validators.required],
       direccionDespacho: [''],
@@ -60,7 +60,7 @@ export class RegistroComponent implements OnInit {
       if (this.registroForm.errors?.['passwordsMismatch']) {
         this.error = 'Las contraseñas no coinciden.';
       } else if (this.registroForm.get('password')?.hasError('pattern')) {
-        this.error = 'La contraseña debe tener 6-18 chars, 1 mayúscula y 1 dígito.';
+        this.error = 'La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.';
       } else if (this.registroForm.get('fechaNacimiento')?.hasError('ageTooLow')) {
         this.error = 'Debes tener al menos 13 años.';
       } else {
