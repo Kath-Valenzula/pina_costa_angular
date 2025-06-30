@@ -59,6 +59,10 @@ ng test
 Pruebas e2e:
 ng e2e
 
+Compilar las pruebas de Cypress con TypeScript:
+`npx tsc -p cypress/tsconfig.json`
+Si tu herramienta usa otra ruta, verifica que no agregue un segundo `cypress/`.
+
 ## Pruebas con navegador headless
 
 1. Instala Chromium/Chrome y su driver:
