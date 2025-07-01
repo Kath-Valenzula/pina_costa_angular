@@ -2,6 +2,7 @@
  * @description Panel para gestionar usuarios y productos.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,13 +26,23 @@ export class AdminComponent implements OnInit {
    * @description Recibe Router para navegar
    * @param router Manejador de rutas
    */
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   /**
    * @description Carga datos iniciales del panel
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle('Admin - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Panel de administración de Piña Costa.'
+    });
+
     this.usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
     this.cargarUsuarios();
     this.cargarProductos();

@@ -7,15 +7,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 
 import { HomeComponent } from './pages/home/home.component';
-import { CatalogoComponent } from './pages/catalogo/catalogo.component';
 import { ProductoDetalleComponent } from './pages/producto-detalle/producto-detalle.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegistroComponent } from './pages/registro/registro.component';
 import { RecuperarComponent } from './pages/recuperar/recuperar.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { AcercaComponent } from './pages/acerca/acerca.component';
 
@@ -24,15 +20,15 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
  */
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'catalogo', component: CatalogoComponent },
+  { path: 'catalogo', loadChildren: () => import('./pages/catalogo/catalogo.module').then(m => m.CatalogoModule) },
   { path: 'producto/:id', component: ProductoDetalleComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'registro', component: RegistroComponent },
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
+  { path: 'registro', loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroModule) },
   { path: 'recuperar', component: RecuperarComponent },
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'admin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule), canActivate: [AdminGuard] },
   { path: 'create-user', component: CreateUserComponent },
   { path: 'acerca', component: AcercaComponent },
   // Ruta por defecto si no existe coincidencia

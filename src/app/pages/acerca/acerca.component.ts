@@ -2,6 +2,7 @@
  * @description Página con información de la tienda.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-acerca',
@@ -12,11 +13,17 @@ export class AcercaComponent implements OnInit {
   /**
    * @description Inyección de dependencias si fuera necesario
    */
-  constructor() { }
+  constructor(private title: Title, private meta: Meta) { }
 
   /**
    * @description Aquí podría cargarse información adicional
    * @returns void
    */
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.title.setTitle('Acerca de - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Conoce más sobre la tienda Piña Costa.'
+    });
+  }
 }

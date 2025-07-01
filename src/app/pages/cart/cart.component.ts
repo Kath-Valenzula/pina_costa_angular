@@ -2,6 +2,7 @@
  * @description Página que lista los productos en el carrito.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { Producto } from 'src/app/models/producto.model';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -17,13 +18,23 @@ export class CartComponent implements OnInit {
    * @description Servicio que gestiona el carrito
    * @param cartService Servicio del carrito
    */
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   /**
    * @description Carga los productos almacenados
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle('Carrito - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Revisa los productos añadidos a tu carrito en Piña Costa.'
+    });
+
     this.items = this.cartService.obtenerItems();
   }
 

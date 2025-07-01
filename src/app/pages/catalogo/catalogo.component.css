@@ -25,16 +25,17 @@
 
 /* Botón rosado */
 .btn-pink {
-  background-color: #e91e63;
+  background-color: #c2185b;
   border: none;
   padding: 0.5rem 1rem;
   font-weight: bold;
   transition: background-color 0.3s ease;
   border-radius: 0.75rem;
+  color: #ffffff;
 }
 
 .btn-pink:hover {
-  background-color: #c2185b;
+  background-color: #880e4f;
   color: #fff;
 }
 
