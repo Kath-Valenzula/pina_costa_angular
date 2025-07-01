@@ -1,4 +1,5 @@
 # PinnaCosta
+[![CI](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml)
 
  **Tienda online** creada con **Angular 16** para el ramo de Programación. Muestra productos de moda femenina, carrito de compras y cuenta de usuario con formularios reactivos y validaciones.
 

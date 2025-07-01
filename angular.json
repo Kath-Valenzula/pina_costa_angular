@@ -144,6 +144,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/pinna-costa-angular/"
+
           }
         }
       }
@@ -152,6 +153,7 @@
   "cli": {
     "analytics": "a057e99e-c3ad-40e5-a036-bff1473d1592",
     "schematicCollections": [
+      "@angular-eslint/schematics",
       "@cypress/schematic",
       "@schematics/angular"
     ]
