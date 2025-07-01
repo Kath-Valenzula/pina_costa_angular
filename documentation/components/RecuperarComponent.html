@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -240,12 +240,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(fb: FormBuilder)</code>
+<code>constructor(fb: FormBuilder, title: Title, meta: Meta)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -277,6 +277,34 @@
                                                         <td>
                                                                 <p>FormBuilder inyectado</p>
 
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>title</td>
+                                                  
+                                                        <td>
+                                                                    <code>Title</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>meta</td>
+                                                  
+                                                        <td>
+                                                                    <code>Meta</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -317,8 +345,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -358,8 +386,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -399,8 +427,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +472,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -475,7 +503,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -501,7 +529,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -515,6 +543,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 
 @Component({
@@ -522,6 +551,7 @@ import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
   templateUrl: &#x27;./recuperar.component.html&#x27;,
   styleUrls: [&#x27;./recuperar.component.css&#x27;]
 })
+/** Formulario para solicitar recuperación de cuenta. */
 export class RecuperarComponent implements OnInit {
   recuperarForm!: FormGroup;
   enviado &#x3D; false;
@@ -531,13 +561,23 @@ export class RecuperarComponent implements OnInit {
    * @description FormBuilder para crear el formulario
    * @param fb FormBuilder inyectado
    */
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   /**
    * @description Inicializa el formulario de recuperación
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle(&#x27;Recuperar cuenta - Piña Costa&#x27;);
+    this.meta.updateTag({
+      name: &#x27;description&#x27;,
+      content: &#x27;Formulario para recuperar tu contraseña en Piña Costa.&#x27;
+    });
+
     this.recuperarForm &#x3D; this.fb.group({
       email: [&#x27;&#x27;, [Validators.required, Validators.email]],
       direccionDespacho: [&#x27;&#x27;],
@@ -715,7 +755,6 @@ button[disabled] { opacity: .6; cursor: not-allowed; }
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'RecuperarComponent.html';
-            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -750,10 +789,6 @@ button[disabled] { opacity: .6; cursor: not-allowed; }
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 

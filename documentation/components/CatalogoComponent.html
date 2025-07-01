@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -234,12 +234,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(http: HttpClient, cartService: <a href="../injectables/CartService.html" target="_self">CartService</a>)</code>
+<code>constructor(http: HttpClient, cartService: <a href="../injectables/CartService.html" target="_self">CartService</a>, title: Title, meta: Meta)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -289,6 +289,34 @@
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>title</td>
+                                                  
+                                                        <td>
+                                                                    <code>Title</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>meta</td>
+                                                  
+                                                        <td>
+                                                                    <code>Meta</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -327,8 +355,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -400,8 +428,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -441,8 +469,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -492,7 +520,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/catalogo/catalogo.component.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -506,6 +534,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Producto } from &#x27;src/app/models/producto.model&#x27;;
 import { CartService } from &#x27;src/app/services/cart.service&#x27;;
@@ -515,6 +544,7 @@ import { CartService } from &#x27;src/app/services/cart.service&#x27;;
   templateUrl: &#x27;./catalogo.component.html&#x27;,
   styleUrls: [&#x27;./catalogo.component.css&#x27;]
 })
+/** Listado de productos disponibles en la tienda. */
 export class CatalogoComponent implements OnInit {
   productos: Producto[] &#x3D; [];
 
@@ -525,7 +555,9 @@ export class CatalogoComponent implements OnInit {
    */
   constructor(
     private http: HttpClient,
-    private cartService: CartService
+    private cartService: CartService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   /**
@@ -533,6 +565,12 @@ export class CatalogoComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle(&#x27;Catálogo - Piña Costa&#x27;);
+    this.meta.updateTag({
+      name: &#x27;description&#x27;,
+      content: &#x27;Descubre nuestra colección de productos en Piña Costa.&#x27;
+    });
+
     this.cargarProductos();
   }
 
@@ -624,16 +662,17 @@ export class CatalogoComponent implements OnInit {
 
 /* Botón rosado */
 .btn-pink {
-  background-color: #e91e63;
+  background-color: #c2185b;
   border: none;
   padding: 0.5rem 1rem;
   font-weight: bold;
   transition: background-color 0.3s ease;
   border-radius: 0.75rem;
+  color: #ffffff;
 }
 
 .btn-pink:hover {
-  background-color: #c2185b;
+  background-color: #880e4f;
   color: #fff;
 }
 
@@ -726,7 +765,6 @@ export class CatalogoComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'CatalogoComponent.html';
-            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -761,10 +799,6 @@ export class CatalogoComponent implements OnInit {
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 

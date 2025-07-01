@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -231,12 +231,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(route: ActivatedRoute, productService: <a href="../injectables/ProductService.html" target="_self">ProductService</a>, cartService: <a href="../injectables/CartService.html" target="_self">CartService</a>)</code>
+<code>constructor(route: ActivatedRoute, productService: <a href="../injectables/ProductService.html" target="_self">ProductService</a>, cartService: <a href="../injectables/CartService.html" target="_self">CartService</a>, title: Title, meta: Meta)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -302,6 +302,34 @@
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>title</td>
+                                                  
+                                                        <td>
+                                                                    <code>Title</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>meta</td>
+                                                  
+                                                        <td>
+                                                                    <code>Meta</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -340,8 +368,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -381,8 +409,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -427,7 +455,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/producto-detalle/producto-detalle.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -441,6 +469,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { Producto } from &#x27;src/app/models/producto.model&#x27;;
 import { ProductService } from &#x27;src/app/services/productos.service&#x27;;
@@ -451,6 +480,7 @@ import { CartService } from &#x27;src/app/services/cart.service&#x27;;
   templateUrl: &#x27;./producto-detalle.component.html&#x27;,
   styleUrls: [&#x27;./producto-detalle.component.css&#x27;]
 })
+/** Muestra la información de un producto concreto. */
 export class ProductoDetalleComponent implements OnInit {
   producto!: Producto;
 
@@ -463,7 +493,9 @@ export class ProductoDetalleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   /**
@@ -471,6 +503,12 @@ export class ProductoDetalleComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle(&#x27;Producto - Piña Costa&#x27;);
+    this.meta.updateTag({
+      name: &#x27;description&#x27;,
+      content: &#x27;Detalles del producto seleccionado en Piña Costa.&#x27;
+    });
+
     const id &#x3D; Number(this.route.snapshot.paramMap.get(&#x27;id&#x27;));
     if (id) {
       this.productService.getById(id).subscribe((prod) &#x3D;&gt; {
@@ -499,7 +537,7 @@ export class ProductoDetalleComponent implements OnInit {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container py-5&quot;&gt;
   &lt;div *ngIf&#x3D;&quot;producto&quot; class&#x3D;&quot;row&quot;&gt;
     &lt;div class&#x3D;&quot;col-12 col-md-6&quot;&gt;
-      &lt;img [src]&#x3D;&quot;producto.imagen&quot; alt&#x3D;&quot;Producto&quot; class&#x3D;&quot;img-fluid rounded shadow-sm&quot; /&gt;
+      &lt;img [src]&#x3D;&quot;producto.imagen&quot; [alt]&#x3D;&quot;producto.nombre&quot; class&#x3D;&quot;img-fluid rounded shadow-sm&quot; /&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;col-12 col-md-6&quot;&gt;
       &lt;h2 class&#x3D;&quot;mb-3&quot;&gt;{{ producto.nombre }}&lt;/h2&gt;
@@ -549,7 +587,7 @@ export class ProductoDetalleComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container py-5">  <div *ngIf="producto" class="row">    <div class="col-12 col-md-6">      <img [src]="producto.imagen" alt="Producto" class="img-fluid rounded shadow-sm" />    </div>    <div class="col-12 col-md-6">      <h2 class="mb-3">{{ producto.nombre }}</h2>      <p class="text-muted">{{ producto.descripcion }}</p>      <h4 class="text-dark mb-4">${{ producto.precio }}</h4>      <button class="btn btn-pink" (click)="agregarAlCarrito()">Agregar al Carrito 🛒</button>    </div>  </div>  <div *ngIf="!producto" class="alert alert-info mt-5">    Cargando información del producto...  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container py-5">  <div *ngIf="producto" class="row">    <div class="col-12 col-md-6">      <img [src]="producto.imagen" [alt]="producto.nombre" class="img-fluid rounded shadow-sm" />    </div>    <div class="col-12 col-md-6">      <h2 class="mb-3">{{ producto.nombre }}</h2>      <p class="text-muted">{{ producto.descripcion }}</p>      <h4 class="text-dark mb-4">${{ producto.precio }}</h4>      <button class="btn btn-pink" (click)="agregarAlCarrito()">Agregar al Carrito 🛒</button>    </div>  </div>  <div *ngIf="!producto" class="alert alert-info mt-5">    Cargando información del producto...  </div></div></div>'
     var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProductoDetalleComponent'};
@@ -599,7 +637,6 @@ export class ProductoDetalleComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ProductoDetalleComponent.html';
-            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -634,10 +671,6 @@ export class ProductoDetalleComponent implements OnInit {
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 

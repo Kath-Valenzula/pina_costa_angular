@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -122,10 +122,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/pages/registro/registro.component.ts</code>
+            <code>src/app/pages/perfil/perfil.component.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Datos básicos de un usuario registrado.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -140,13 +147,6 @@
                     <tr>
                         <td class="col-md-4">
                             <ul class="index-list">
-                                <li>
-                                            <span class="modifier">Optional</span>
-                                        <a href="#confirmPassword" 
->
-                                            confirmPassword
-                                        </a>
-                                </li>
                                 <li>
                                             <span class="modifier">Optional</span>
                                         <a href="#direccionDespacho" 
@@ -173,12 +173,6 @@
                                             nombre
                                         </a>
                                 </li>
-                                <li>
-                                        <a href="#password" 
->
-                                            password
-                                        </a>
-                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -190,44 +184,6 @@
 
             <section data-compodoc="block-properties">
                 <h3 id="inputs">Properties</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="confirmPassword"></a>
-                                        <span class="name "><b>confirmPassword</b>
-                                            <a href="#confirmPassword">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>confirmPassword:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
-
-
-
-
-                        </tbody>
-                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -370,163 +326,142 @@
 
                         </tbody>
                     </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="password"></a>
-                                        <span class="name "><b>password</b>
-                                            <a href="#password">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>password:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
             </section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from &#x27;@angular/forms&#x27;;
+import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
+import {
+  FormBuilder,
+  FormGroup,
+  Validators
+} from &#x27;@angular/forms&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
 
+/** Datos básicos de un usuario registrado. */
 interface Usuario {
   nombre: string;
   email: string;
-  password: string;
-  confirmPassword?: string;
   direccionDespacho?: string;
   fechaNacimiento?: string;
 }
 
 @Component({
-  selector: &#x27;app-registro&#x27;,
-  templateUrl: &#x27;./registro.component.html&#x27;,
-  styleUrls: [&#x27;./registro.component.css&#x27;]
+  selector: &#x27;app-perfil&#x27;,
+  templateUrl: &#x27;./perfil.component.html&#x27;,
+  styleUrls: [&#x27;./perfil.component.css&#x27;],
 })
-export class RegistroComponent implements OnInit {
-  registroForm!: FormGroup;
-  error: string &#x3D; &#x27;&#x27;;
-  mensaje: string &#x3D; &#x27;&#x27;;
+/** Vista para mostrar y editar datos del usuario. */
+export class PerfilComponent implements OnInit {
+  perfilForm!: FormGroup;
+  usuario!: Usuario;
+  editando &#x3D; false;
 
   /**
-   * @description FormBuilder para crear controles
-   * @param fb Servicio FormBuilder
+   * @description Obtiene formularios y router por inyección
+   * @param fb FormBuilder para construir el formulario
+   * @param router Navegación entre rutas
    */
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   /**
-   * @description Inicializa el formulario de registro
+   * @description Carga el usuario guardado y crea el formulario
    * @returns void
    */
   ngOnInit(): void {
-    this.registroForm &#x3D; this.fb.group({
-      nombre:            [&#x27;&#x27;, Validators.required],
-      email:             [&#x27;&#x27;, [Validators.required, Validators.email]],
-      password:          [&#x27;&#x27;, [
+    this.title.setTitle(&#x27;Perfil - Piña Costa&#x27;);
+    this.meta.updateTag({
+      name: &#x27;description&#x27;,
+      content: &#x27;Gestiona la información de tu cuenta en Piña Costa.&#x27;
+    });
+
+    this.usuario &#x3D; JSON.parse(
+      localStorage.getItem(&#x27;usuario&#x27;) || &#x27;{}&#x27;
+    );
+
+    this.perfilForm &#x3D; this.fb.group({
+      nombre: [this.usuario.nombre, Validators.required],
+      email: [
+        this.usuario.email,
+        [Validators.required, Validators.email],
+      ],
+      direccionDespacho: [this.usuario.direccionDespacho],
+      fechaNacimiento: [
+        this.usuario.fechaNacimiento,
         Validators.required,
-        Validators.pattern(/^(?&#x3D;.*[A-Z])(?&#x3D;.*[a-z])(?&#x3D;.*\d)(?&#x3D;.*[^A-Za-z0-9]).{8,}$/)
-      ]],
-      confirmPassword:   [&#x27;&#x27;, Validators.required],
-      direccionDespacho: [&#x27;&#x27;],
-      fechaNacimiento:   [&#x27;&#x27;, [Validators.required, this.ageValidator]]
-    }, { validators: this.passwordsMatchValidator });
+      ],
+    });
   }
 
   /**
-   * @description Verifica que las contraseñas coincidan
-   * @param group Grupo de controles
-   * @returns Errores o null
-   */
-  private passwordsMatchValidator(group: AbstractControl): ValidationErrors|null {
-    const p &#x3D; group.get(&#x27;password&#x27;)?.value;
-    const c &#x3D; group.get(&#x27;confirmPassword&#x27;)?.value;
-    return p &amp;&amp; c &amp;&amp; p !&#x3D;&#x3D; c ? { passwordsMismatch: true } : null;
-  }
-
-  /**
-   * @description Comprueba que la edad sea mayor o igual a 13
-   * @param control Control con la fecha
-   * @returns Errores o null
-   */
-  private ageValidator(control: AbstractControl): ValidationErrors|null {
-    const val &#x3D; control.value;
-    if (!val) return null;
-    const dob &#x3D; new Date(val);
-    const today &#x3D; new Date();
-    let age &#x3D; today.getFullYear() - dob.getFullYear();
-    if (today.getMonth() &lt; dob.getMonth() ||
-        (today.getMonth() &#x3D;&#x3D;&#x3D; dob.getMonth() &amp;&amp; today.getDate() &lt; dob.getDate())) {
-      age--;
-    }
-    return age &lt; 13 ? { ageTooLow: true } : null;
-  }
-
-  /**
-   * @description Guarda el usuario si el formulario es válido
+   * @description Pone el formulario en modo edición
    * @returns void
    */
-  registrar(): void {
-    if (this.registroForm.invalid) {
-      if (this.registroForm.errors?.[&#x27;passwordsMismatch&#x27;]) {
-        this.error &#x3D; &#x27;Las contraseñas no coinciden.&#x27;;
-      } else if (this.registroForm.get(&#x27;password&#x27;)?.hasError(&#x27;pattern&#x27;)) {
-        this.error &#x3D; &#x27;La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.&#x27;;
-      } else if (this.registroForm.get(&#x27;fechaNacimiento&#x27;)?.hasError(&#x27;ageTooLow&#x27;)) {
-        this.error &#x3D; &#x27;Debes tener al menos 13 años.&#x27;;
-      } else {
-        this.error &#x3D; &#x27;Revisa los campos obligatorios.&#x27;;
-      }
-      this.mensaje &#x3D; &#x27;&#x27;;
-      return;
-    }
-    const u &#x3D; this.registroForm.value;
-    const nuevo: Usuario &#x3D; {
-      nombre: u.nombre,
-      email: u.email,
-      password: u.password,
-      direccionDespacho: u.direccionDespacho,
-      fechaNacimiento: u.fechaNacimiento
-    };
-    const lista: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) || &#x27;[]&#x27;);
-    if (lista.some(x &#x3D;&gt; x.email &#x3D;&#x3D;&#x3D; nuevo.email)) {
-      this.error &#x3D; &#x27;El correo ya está registrado.&#x27;; this.mensaje &#x3D; &#x27;&#x27;; return;
-    }
-    lista.push(nuevo);
-    localStorage.setItem(&#x27;usuarios&#x27;, JSON.stringify(lista));
-    this.mensaje &#x3D; &#x27;Cuenta creada correctamente.&#x27;; this.error &#x3D; &#x27;&#x27;;
-    this.registroForm.reset();
+  editar(): void {
+    this.editando &#x3D; true;
   }
 
   /**
-   * @description Limpia el formulario y mensajes
+   * @description Guarda los cambios en localStorage
+   * @returns void
+   */
+  guardarCambios(): void {
+    if (this.perfilForm.invalid) {
+      this.perfilForm.markAllAsTouched();
+      return;
+    }
+    this.usuario &#x3D; {
+      ...this.usuario,
+      ...this.perfilForm.value,
+    };
+    localStorage.setItem(
+      &#x27;usuario&#x27;,
+      JSON.stringify(this.usuario)
+    );
+    this.editando &#x3D; false;
+  }
+
+  /**
+   * @description Restaura los valores sin guardar
+   * @returns void
+   */
+  cancelar(): void {
+    this.editando &#x3D; false;
+    this.perfilForm.reset({
+      nombre: this.usuario.nombre,
+      email: this.usuario.email,
+      direccionDespacho: this.usuario.direccionDespacho,
+      fechaNacimiento: this.usuario.fechaNacimiento,
+    });
+  }
+
+  /**
+   * @description Limpia el formulario dejando datos actuales
    * @returns void
    */
   limpiar(): void {
-    this.registroForm.reset();
-    this.error &#x3D; &#x27;&#x27;;
-    this.mensaje &#x3D; &#x27;&#x27;;
+    this.perfilForm.reset({
+      nombre: this.usuario.nombre,
+      email: this.usuario.email,
+      direccionDespacho: this.usuario.direccionDespacho,
+      fechaNacimiento: this.usuario.fechaNacimiento,
+    });
+  }
+
+  /**
+   * @description Elimina la sesión actual
+   * @returns void
+   */
+  cerrarSesion(): void {
+    localStorage.removeItem(&#x27;usuario&#x27;);
+    this.router.navigate([&#x27;/&#x27;]);
   }
 }
 </code></pre>
@@ -567,7 +502,6 @@ export class RegistroComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
             var COMPODOC_CURRENT_PAGE_URL = 'Usuario-3.html';
-            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -602,10 +536,6 @@ export class RegistroComponent implements OnInit {
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 

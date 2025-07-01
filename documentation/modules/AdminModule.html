@@ -86,7 +86,7 @@
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Modules</li>
-    <li class="breadcrumb-item" >AppRoutingModule</li>
+    <li class="breadcrumb-item" >AdminModule</li>
 </ol>
 
 
@@ -112,7 +112,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/app-routing.module.ts</code>
+            <code>src/app/pages/admin/admin.module.ts</code>
         </p>
 
 
@@ -121,6 +121,15 @@
 
         <div class="container-fluid module">
             <div class="row">
+                <div class="col-sm-3">
+                    <h3>Declarations<a href="https://angular.io/api/core/NgModule#declarations" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module declarations"><span class="icon ion-ios-information-circle-outline"></span></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../components/AdminComponent.html">AdminComponent</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -129,51 +138,26 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">/**
- * @description Define las rutas principales que mapean URLs a componentes.
- */
-import { NgModule } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { AuthGuard } from &#x27;./guards/auth.guard&#x27;;
-import { AdminGuard } from &#x27;./guards/admin.guard&#x27;;
-
-import { HomeComponent } from &#x27;./pages/home/home.component&#x27;;
-import { ProductoDetalleComponent } from &#x27;./pages/producto-detalle/producto-detalle.component&#x27;;
-import { CartComponent } from &#x27;./pages/cart/cart.component&#x27;;
-import { RecuperarComponent } from &#x27;./pages/recuperar/recuperar.component&#x27;;
-import { PerfilComponent } from &#x27;./pages/perfil/perfil.component&#x27;;
-import { ContactoComponent } from &#x27;./pages/contacto/contacto.component&#x27;;
-import { CreateUserComponent } from &#x27;./pages/create-user/create-user.component&#x27;;
-import { AcercaComponent } from &#x27;./pages/acerca/acerca.component&#x27;;
+import { AdminComponent } from &#x27;./admin.component&#x27;;
 
 /**
- * @description Arreglo de rutas utilizado por el enrutador
+ * Módulo que agrupa las vistas de administración.
  */
+
 const routes: Routes &#x3D; [
-  { path: &#x27;&#x27;, component: HomeComponent },
-  { path: &#x27;catalogo&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/catalogo/catalogo.module&#x27;).then(m &#x3D;&gt; m.CatalogoModule) },
-  { path: &#x27;producto/:id&#x27;, component: ProductoDetalleComponent },
-  { path: &#x27;cart&#x27;, component: CartComponent },
-  { path: &#x27;login&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/login/login.module&#x27;).then(m &#x3D;&gt; m.LoginModule) },
-  { path: &#x27;registro&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/registro/registro.module&#x27;).then(m &#x3D;&gt; m.RegistroModule) },
-  { path: &#x27;recuperar&#x27;, component: RecuperarComponent },
-  { path: &#x27;perfil&#x27;, component: PerfilComponent, canActivate: [AuthGuard] },
-  { path: &#x27;contacto&#x27;, component: ContactoComponent },
-  { path: &#x27;admin&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/admin/admin.module&#x27;).then(m &#x3D;&gt; m.AdminModule), canActivate: [AdminGuard] },
-  { path: &#x27;create-user&#x27;, component: CreateUserComponent },
-  { path: &#x27;acerca&#x27;, component: AcercaComponent },
-  // Ruta por defecto si no existe coincidencia
-  { path: &#x27;**&#x27;, redirectTo: &#x27;&#x27; }
+  { path: &#x27;&#x27;, component: AdminComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [AdminComponent],
+  imports: [CommonModule, FormsModule, RouterModule.forChild(routes)]
 })
-/**
- * @description Módulo que configura el enrutador de la app
- */
-export class AppRoutingModule { }
+/** Módulo de la sección administrativa */
+export class AdminModule {}
 </code></pre>
     </div>
 </div>
@@ -220,7 +204,7 @@ export class AppRoutingModule { }
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppRoutingModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminModule.html';
        </script>
 
        <script>

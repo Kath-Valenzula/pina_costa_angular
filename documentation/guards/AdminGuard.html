@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -164,7 +164,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/app/guards/admin.guard.ts:5</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/app/guards/admin.guard.ts:6</a></div>
                             </td>
                         </tr>
 
@@ -178,6 +178,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -192,6 +193,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Inyectado para redirecciones si no es administrador</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -227,19 +232,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="8"
-                                    class="link-to-prism">src/app/guards/admin.guard.ts:8</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/app/guards/admin.guard.ts:16</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica si hay un usuario administrador logueado</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p><code>true</code> si tiene permisos de administrador</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -253,9 +264,17 @@
 import { CanActivate, Router } from &#x27;@angular/router&#x27;;
 
 @Injectable({ providedIn: &#x27;root&#x27; })
+/** Evita que usuarios no administradores accedan a rutas de administración. */
 export class AdminGuard implements CanActivate {
+  /**
+   * @param router Inyectado para redirecciones si no es administrador
+   */
   constructor(private router: Router) {}
 
+  /**
+   * Verifica si hay un usuario administrador logueado
+   * @returns &#x60;true&#x60; si tiene permisos de administrador
+   */
   canActivate(): boolean {
     const raw &#x3D; localStorage.getItem(&#x27;usuario&#x27;);
     if (!raw) {
@@ -311,7 +330,6 @@ export class AdminGuard implements CanActivate {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
             var COMPODOC_CURRENT_PAGE_URL = 'AdminGuard.html';
-            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -346,10 +364,6 @@ export class AdminGuard implements CanActivate {
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 
