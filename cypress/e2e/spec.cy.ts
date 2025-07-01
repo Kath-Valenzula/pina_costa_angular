@@ -1,7 +1,9 @@
-describe('PinnaCosta App', () => {
-  it('opens the Cypress example page', () => {
-    cy.visit('https://example.cypress.io/')
+describe('Pruebas rápidas de PinnaCosta', () => {
+  it('Debe abrir la página principal y luego ir al catálogo', () => {
+    cy.visit('http://localhost:4200/');
+    cy.url().should('include', '/');
 
-    cy.contains('Kitchen Sink').should('be.visible')
-  })
-})
+    cy.visit('http://localhost:4200/catalogo');
+    cy.url().should('include', '/catalogo');
+  });
+});

@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -83,6 +83,7 @@
                    <div class="content-data">
 
 <h1>PinnaCosta</h1>
+<p><a href="https://github.com/%3COWNER%3E/%3CREPO%3E/actions/workflows/ci.yml"><img src="https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml/badge.svg" alt="CI" class="img-responsive"></a></p>
 <p> <strong>Tienda online</strong> creada con <strong>Angular 16</strong> para el ramo de Programación. Muestra productos de moda femenina, carrito de compras y cuenta de usuario con formularios reactivos y validaciones.</p>
 <hr>
 <h2>Características principales</h2>
@@ -146,13 +147,17 @@ Si tu herramienta usa otra ruta, verifica que no agregue un segundo <code>cypres
 <li>Instala Chromium/Chrome y su driver:
 <code>sudo apt-get install -y chromium-browser chromium-chromedriver</code></li>
 <li>Ejecuta las pruebas unitarias en modo headless:
-<code>npm test -- --browsers=ChromeHeadlessCustom --watch=false</code></li>
+<code>npm test -- --browsers=ChromeHeadless --watch=false</code></li>
 <li>Si Karma no encuentra Chrome, usa la ruta que provee Puppeteer:
-<code>CHROME_BIN=$(node -p &quot;require(&#39;puppeteer&#39;).executablePath()&quot;) npm test -- --browsers=ChromeHeadlessCustom --watch=false</code></li>
+<code>CHROME_BIN=$(node -p &quot;require(&#39;puppeteer&#39;).executablePath()&quot;) npm test -- --browsers=ChromeHeadless --watch=false</code></li>
 </ol>
 <h2>Más info</h2>
 <p>Documentación oficial de Angular: <a href="https://angular.io">https://angular.io</a></p>
 <p>Guía de estilos y mejores prácticas: <a href="https://angular.io/guide/styleguide">https://angular.io/guide/styleguide</a></p>
+<h2>Despliegue</h2>
+<p>Para publicar la aplicación en <strong>GitHub Pages</strong> puedes ejecutar:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm run deploy</code></pre></div><p>El sitio estará disponible (tras configurar tu usuario) en:
+<a href="https://your-user.github.io/pinna-costa-angular/">https://your-user.github.io/pinna-costa-angular/</a></p>
 <p>Este README incluye:</p>
 <ul>
 <li>Una descripción general y lista de <strong>funcionalidades</strong>.</li>
@@ -209,7 +214,6 @@ Si tu herramienta usa otra ruta, verifica que no agregue un segundo <code>cypres
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
             var COMPODOC_CURRENT_PAGE_URL = 'index.html';
-            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -244,10 +248,6 @@ Si tu herramienta usa otra ruta, verifica que no agregue un segundo <code>cypres
        <script src="./js/libs/clipboard.min.js"></script>
        <script src="./js/libs/prism.js"></script>
        <script src="./js/sourceCode.js"></script>
-          <script src="./js/search/search.js"></script>
-          <script src="./js/search/lunr.min.js"></script>
-          <script src="./js/search/search-lunr.js"></script>
-          <script src="./js/search/search_index.js"></script>
        <script src="./js/lazy-load-graphs.js"></script>
 
 
