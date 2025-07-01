@@ -1,9 +1,9 @@
 .text-rose {
-  color: #e91e63;
+  color: #c2185b;
 }
 
 .btn-pink {
-  background-color: #e91e63;
+  background-color: #c2185b;
   color: white;
   border: none;
 }
@@ -18,7 +18,7 @@
 }
 
 h2 {
-  color: #d63384;
+  color: #c2185b;
   font-weight: bold;
 }
 
@@ -28,13 +28,13 @@ h2 {
 }
 
 .btn-pink {
-  background-color: #d63384;
+  background-color: #c2185b;
   color: white;
   border: none;
 }
 
 .extra-links a {
-  color: #d63384;
+  color: #c2185b;
   cursor: pointer;
   font-weight: bold;
 }
