@@ -1,6 +1,3 @@
-/**
- * @description Formulario para solicitar recuperación de cuenta.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './recuperar.component.html',
   styleUrls: ['./recuperar.component.css']
 })
+/** Formulario para solicitar recuperación de cuenta. */
 export class RecuperarComponent implements OnInit {
   recuperarForm!: FormGroup;
   enviado = false;

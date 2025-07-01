@@ -10,7 +10,7 @@
     "e2e": "ng run pinna-costa:cypress-run",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "docs": "compodoc -p tsconfig.app.json -d documentation --minimal",
+    "docs": "compodoc -p tsconfig.json -d documentation --minimal",
     "deploy": "ng deploy --base-href=/pinna-costa-angular/",
     "lint": "ng lint"
   },

@@ -1,6 +1,3 @@
-/**
- * @description Página principal con productos destacados.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { ProductService } from '../../services/productos.service';
@@ -11,6 +8,7 @@ import { Producto } from '../../models/producto.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+/** Página principal con productos destacados. */
 export class HomeComponent implements OnInit {
   productos: Producto[] = [];
 

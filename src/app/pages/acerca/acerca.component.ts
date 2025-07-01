@@ -1,6 +1,3 @@
-/**
- * @description Página con información de la tienda.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 
@@ -9,6 +6,7 @@ import { Title, Meta } from '@angular/platform-browser';
   templateUrl: './acerca.component.html',
   styleUrls: ['./acerca.component.css']
 })
+/** Página con información de la tienda. */
 export class AcercaComponent implements OnInit {
   /**
    * @description Inyección de dependencias si fuera necesario

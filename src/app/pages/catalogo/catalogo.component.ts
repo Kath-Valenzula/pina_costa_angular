@@ -1,6 +1,3 @@
-/**
- * @description Listado de productos disponibles en la tienda.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
+/** Listado de productos disponibles en la tienda. */
 export class CatalogoComponent implements OnInit {
   productos: Producto[] = [];
 

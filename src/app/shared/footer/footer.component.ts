@@ -1,6 +1,3 @@
-/**
- * @description Componente de pie de página compartido.
- */
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,9 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-/**
- * @description Contiene solo la plantilla del footer
- */
+/** Componente de pie de página compartido. */
 export class FooterComponent {
 
 }

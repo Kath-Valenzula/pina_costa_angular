@@ -1,6 +1,3 @@
-/**
- * @description Maneja los productos añadidos al carrito.
- */
 import { Injectable } from '@angular/core';
 import { Producto } from '../models/producto.model';
 import { BehaviorSubject } from 'rxjs';
@@ -8,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+/** Maneja los productos añadidos al carrito. */
 export class CartService {
   private items: Producto[] = [];
   private carritoSubject = new BehaviorSubject<Producto[]>([]);
