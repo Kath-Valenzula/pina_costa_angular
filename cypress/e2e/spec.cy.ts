@@ -2,7 +2,7 @@ describe('PinnaCosta App', () => {
   it('Visits the initial project page and shows main content', () => {
     cy.visit('/')
 
-    cy.get('app-header img[alt="Logo"]').should('be.visible')
+    cy.get('app-header img[alt="Piña Costa"]').should('be.visible')
 
     cy.contains('h1', 'Acerca de Piña Costa').should('be.visible')
 
@@ -17,8 +17,8 @@ describe('PinnaCosta App', () => {
   it('allows a user to login and add a product to the cart', () => {
     cy.visit('/login')
 
-    cy.get('input[id="email"]').type('usuario')
-    cy.get('input[id="password"]').type('usuario')
+    cy.get('input[id="email"]').type('admin@example.com')
+    cy.get('input[id="password"]').type('admin123')
     cy.contains('button', 'Ingresar').click()
 
     cy.url().should('include', '/perfil')
