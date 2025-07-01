@@ -21,8 +21,8 @@ interface Usuario {
 })
 export class RegistroComponent implements OnInit {
   registroForm!: FormGroup;
-  error: string = '';
-  mensaje: string = '';
+  error = '';
+  mensaje = '';
 
   /**
    * @description FormBuilder para crear controles
