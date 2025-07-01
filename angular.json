@@ -144,7 +144,15 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/pinna-costa-angular/"
-
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
