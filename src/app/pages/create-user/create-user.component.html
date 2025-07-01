@@ -4,23 +4,23 @@
 
     <form (ngSubmit)="crearUsuario()">
       <div class="mb-3">
-        <label class="form-label">Nombre</label>
-        <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control" required />
+        <label for="nombre" class="form-label">Nombre</label>
+        <input id="nombre" type="text" [(ngModel)]="nombre" name="nombre" class="form-control" required />
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Correo electrónico</label>
-        <input type="email" [(ngModel)]="email" name="email" class="form-control" required />
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input id="email" type="email" [(ngModel)]="email" name="email" class="form-control" required />
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Contraseña</label>
-        <input type="password" [(ngModel)]="password" name="password" class="form-control" required />
+        <label for="password" class="form-label">Contraseña</label>
+        <input id="password" type="password" [(ngModel)]="password" name="password" class="form-control" required />
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Rol</label>
-        <select [(ngModel)]="rol" name="rol" class="form-select">
+        <label for="rol" class="form-label">Rol</label>
+        <select id="rol" [(ngModel)]="rol" name="rol" class="form-select">
           <option value="Usuario">Usuario</option>
           <option value="Administrador">Administrador</option>
         </select>

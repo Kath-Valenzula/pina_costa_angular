@@ -10,11 +10,19 @@ import { Router } from '@angular/router';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
+interface Usuario {
+  id: number;
+  nombre: string;
+  email: string;
+  password: string;
+  rol: string;
+}
+
 export class CreateUserComponent implements OnInit {
-  nombre: string = '';
-  email: string = '';
-  password: string = '';
-  rol: string = '';
+  nombre = '';
+  email = '';
+  password = '';
+  rol = '';
 
   /**
    * @description Router para volver al panel
@@ -44,10 +52,10 @@ export class CreateUserComponent implements OnInit {
       return;
     }
 
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const nuevoId = usuarios.length > 0 ? Math.max(...usuarios.map((u: any) => u.id)) + 1 : 1;
+    const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const nuevoId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1;
 
-    const nuevoUsuario: any = {
+    const nuevoUsuario: Usuario = {
       id: nuevoId,
       nombre: this.nombre,
       email: this.email,

@@ -19,8 +19,9 @@
   <ng-template #editForm>
     <form [formGroup]="perfilForm" (ngSubmit)="guardarCambios()">
       <div class="mb-3">
-        <label class="form-label">Nombre</label>
+        <label for="nombre" class="form-label">Nombre</label>
         <input
+          id="nombre"
           type="text"
           formControlName="nombre"
           class="form-control"
@@ -28,8 +29,9 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Email</label>
+        <label for="email" class="form-label">Email</label>
         <input
+          id="email"
           type="email"
           formControlName="email"
           class="form-control"
@@ -37,8 +39,9 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Dirección de despacho</label>
+        <label for="direccionDespacho" class="form-label">Dirección de despacho</label>
         <input
+          id="direccionDespacho"
           type="text"
           formControlName="direccionDespacho"
           class="form-control"
@@ -46,8 +49,9 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Fecha de nacimiento</label>
+        <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
         <input
+          id="fechaNacimiento"
           type="date"
           formControlName="fechaNacimiento"
           class="form-control"

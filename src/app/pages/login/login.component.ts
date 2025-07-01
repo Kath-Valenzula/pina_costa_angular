@@ -21,7 +21,7 @@ interface Usuario {
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  error: string = '';
+  error = '';
 
   /**
    * @description Constructor con inyección de dependencias
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const { email, password } = this.loginForm.value;
-    const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios')!);
+    const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
     const usuario = usuarios.find(u => u.email === email && u.password === password);
     if (!usuario) {
       this.error = 'Correo o contraseña incorrectos';
