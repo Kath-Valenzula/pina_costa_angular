@@ -81,6 +81,17 @@ Documentación oficial de Angular: https://angular.io
 
 Guía de estilos y mejores prácticas: https://angular.io/guide/styleguide
 
+## Despliegue
+
+Para publicar la aplicación en **GitHub Pages** puedes ejecutar:
+
+```bash
+npm run deploy
+```
+
+El sitio estará disponible (tras configurar tu usuario) en:
+<https://your-user.github.io/pinna-costa-angular/>
+
 
 Este README incluye:
 

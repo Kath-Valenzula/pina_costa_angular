@@ -140,13 +140,11 @@
             }
           }
         },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "baseHref": "/pinna-costa-angular/"
+
           }
         }
       }
