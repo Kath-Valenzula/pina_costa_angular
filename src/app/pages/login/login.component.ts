@@ -2,6 +2,7 @@
  * @description Componente para autenticar usuarios.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -29,7 +30,9 @@ export class LoginComponent implements OnInit {
    */
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   /**
@@ -37,6 +40,12 @@ export class LoginComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
+
+    this.title.setTitle('Iniciar sesión - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Accede a tu cuenta de Piña Costa.'
+    });
 
     const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'admin123' };
     const seedUser:  Usuario = { nombre: 'Usuario', email: 'usuario', password: 'usuario' };

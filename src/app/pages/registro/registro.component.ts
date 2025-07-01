@@ -2,6 +2,7 @@
  * @description Pantalla para registrar nuevos usuarios.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 interface Usuario {
@@ -27,13 +28,23 @@ export class RegistroComponent implements OnInit {
    * @description FormBuilder para crear controles
    * @param fb Servicio FormBuilder
    */
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   /**
    * @description Inicializa el formulario de registro
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle('Registro - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Crea una nueva cuenta en Piña Costa.'
+    });
+
     this.registroForm = this.fb.group({
       nombre:            ['', Validators.required],
       email:             ['', [Validators.required, Validators.email]],

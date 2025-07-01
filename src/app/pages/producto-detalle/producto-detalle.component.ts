@@ -2,6 +2,7 @@
  * @description Muestra la información de un producto concreto.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from 'src/app/models/producto.model';
 import { ProductService } from 'src/app/services/productos.service';
@@ -24,7 +25,9 @@ export class ProductoDetalleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   /**
@@ -32,6 +35,12 @@ export class ProductoDetalleComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle('Producto - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Detalles del producto seleccionado en Piña Costa.'
+    });
+
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
       this.productService.getById(id).subscribe((prod) => {
