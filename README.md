@@ -72,9 +72,9 @@ Si tu herramienta usa otra ruta, verifica que no agregue un segundo `cypress/`.
 1. Instala Chromium/Chrome y su driver:
    `sudo apt-get install -y chromium-browser chromium-chromedriver`
 2. Ejecuta las pruebas unitarias en modo headless:
-   `npm test -- --browsers=ChromeHeadlessCustom --watch=false`
+   `npm test -- --browsers=ChromeHeadless --watch=false`
 3. Si Karma no encuentra Chrome, usa la ruta que provee Puppeteer:
-   `CHROME_BIN=$(node -p "require('puppeteer').executablePath()") npm test -- --browsers=ChromeHeadlessCustom --watch=false`
+   `CHROME_BIN=$(node -p "require('puppeteer').executablePath()") npm test -- --browsers=ChromeHeadless --watch=false`
 
 ## Más info
 Documentación oficial de Angular: https://angular.io
