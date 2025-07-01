@@ -1,5 +1,6 @@
 process.env.CHROME_BIN = require('puppeteer').executablePath() || '/usr/bin/chromium-browser';
 module.exports = function (config) {
+  const browsers = (config.browsers || ['ChromeHeadless']);
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -24,11 +25,11 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadlessCustom'],
+    browsers,
     customLaunchers: {
-      ChromeHeadlessCustom: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox', '--headless', '--disable-gpu', '--disable-dev-shm-usage']
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: ['--headless', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage', '--remote-debugging-port=9222']
       }
     },
     singleRun: false,
