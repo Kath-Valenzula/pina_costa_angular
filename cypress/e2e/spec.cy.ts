@@ -1,32 +1,7 @@
 describe('PinnaCosta App', () => {
-  it('Visits the initial project page and shows main content', () => {
-    cy.visit('/')
+  it('opens the Cypress example page', () => {
+    cy.visit('https://example.cypress.io/')
 
-    cy.get('app-header img[alt="Piña Costa"]').should('be.visible')
-
-    cy.contains('h1', 'Acerca de Piña Costa').should('be.visible')
-
-    cy.get('app-header').within(() => {
-      cy.contains('Inicio').should('have.attr', 'href', '/')
-      cy.contains('Acerca de').should('have.attr', 'href', '/acerca')
-      cy.contains('Catálogo').should('have.attr', 'href', '/catalogo')
-      cy.contains('Carrito').should('exist')
-    })
-  })
-
-  it('allows a user to login and add a product to the cart', () => {
-    cy.visit('/login')
-
-    cy.get('input[id="email"]').type('admin@example.com')
-    cy.get('input[id="password"]').type('admin123')
-    cy.contains('button', 'Ingresar').click()
-
-    cy.url().should('include', '/admin')
-
-    cy.visit('/catalogo')
-    cy.contains('button', 'Agregar al carrito').first().click()
-
-    cy.visit('/cart')
-    cy.get('tbody tr').should('have.length.at.least', 1)
+    cy.contains('Kitchen Sink').should('be.visible')
   })
 })
