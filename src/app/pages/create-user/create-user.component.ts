@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
-@Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
-})
 interface Usuario {
   id: number;
   nombre: string;
@@ -18,6 +13,11 @@ interface Usuario {
   rol: string;
 }
 
+@Component({
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.css']
+})
 export class CreateUserComponent implements OnInit {
   nombre = '';
   email = '';
