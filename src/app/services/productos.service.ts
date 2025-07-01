@@ -1,6 +1,3 @@
-/**
- * @description Obtiene productos desde un archivo JSON.
- */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,6 +6,7 @@ import { Producto } from '../models/producto.model';
 @Injectable({
   providedIn: 'root'
 })
+/** Servicio que obtiene productos desde un archivo JSON. */
 export class ProductService {
   private productosUrl = 'assets/data/productos.json';
 

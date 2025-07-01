@@ -1,10 +1,8 @@
-/**
- * @description Formulario para crear un usuario desde Admin.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
+/** Información de usuario creada desde el panel. */
 interface Usuario {
   id: number;
   nombre: string;
@@ -18,6 +16,7 @@ interface Usuario {
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
+/** Formulario para crear un usuario desde Admin. */
 export class CreateUserComponent implements OnInit {
   nombre = '';
   email = '';

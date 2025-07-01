@@ -1,11 +1,9 @@
-/**
- * @description Componente para autenticar usuarios.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+/** Información de usuarios para el ejemplo de login. */
 interface Usuario {
   nombre: string;
   email: string;
@@ -19,6 +17,7 @@ interface Usuario {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+/** Componente para autenticar usuarios. */
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   error = '';

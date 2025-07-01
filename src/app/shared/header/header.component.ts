@@ -1,6 +1,3 @@
-/**
- * @description Barra superior con navegación y login.
- */
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,6 +7,7 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
+/** Barra superior con navegación y login. */
 export class HeaderComponent implements OnInit {
   cantidad = 0;
   estaAutenticado = false;

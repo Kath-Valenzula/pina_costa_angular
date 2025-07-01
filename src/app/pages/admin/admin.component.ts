@@ -1,6 +1,3 @@
-/**
- * @description Panel para gestionar usuarios y productos.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -10,6 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
+/** Panel para gestionar usuarios y productos. */
 export class AdminComponent implements OnInit {
   usuario: any;
   usuarios: any[] = [];

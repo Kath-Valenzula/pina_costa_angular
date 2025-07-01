@@ -1,6 +1,3 @@
-/**
- * @description Vista para mostrar y editar datos del usuario.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import {
@@ -10,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
+/** Datos básicos de un usuario registrado. */
 interface Usuario {
   nombre: string;
   email: string;
@@ -22,6 +20,7 @@ interface Usuario {
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
 })
+/** Vista para mostrar y editar datos del usuario. */
 export class PerfilComponent implements OnInit {
   perfilForm!: FormGroup;
   usuario!: Usuario;

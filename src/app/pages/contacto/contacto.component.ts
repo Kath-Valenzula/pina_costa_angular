@@ -1,6 +1,3 @@
-/**
- * @description Formulario de contacto con datos de la tienda.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 
@@ -9,9 +6,7 @@ import { Title, Meta } from '@angular/platform-browser';
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css']
 })
-/**
- * @description Solo muestra información de contacto
- */
+/** Formulario de contacto con datos de la tienda. */
 export class ContactoComponent implements OnInit {
   constructor(private title: Title, private meta: Meta) {}
 

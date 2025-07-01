@@ -1,6 +1,3 @@
-/**
- * @description Página que lista los productos en el carrito.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Producto } from 'src/app/models/producto.model';
@@ -11,6 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+/** Página que lista los productos en el carrito. */
 export class CartComponent implements OnInit {
   items: Producto[] = [];
 

@@ -1,9 +1,7 @@
-/**
- * @description Gestiona usuarios almacenados en localStorage.
- */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+/** Datos de un usuario registrado. */
 export interface Usuario {
   username: string;
   password: string;
@@ -11,6 +9,7 @@ export interface Usuario {
 }
 
 @Injectable({ providedIn: 'root' })
+/** Servicio para gestionar usuarios en localStorage. */
 export class UserService {
   private STORAGE_KEY = 'pinna-users';
   private users$ = new BehaviorSubject<Usuario[]>([]);

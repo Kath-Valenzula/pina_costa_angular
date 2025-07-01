@@ -1,11 +1,9 @@
-/**
- * @description Servicio de autenticación guardado en localStorage.
- */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { UserService, Usuario } from './user.service';
 
 @Injectable({ providedIn: 'root' })
+/** Servicio de autenticación guardado en localStorage. */
 export class AuthService {
   private current$ = new BehaviorSubject<Usuario | null>(null);
 

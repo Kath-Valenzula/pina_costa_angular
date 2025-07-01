@@ -1,10 +1,8 @@
-/**
- * @description Pantalla para registrar nuevos usuarios.
- */
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
+/** Datos registrados de un usuario. */
 interface Usuario {
   nombre: string;
   email: string;
@@ -19,6 +17,7 @@ interface Usuario {
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
+/** Pantalla para registrar nuevos usuarios. */
 export class RegistroComponent implements OnInit {
   registroForm!: FormGroup;
   error = '';

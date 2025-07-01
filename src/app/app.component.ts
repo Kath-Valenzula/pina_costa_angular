@@ -1,6 +1,3 @@
-/**
- * @description Componente raíz mostrado al iniciar la aplicación.
- */
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+/** Componente raíz mostrado al iniciar la aplicación. */
 export class AppComponent {
   /**
    * @description Título mostrado en la plantilla
