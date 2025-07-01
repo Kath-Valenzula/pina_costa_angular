@@ -21,7 +21,7 @@ describe('PinnaCosta App', () => {
     cy.get('input[id="password"]').type('admin123')
     cy.contains('button', 'Ingresar').click()
 
-    cy.url().should('include', '/perfil')
+    cy.url().should('include', '/admin')
 
     cy.visit('/catalogo')
     cy.contains('button', 'Agregar al carrito').first().click()
