@@ -1,7 +1,8 @@
 /**
  * @description Formulario para crear un usuario desde Admin.
  */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-export class CreateUserComponent {
+export class CreateUserComponent implements OnInit {
   nombre: string = '';
   email: string = '';
   password: string = '';
@@ -19,7 +20,19 @@ export class CreateUserComponent {
    * @description Router para volver al panel
    * @param router Manejador de rutas
    */
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private title: Title,
+    private meta: Meta
+  ) {}
+
+  ngOnInit(): void {
+    this.title.setTitle('Crear Usuario - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Formulario para crear usuarios en Piña Costa.'
+    });
+  }
 
   /**
    * @description Guarda un nuevo usuario en localStorage

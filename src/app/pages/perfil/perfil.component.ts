@@ -2,6 +2,7 @@
  * @description Vista para mostrar y editar datos del usuario.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import {
   FormBuilder,
   FormGroup,
@@ -31,13 +32,24 @@ export class PerfilComponent implements OnInit {
    * @param fb FormBuilder para construir el formulario
    * @param router Navegación entre rutas
    */
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   /**
    * @description Carga el usuario guardado y crea el formulario
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle('Perfil - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Gestiona la información de tu cuenta en Piña Costa.'
+    });
+
     this.usuario = JSON.parse(
       localStorage.getItem('usuario') || '{}'
     );

@@ -2,6 +2,7 @@
  * @description Formulario para solicitar recuperación de cuenta.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -18,13 +19,23 @@ export class RecuperarComponent implements OnInit {
    * @description FormBuilder para crear el formulario
    * @param fb FormBuilder inyectado
    */
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   /**
    * @description Inicializa el formulario de recuperación
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle('Recuperar cuenta - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Formulario para recuperar tu contraseña en Piña Costa.'
+    });
+
     this.recuperarForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       direccionDespacho: [''],

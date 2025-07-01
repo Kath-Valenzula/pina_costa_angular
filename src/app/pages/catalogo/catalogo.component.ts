@@ -2,6 +2,7 @@
  * @description Listado de productos disponibles en la tienda.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from 'src/app/models/producto.model';
 import { CartService } from 'src/app/services/cart.service';
@@ -21,7 +22,9 @@ export class CatalogoComponent implements OnInit {
    */
   constructor(
     private http: HttpClient,
-    private cartService: CartService
+    private cartService: CartService,
+    private title: Title,
+    private meta: Meta
   ) {}
 
   /**
@@ -29,6 +32,12 @@ export class CatalogoComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
+    this.title.setTitle('Catálogo - Piña Costa');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Descubre nuestra colección de productos en Piña Costa.'
+    });
+
     this.cargarProductos();
   }
 
