@@ -21,6 +21,7 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'catalogo', loadChildren: () => import('./pages/catalogo/catalogo.module').then(m => m.CatalogoModule) },
+  { path: 'encargos', loadChildren: () => import('./pages/encargos/encargos.module').then(m => m.EncargosModule) },
   { path: 'producto/:id', component: ProductoDetalleComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
