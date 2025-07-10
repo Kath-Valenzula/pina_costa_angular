@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from '../../models/usuario.model';
+import { Producto } from '../../models/producto.model';
 
 @Component({
   selector: 'app-admin',
@@ -10,9 +12,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 /** Panel para gestionar usuarios y productos. */
 export class AdminComponent implements OnInit {
-  usuario: any;
-  usuarios: any[] = [];
-  productos: any[] = [];
+  usuario!: Usuario;
+  usuarios: Usuario[] = [];
+  productos: Producto[] = [];
   productoForm!: FormGroup;
   
   /**
@@ -80,7 +82,7 @@ export class AdminComponent implements OnInit {
    * @param usuario Usuario seleccionado
    * @returns void
    */
-  editarUsuario(usuario: any): void {
+  editarUsuario(usuario: Usuario): void {
     alert(`Editar usuario: ${usuario.nombre}`);
   }
 
@@ -89,7 +91,7 @@ export class AdminComponent implements OnInit {
    * @param usuario Usuario a eliminar
    * @returns void
    */
-  eliminarUsuario(usuario: any): void {
+  eliminarUsuario(usuario: Usuario): void {
     if (confirm(`¿Eliminar a ${usuario.nombre}?`)) {
       this.usuarios = this.usuarios.filter(u => u.id !== usuario.id);
       localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
@@ -101,7 +103,7 @@ export class AdminComponent implements OnInit {
    * @param producto Producto a editar
    * @returns void
    */
-  editarProducto(producto: any): void {
+  editarProducto(producto: Producto): void {
     this.productoForm.patchValue(producto);
   }
 
@@ -110,7 +112,7 @@ export class AdminComponent implements OnInit {
    * @param producto Producto a eliminar
    * @returns void
    */
-  eliminarProducto(producto: any): void {
+  eliminarProducto(producto: Producto): void {
     if (confirm(`¿Eliminar producto "${producto.nombre}"?`)) {
       this.productos = this.productos.filter(p => p.id !== producto.id);
       localStorage.setItem('productos', JSON.stringify(this.productos));

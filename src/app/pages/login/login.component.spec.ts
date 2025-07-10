@@ -30,8 +30,8 @@ describe('LoginComponent', () => {
   // Formulario vacío debe mostrar error y no navegar
   it('no debe iniciar sesión si el formulario es inválido', () => {
     spyOn(router, 'navigate');
-    component.loginForm.get('email')!.setValue('');
-    component.loginForm.get('password')!.setValue('');
+    component.loginForm.get('email')?.setValue('');
+    component.loginForm.get('password')?.setValue('');
     component.iniciarSesion();
     expect(component.error).toBe('Revisa los campos marcados.');
     expect(router.navigate).not.toHaveBeenCalled();
@@ -41,10 +41,10 @@ describe('LoginComponent', () => {
   it('debe navegar a /admin con credenciales admin@example.com/admin123', () => {
     spyOn(router, 'navigate');
     localStorage.setItem('usuarios', JSON.stringify([
-      { nombre: 'Admin', email: 'admin@example.com', password: 'admin123' }
+      { nombre: 'Admin', email: 'admin@example.com', password: 'admin123', rol: 'admin' }
     ]));
-    component.loginForm.get('email')!.setValue('admin@example.com');
-    component.loginForm.get('password')!.setValue('admin123');
+    component.loginForm.get('email')?.setValue('admin@example.com');
+    component.loginForm.get('password')?.setValue('admin123');
     component.iniciarSesion();
     expect(router.navigate).toHaveBeenCalledWith(['/admin']);
   });
@@ -55,8 +55,8 @@ describe('LoginComponent', () => {
     localStorage.setItem('usuarios', JSON.stringify([
       { nombre: 'User', email: 'user@example.com', password: 'userpwd' }
     ]));
-    component.loginForm.get('email')!.setValue('user@example.com');
-    component.loginForm.get('password')!.setValue('userpwd');
+    component.loginForm.get('email')?.setValue('user@example.com');
+    component.loginForm.get('password')?.setValue('userpwd');
     component.iniciarSesion();
     expect(router.navigate).toHaveBeenCalledWith(['/perfil']);
   });
