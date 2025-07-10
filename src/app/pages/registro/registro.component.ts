@@ -7,6 +7,7 @@ interface Usuario {
   nombre: string;
   email: string;
   password: string;
+  rol?: string;
   confirmPassword?: string;
   direccionDespacho?: string;
   fechaNacimiento?: string;
@@ -109,6 +110,7 @@ export class RegistroComponent implements OnInit {
       nombre: u.nombre,
       email: u.email,
       password: u.password,
+      rol: 'usuario',
       direccionDespacho: u.direccionDespacho,
       fechaNacimiento: u.fechaNacimiento
     };

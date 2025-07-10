@@ -17,7 +17,7 @@ describe('AdminGuard', () => {
   });
 
   it('should allow admin user', () => {
-    localStorage.setItem('usuario', JSON.stringify({ email: 'admin@example.com' }));
+    localStorage.setItem('usuario', JSON.stringify({ rol: 'admin' }));
     expect(guard.canActivate()).toBeTrue();
   });
 

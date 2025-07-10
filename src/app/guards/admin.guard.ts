@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate {
       return false;
     }
     const user = JSON.parse(raw);
-    if (user.email === 'admin@example.com') {
+    if (user.rol === 'admin') {
       return true;
     }
     this.router.navigate(['/perfil']);

@@ -4,6 +4,7 @@
   <div *ngIf="!editando; else editForm">
     <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
     <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Rol:</strong> {{ usuario.rol || 'usuario' }}</p>
     <p>
       <strong>Dirección de despacho:</strong>
       {{ usuario.direccionDespacho || '—' }}

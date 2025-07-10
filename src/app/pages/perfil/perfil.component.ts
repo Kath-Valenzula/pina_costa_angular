@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 /** Datos básicos de un usuario registrado. */
 interface Usuario {
   nombre: string;
+  rol?: string;
   email: string;
   direccionDespacho?: string;
   fechaNacimiento?: string;

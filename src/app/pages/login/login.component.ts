@@ -8,6 +8,7 @@ interface Usuario {
   nombre: string;
   email: string;
   password: string;
+  rol?: string;
   direccionDespacho?: string;
   fechaNacimiento?: string;
 }
@@ -46,8 +47,8 @@ export class LoginComponent implements OnInit {
       content: 'Accede a tu cuenta de Piña Costa.'
     });
 
-    const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'admin123' };
-    const seedUser:  Usuario = { nombre: 'Usuario', email: 'usuario', password: 'usuario' };
+    const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'admin123', rol: 'admin' };
+    const seedUser:  Usuario = { nombre: 'Usuario', email: 'usuario', password: 'usuario', rol: 'admin' };
     const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
     if (!usuarios.find(u => u.email === seedAdmin.email)) usuarios.unshift(seedAdmin);
     if (!usuarios.find(u => u.email === seedUser.email))  usuarios.push(seedUser);
@@ -76,7 +77,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     localStorage.setItem('usuario', JSON.stringify(usuario));
-    this.router.navigate([ usuario.email === 'admin@example.com' ? '/admin' : '/perfil' ]);
+    this.router.navigate([ usuario.rol === 'admin' ? '/admin' : '/perfil' ]);
   }
 
   /**
