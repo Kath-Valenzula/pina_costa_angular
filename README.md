@@ -85,6 +85,18 @@ Guía de estilos y mejores prácticas: https://angular.io/guide/styleguide
 
 Para publicar la aplicación en **GitHub Pages** puedes ejecutar:
 
+## Docker
+
+Para probar la aplicación en un contenedor Docker ejecuta en la raíz del proyecto:
+
+```bash
+docker build -t pina-costa-angular .
+docker run --rm -p 8080:80 pina-costa-angular
+```
+
+No ejecutes las líneas del `Dockerfile` manualmente ni desde la carpeta `dist/`.
+Usa `docker build` para procesar cada paso correctamente.
+
 ```bash
 npm run deploy
 ```
