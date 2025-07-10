@@ -1,4 +1,3 @@
-<!-- src/app/pages/admin/admin.component.html -->
 <div class="container mt-5">
   <!-- Botón cerrar sesión -->
   <div class="text-end mb-4">
@@ -12,25 +11,26 @@
   <div class="card mb-4">
     <div class="card-header btn-pink text-white">Agregar o Editar Producto</div>
     <div class="card-body">
-      <form (ngSubmit)="guardarProducto()">
+      <form [formGroup]="productoForm" (ngSubmit)="guardarProducto()">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
           <input
-            type="text"
             id="nombre"
-            [(ngModel)]="nuevoProducto.nombre"
-            name="nombre"
+            type="text"
+            formControlName="nombre"
             class="form-control"
-            required
+            [class.is-invalid]="productoForm.get('nombre')?.invalid && productoForm.get('nombre')?.touched"
           />
+          <div class="invalid-feedback" *ngIf="productoForm.get('nombre')?.hasError('required')">
+            El nombre es obligatorio.
+          </div>
         </div>
         <div class="mb-3">
           <label for="imagen" class="form-label">URL de Imagen</label>
           <input
-            type="text"
             id="imagen"
-            [(ngModel)]="nuevoProducto.imagen"
-            name="imagen"
+            type="text"
+            formControlName="imagen"
             class="form-control"
           />
         </div>
@@ -38,23 +38,24 @@
           <label for="descripcion" class="form-label">Descripción</label>
           <textarea
             id="descripcion"
-            [(ngModel)]="nuevoProducto.descripcion"
-            name="descripcion"
+            formControlName="descripcion"
             class="form-control"
           ></textarea>
         </div>
         <div class="mb-3">
           <label for="precio" class="form-label">Precio</label>
           <input
-            type="number"
             id="precio"
-            [(ngModel)]="nuevoProducto.precio"
-            name="precio"
+            type="number"
+            formControlName="precio"
             class="form-control"
-            required
+            [class.is-invalid]="productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched"
           />
+          <div class="invalid-feedback" *ngIf="productoForm.get('precio')?.hasError('required')">
+            El precio es obligatorio.
+          </div>
         </div>
-        <button type="submit" class="btn btn-pink w-100">
+        <button type="submit" class="btn btn-pink w-100" [disabled]="productoForm.invalid"> 
           Guardar Producto
         </button>
       </form>

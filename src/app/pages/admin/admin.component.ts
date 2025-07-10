@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin',
@@ -12,14 +13,8 @@ export class AdminComponent implements OnInit {
   usuario: any;
   usuarios: any[] = [];
   productos: any[] = [];
-  nuevoProducto: any = {
-    id: null,
-    nombre: '',
-    imagen: '',
-    descripcion: '',
-    precio: null
-  };
-
+  productoForm!: FormGroup;
+  
   /**
    * @description Recibe Router para navegar
    * @param router Manejador de rutas
@@ -27,7 +22,8 @@ export class AdminComponent implements OnInit {
   constructor(
     private router: Router,
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    private fb: FormBuilder
   ) {}
 
   /**
@@ -42,6 +38,13 @@ export class AdminComponent implements OnInit {
     });
 
     this.usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    this.productoForm = this.fb.group({
+      id: [null],
+      nombre: ['', Validators.required],
+      imagen: [''],
+      descripcion: [''],
+      precio: [null, Validators.required]
+    });
     this.cargarUsuarios();
     this.cargarProductos();
   }
@@ -99,7 +102,7 @@ export class AdminComponent implements OnInit {
    * @returns void
    */
   editarProducto(producto: any): void {
-    this.nuevoProducto = { ...producto };
+    this.productoForm.patchValue(producto);
   }
 
   /**
@@ -119,29 +122,25 @@ export class AdminComponent implements OnInit {
    * @returns void
    */
   guardarProducto(): void {
-    if (!this.nuevoProducto.nombre || !this.nuevoProducto.precio) {
-      alert('Por favor completa todos los campos');
+    if (this.productoForm.invalid) {
+      this.productoForm.markAllAsTouched();
       return;
     }
 
-    if (this.nuevoProducto.id) {
-      const idx = this.productos.findIndex(p => p.id === this.nuevoProducto.id);
-      if (idx !== -1) this.productos[idx] = { ...this.nuevoProducto };
+    const data = this.productoForm.value;
+
+    if (data.id) {
+      const idx = this.productos.findIndex(p => p.id === data.id);
+      if (idx !== -1) this.productos[idx] = { ...data };
     } else {
       const nuevoId = this.productos.length
         ? Math.max(...this.productos.map(p => p.id)) + 1
         : 1;
-      this.productos.push({ ...this.nuevoProducto, id: nuevoId });
+      this.productos.push({ ...data, id: nuevoId });
     }
 
     localStorage.setItem('productos', JSON.stringify(this.productos));
-    this.nuevoProducto = {
-      id: null,
-      nombre: '',
-      imagen: '',
-      descripcion: '',
-      precio: null
-    };
+    this.productoForm.reset({ id: null, nombre: '', imagen: '', descripcion: '', precio: null });
   }
 
 
