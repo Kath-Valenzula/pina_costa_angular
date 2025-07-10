@@ -41,7 +41,7 @@ describe('LoginComponent', () => {
   it('debe navegar a /admin con credenciales admin@example.com/admin123', () => {
     spyOn(router, 'navigate');
     localStorage.setItem('usuarios', JSON.stringify([
-      { nombre: 'Admin', email: 'admin@example.com', password: 'admin123', rol: 'admin' }
+      { nombre: 'admin', email: 'admin@example.com', password: 'admin123', rol: 'admin' }
     ]));
     component.loginForm.get('email')?.setValue('admin@example.com');
     component.loginForm.get('password')?.setValue('admin123');
