@@ -46,6 +46,7 @@ export class ListaEncargosComponent implements OnInit {
     this.jsonSvc.updateEncargo(this.editando).subscribe(() => {
       this.cargarEncargos();
       this.cancelar();
+      form.resetForm();
     });
   }
 

@@ -16,10 +16,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [AdminComponent],
   imports: [
-    CommonModule, 
-    FormsModule, 
-    RouterModule.
-    forChild(routes),
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes),
     ReactiveFormsModule
   ]
 })

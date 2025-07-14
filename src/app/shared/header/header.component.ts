@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { Producto } from '../../models/producto.model';
 
 @Component({
   selector: 'app-header',
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
-    this.cartService.obtenerCarritoObservable().subscribe((items: any[]) => {
+    this.cartService.obtenerCarritoObservable().subscribe((items: Producto[]) => {
       this.cantidad = items.length;
     });
 

@@ -23,7 +23,7 @@ describe('ProductoDetalleComponent', () => {
           useValue: {
             snapshot: {
               paramMap: {
-                get: (key: string) => '1'  
+                get: () => '1'
               }
             }
           }

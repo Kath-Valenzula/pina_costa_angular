@@ -46,6 +46,7 @@ export class ListaProductosComponent implements OnInit {
     this.jsonSvc.updateProducto(this.editando).subscribe(() => {
       this.cargarProductos();
       this.cancelar();
+      form.resetForm();
     });
   }
 
