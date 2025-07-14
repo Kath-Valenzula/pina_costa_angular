@@ -19,6 +19,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { AcercaComponent } from './pages/acerca/acerca.component';
+import { ListaEncargosComponent } from './pages/lista-encargos/lista-encargos.component';
+import { ListaProductosComponent } from './pages/lista-productos/lista-productos.component';
 
 @NgModule({
   // Componentes de la aplicación
@@ -31,7 +33,9 @@ import { AcercaComponent } from './pages/acerca/acerca.component';
     PerfilComponent,
     ContactoComponent,
     CreateUserComponent,
-    AcercaComponent
+    AcercaComponent,
+    ListaEncargosComponent,
+    ListaProductosComponent
   ],
   // Módulos que se utilizan
   imports: [
