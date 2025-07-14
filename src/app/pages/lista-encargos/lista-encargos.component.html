@@ -4,13 +4,35 @@
   <form #encargoForm="ngForm" (ngSubmit)="editando ? actualizar(encargoForm) : agregar(encargoForm)" class="mb-3">
     <div class="row g-2">
       <div class="col-sm">
-        <input class="form-control" name="nombre" [(ngModel)]="editando?.nombre ?? nuevo.nombre" placeholder="Nombre" required />
+        <input
+          class="form-control"
+          name="nombre"
+          [ngModel]="editando ? editando.nombre : nuevo.nombre"
+          (ngModelChange)="actualizarCampo('nombre', $event)"
+          placeholder="Nombre"
+          required
+        />
       </div>
       <div class="col-sm">
-        <input class="form-control" name="descripcion" [(ngModel)]="editando?.descripcion ?? nuevo.descripcion" placeholder="Descripción" required />
+        <input
+          class="form-control"
+          name="descripcion"
+          [ngModel]="editando ? editando.descripcion : nuevo.descripcion"
+          (ngModelChange)="actualizarCampo('descripcion', $event)"
+          placeholder="Descripción"
+          required
+        />
       </div>
       <div class="col-sm">
-        <input type="number" class="form-control" name="precio" [(ngModel)]="editando?.precio ?? nuevo.precio" placeholder="Precio" required />
+        <input
+          type="number"
+          class="form-control"
+          name="precio"
+          [ngModel]="editando ? editando.precio : nuevo.precio"
+          (ngModelChange)="actualizarCampo('precio', $event)"
+          placeholder="Precio"
+          required
+        />
       </div>
       <div class="col-auto">
         <button type="submit" class="btn btn-primary">{{ editando ? 'Actualizar' : 'Agregar' }}</button>
@@ -36,10 +58,3 @@
         <td>{{ e.descripcion }}</td>
         <td>{{ e.precio | currency:'CLP' }}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-2" (click)="editar(e)">Editar</button>
-          <button class="btn btn-sm btn-danger" (click)="eliminar(e.id)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
