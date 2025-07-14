@@ -59,4 +59,16 @@ export class ListaEncargosComponent implements OnInit {
   cancelar(): void {
     this.editando = undefined;
   }
+  
+  /**
+   * Actualiza una propiedad en el objeto que corresponda
+   * según si se está en modo edición o creación.
+   */
+  actualizarCampo(campo: keyof Encargo, valor: any): void {
+    if (this.editando) {
+      (this.editando as any)[campo] = valor;
+    } else {
+      (this.nuevo as any)[campo] = valor;
+    }
+  }
 }

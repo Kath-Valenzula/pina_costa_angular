@@ -59,4 +59,15 @@ export class ListaProductosComponent implements OnInit {
   cancelar(): void {
     this.editando = undefined;
   }
+  
+  /**
+   * Actualiza una propiedad según el modo actual del formulario.
+   */
+  actualizarCampo(campo: keyof Producto, valor: any): void {
+    if (this.editando) {
+      (this.editando as any)[campo] = valor;
+    } else {
+      (this.nuevo as any)[campo] = valor;
+    }
+  }
 }
