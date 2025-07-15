@@ -143,6 +143,7 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
 import { AdminComponent } from &#x27;./admin.component&#x27;;
+import { ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 
 /**
  * Módulo que agrupa las vistas de administración.
@@ -154,7 +155,12 @@ const routes: Routes &#x3D; [
 
 @NgModule({
   declarations: [AdminComponent],
-  imports: [CommonModule, FormsModule, RouterModule.forChild(routes)]
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
+  ]
 })
 /** Módulo de la sección administrativa */
 export class AdminModule {}

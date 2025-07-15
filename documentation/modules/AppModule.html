@@ -144,6 +144,12 @@
                             <a href="../components/HomeComponent.html">HomeComponent</a>
                         </li>
                         <li class="list-group-item">
+                            <a href="../components/ListaEncargosComponent.html">ListaEncargosComponent</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="../components/ListaProductosComponent.html">ListaProductosComponent</a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="../components/PerfilComponent.html">PerfilComponent</a>
                         </li>
                         <li class="list-group-item">
@@ -189,6 +195,7 @@
  */
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;; 
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;; 
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 
@@ -204,6 +211,8 @@ import { PerfilComponent } from &#x27;./pages/perfil/perfil.component&#x27;;
 import { ContactoComponent } from &#x27;./pages/contacto/contacto.component&#x27;;
 import { CreateUserComponent } from &#x27;./pages/create-user/create-user.component&#x27;;
 import { AcercaComponent } from &#x27;./pages/acerca/acerca.component&#x27;;
+import { ListaEncargosComponent } from &#x27;./pages/lista-encargos/lista-encargos.component&#x27;;
+import { ListaProductosComponent } from &#x27;./pages/lista-productos/lista-productos.component&#x27;;
 
 @NgModule({
   // Componentes de la aplicación
@@ -216,11 +225,14 @@ import { AcercaComponent } from &#x27;./pages/acerca/acerca.component&#x27;;
     PerfilComponent,
     ContactoComponent,
     CreateUserComponent,
-    AcercaComponent
+    AcercaComponent,
+    ListaEncargosComponent,
+    ListaProductosComponent
   ],
   // Módulos que se utilizan
   imports: [
     BrowserModule,
+    CommonModule,            
     FormsModule,
     ReactiveFormsModule,    
     HttpClientModule,
@@ -233,8 +245,7 @@ import { AcercaComponent } from &#x27;./pages/acerca/acerca.component&#x27;;
 /**
  * @description Módulo raíz de Angular
  */
-export class AppModule { }
-</code></pre>
+export class AppModule { }</code></pre>
     </div>
 </div>
 
