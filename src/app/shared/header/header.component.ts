@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
     const raw = localStorage.getItem('usuario');
     if (!raw) return '/login';
     const datos = JSON.parse(raw);
-    return datos.email === 'admin@example.com' ? '/admin' : '/perfil';
+    return datos.rol === 'admin' ? '/admin' : '/perfil';
   }
 
  

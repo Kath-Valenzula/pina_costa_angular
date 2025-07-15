@@ -34,4 +34,14 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('should return admin route when user role is admin', () => {
+    localStorage.setItem('usuario', JSON.stringify({ rol: 'admin' }));
+    expect(component.rutaPerfil).toBe('/admin');
+  });
+
+  it('should return profile route for normal user', () => {
+    localStorage.setItem('usuario', JSON.stringify({ rol: 'user' }));
+    expect(component.rutaPerfil).toBe('/perfil');
+  });
 });
