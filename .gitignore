@@ -10,3 +10,7 @@ dist/
 # Ajustes de editor (opcional)
 .vscode/
 .idea/
+
+# Documentation and coverage
+documentation/
+coverage/

@@ -1,5 +1,5 @@
 # PinnaCosta
-[![CI](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml)
+[![CI](https://github.com/Kath-Valenzula/pina_costa_angular/actions/workflows/ci.yml/badge.svg)](https://github.com/Kath-Valenzula/pina_costa_angular/actions/workflows/ci.yml)
 
  **Tienda online** creada con **Angular 16** para el ramo de Programación. Muestra productos de moda femenina, carrito de compras y cuenta de usuario con formularios reactivos y validaciones.
 
@@ -34,6 +34,25 @@
    npx ng serve --open
 4. Abre tu navegador en http://localhost:4200/.
 
+## Datos de ejemplo y API
+
+Los servicios de `JsonService` consumen archivos JSON publicados en
+[GitHub Pages](https://kath-valenzula.github.io/my-json-repo-pina-costa/).
+Estos archivos provienen del repositorio
+[`my-json-repo-pina-costa`](https://github.com/Kath-Valenzula/my-json-repo-pina-costa)
+y se utilizan para simular una API sencilla.
+
+En la carpeta `my-json-repo-pina-costa/` de este proyecto se incluyen
+copias de `productos.json` y `encargos.json` para que puedas ejecutar el
+proyecto sin conexión o levantar tu propio servidor con
+`json-server`:
+
+```bash
+npx json-server --watch my-json-repo-pina-costa --port 3000
+```
+
+Si cambias la URL del servicio a `http://localhost:3000`, podrás probar
+las operaciones CRUD de forma local.
 
 ##  Organización del proyecto
   src/app/pages/ → componentes de ruta (Login, Registro, Perfil, Catálogo, Carrito, Admin, etc.).

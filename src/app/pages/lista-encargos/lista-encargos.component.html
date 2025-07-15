@@ -57,4 +57,15 @@
         <td>{{ e.nombre }}</td>
         <td>{{ e.descripcion }}</td>
         <td>{{ e.precio | currency:'CLP' }}</td>
-        <td>
+                <td>
+          <button class="btn btn-outline-primary btn-sm me-1" (click)="editar(e)">
+            Editar
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(e.id)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
