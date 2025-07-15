@@ -6,15 +6,19 @@ import { Producto } from '../models/producto.model';
 
 @Injectable({ providedIn: 'root' })
 /**
- * Servicio que consume los archivos JSON publicados en GitHub Pages.
- * Incluye operaciones CRUD que solo funcionarán si el servidor
- * permite peticiones de escritura.
+ * Servicio para interactuar con los archivos JSON de la aplicación.
+ * Las rutas apuntan a la carpeta `assets`, de modo que estén
+ * disponibles incluso sin un backend externo. Las operaciones de
+ * escritura (POST/PUT/DELETE) solo funcionarán si el servidor
+ * responde a dichas peticiones.
  */
 export class JsonService {
-  private encargosUrl =
-    'https://kath-valenzula.github.io/my-json-repo-pina-costa/encargos.json';
-  private productosUrl =
-    'https://kath-valenzula.github.io/my-json-repo-pina-costa/productos.json';
+  /**
+   * Rutas a los archivos JSON. Se sirven desde `assets` para evitar
+   * dependencias externas que puedan producir errores 404.
+   */
+  private encargosUrl = 'assets/data/encargos.json';
+  private productosUrl = 'assets/data/productos.json';
 
   constructor(private http: HttpClient) {}
 

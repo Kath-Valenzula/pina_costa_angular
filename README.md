@@ -111,6 +111,34 @@ npm run deploy
 El sitio estará disponible (tras configurar tu usuario) en:
 <https://your-user.github.io/pinna-costa-angular/>
 
+### Datos JSON accesibles por HTTP
+
+Dentro de este repositorio se incluye la carpeta `my-json-repo-pina-costa`
+con los archivos `encargos.json` y `productos.json`. Puedes publicarla en
+**GitHub Pages** para que el servicio `JsonService` acceda a ellos vía
+HTTP:
+
+```bash
+cd my-json-repo-pina-costa
+git init
+git add .
+git commit -m "Datos para la API"
+git remote add origin https://github.com/<usuario>/my-json-repo-pina-costa.git
+git push -u origin main
+gh-pages -d .
+```
+
+Alternativamente, ejecuta un servidor local con `json-server` para probar
+las operaciones **GET/POST/PUT/DELETE**:
+
+```bash
+npx json-server --watch my-json-repo-pina-costa --port 3000
+```
+
+Actualiza las URLs en `src/app/services/json.service.ts` si deseas apuntar
+a este servidor local.
+
+
 ## Docker
 
 1. **Instala Docker** en tu sistema (Docker Desktop en Windows o Docker Engine en Linux) y verifica con:
@@ -130,6 +158,24 @@ Abre <http://localhost:8080/> para ver la aplicación.
 
 No ejecutes las líneas del `Dockerfile` de forma manual ni dentro de `dist/`. Usa `docker build` para procesar cada paso correctamente.
 
+## Despliegue en la nube con Docker
+
+1. Etiqueta la imagen y súbela a un registro público (Docker Hub u otro):
+
+```bash
+docker tag pina-costa-angular <usuario>/pinna-costa-angular:latest
+docker push <usuario>/pinna-costa-angular:latest
+```
+
+2. En Docker Lab o cualquier plataforma que soporte contenedores
+   ejecuta la imagen publicada:
+
+```bash
+docker run -d -p 80:80 <usuario>/pinna-costa-angular:latest
+```
+
+Finalmente comparte la URL pública entregada por el proveedor para
+acceder a la aplicación.
 
 Este README incluye:
 
