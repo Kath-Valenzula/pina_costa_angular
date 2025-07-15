@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     });
 
     const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'admin123', rol: 'admin' };
-    const seedUser:  Usuario = { nombre: 'Usuario', email: 'usuario', password: 'usuario', rol: 'admin' };
+    const seedUser:  Usuario = { nombre: 'Usuario', email: 'usuario', password: 'usuario', rol: 'usuario' };
     const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
     if (!usuarios.find(u => u.email === seedAdmin.email)) usuarios.unshift(seedAdmin);
     if (!usuarios.find(u => u.email === seedUser.email))  usuarios.push(seedUser);
