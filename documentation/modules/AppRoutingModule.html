@@ -152,8 +152,8 @@ import { AcercaComponent } from &#x27;./pages/acerca/acerca.component&#x27;;
 const routes: Routes &#x3D; [
   { path: &#x27;&#x27;, component: HomeComponent },
   { path: &#x27;catalogo&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/catalogo/catalogo.module&#x27;).then(m &#x3D;&gt; m.CatalogoModule) },
-  { path: &#x27;producto/:id&#x27;, component: ProductoDetalleComponent },
   { path: &#x27;encargos&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/encargos/encargos.module&#x27;).then(m &#x3D;&gt; m.EncargosModule) },
+  { path: &#x27;producto/:id&#x27;, component: ProductoDetalleComponent },
   { path: &#x27;cart&#x27;, component: CartComponent },
   { path: &#x27;login&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/login/login.module&#x27;).then(m &#x3D;&gt; m.LoginModule) },
   { path: &#x27;registro&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/registro/registro.module&#x27;).then(m &#x3D;&gt; m.RegistroModule) },

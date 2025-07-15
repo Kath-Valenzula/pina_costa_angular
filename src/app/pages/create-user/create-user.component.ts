@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /** Información de usuario creada desde el panel. */
 interface Usuario {
@@ -18,10 +19,8 @@ interface Usuario {
 })
 /** Formulario para crear un usuario desde Admin. */
 export class CreateUserComponent implements OnInit {
-  nombre = '';
-  email = '';
-  password = '';
-  rol = '';
+  form!: FormGroup;
+  error = '';
 
   /**
    * @description Router para volver al panel
@@ -30,7 +29,8 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private router: Router,
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +39,16 @@ export class CreateUserComponent implements OnInit {
       name: 'description',
       content: 'Formulario para crear usuarios en Piña Costa.'
     });
+
+    this.form = this.fb.group({
+      nombre: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [
+        Validators.required,
+        Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/)
+      ]],
+      rol: ['', Validators.required]
+    });
   }
 
   /**
@@ -46,26 +56,31 @@ export class CreateUserComponent implements OnInit {
    * @returns void
    */
   crearUsuario(): void {
-    if (!this.nombre || !this.email || !this.password || !this.rol) {
-      alert('Todos los campos son obligatorios.');
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      this.error = 'Revisa los campos obligatorios.';
       return;
     }
+
+    const { nombre, email, password, rol } = this.form.value;
 
     const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
     const nuevoId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1;
 
     const nuevoUsuario: Usuario = {
       id: nuevoId,
-      nombre: this.nombre,
-      email: this.email,
-      password: this.password,
-      rol: this.rol
+      nombre,
+      email,
+      password,
+      rol
     };
 
     usuarios.push(nuevoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
     alert('Usuario creado correctamente.');
+    this.form.reset();
+    this.error = '';
     this.router.navigate(['/admin']);
   }
 }
