@@ -197,7 +197,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/cart.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/cart.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -236,8 +236,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="73"
-                                    class="link-to-prism">src/app/services/cart.service.ts:73</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/services/cart.service.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -277,8 +277,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/services/cart.service.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/services/cart.service.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -352,8 +352,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/services/cart.service.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/services/cart.service.ts:69</a></div>
                         </td>
                     </tr>
 
@@ -393,8 +393,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/services/cart.service.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/services/cart.service.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -434,8 +434,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/services/cart.service.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/services/cart.service.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +444,7 @@
                 <td class="col-md-4">
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Observable&lt;Producto[]&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -475,8 +475,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/services/cart.service.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/services/cart.service.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -521,7 +521,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/cart.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/cart.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -553,7 +553,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/services/cart.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/cart.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -568,14 +568,18 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Producto } from &#x27;../models/producto.model&#x27;;
-import { BehaviorSubject } from &#x27;rxjs&#x27;;
+import { BehaviorSubject, Observable } from &#x27;rxjs&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-/** Maneja los productos añadidos al carrito. */
+/**
+ * @description Maneja los productos añadidos al carrito.
+ */
 export class CartService {
+    /** @description Lista interna de productos */
   private items: Producto[] &#x3D; [];
+    /** @description Sujeto para emitir cambios del carrito */
   private carritoSubject &#x3D; new BehaviorSubject&lt;Producto[]&gt;([]);
 
   /**
@@ -612,7 +616,7 @@ export class CartService {
    * @description Observable para notificar cambios
    * @returns Observable del carrito
    */
-  obtenerCarritoObservable() {
+    obtenerCarritoObservable(): Observable&lt;Producto[]&gt; {
     return this.carritoSubject.asObservable();
   }
 

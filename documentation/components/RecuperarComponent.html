@@ -245,7 +245,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -345,8 +345,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:68</a></div>
                         </td>
                     </tr>
 
@@ -386,8 +386,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -427,8 +427,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -472,7 +472,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -503,7 +503,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -529,7 +529,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -551,10 +551,15 @@ import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
   templateUrl: &#x27;./recuperar.component.html&#x27;,
   styleUrls: [&#x27;./recuperar.component.css&#x27;]
 })
-/** Formulario para solicitar recuperación de cuenta. */
+/**
+ * @description Formulario para solicitar recuperación de cuenta.
+ */
 export class RecuperarComponent implements OnInit {
+    /** @description Formulario de recuperación */
   recuperarForm!: FormGroup;
+    /** @description Indica si el formulario fue enviado */
   enviado &#x3D; false;
+    /** @description Mensaje de error a mostrar */
   error &#x3D; &#x27;&#x27;;
 
   /**

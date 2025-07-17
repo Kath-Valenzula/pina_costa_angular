@@ -239,7 +239,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/create-user/create-user.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/create-user/create-user.component.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -353,8 +353,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/pages/create-user/create-user.component.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/pages/create-user/create-user.component.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -394,8 +394,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/pages/create-user/create-user.component.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/pages/create-user/create-user.component.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -407,6 +407,10 @@
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>void</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -441,7 +445,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/create-user/create-user.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/create-user/create-user.component.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -467,7 +471,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/create-user/create-user.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/create-user/create-user.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -485,7 +489,14 @@ import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 
-/** Información de usuario creada desde el panel. */
+/**
+ * @description Información de usuario creada desde el panel.
+ * @property id Identificador del usuario
+ * @property nombre Nombre del usuario
+ * @property email Correo electrónico
+ * @property password Contraseña
+ * @property rol Rol asignado
+ */
 interface Usuario {
   id: number;
   nombre: string;
@@ -499,9 +510,13 @@ interface Usuario {
   templateUrl: &#x27;./create-user.component.html&#x27;,
   styleUrls: [&#x27;./create-user.component.css&#x27;]
 })
-/** Formulario para crear un usuario desde Admin. */
+/**
+ * @description Formulario para crear un usuario desde Admin.
+ */
 export class CreateUserComponent implements OnInit {
+    /** @description Formulario reactivo de creación */
   form!: FormGroup;
+    /** @description Mensaje de error mostrado al crear */
   error &#x3D; &#x27;&#x27;;
 
   /**
@@ -514,7 +529,10 @@ export class CreateUserComponent implements OnInit {
     private meta: Meta,
     private fb: FormBuilder
   ) {}
-
+  /**
+   * @description Inicializa el formulario de creación
+   * @returns void
+   */
   ngOnInit(): void {
     this.title.setTitle(&#x27;Crear Usuario - Piña Costa&#x27;);
     this.meta.updateTag({

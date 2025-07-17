@@ -148,40 +148,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-a0991a9cd5d0b75f5b93152374494cf97146ac52d332398d78d72d70154a21fed05435da13923213e76cd0da6b166274c5f6f2f0bcf118b58d41afaa06d13156-1"' :
                                             'id="xs-components-links-module-AppModule-a0991a9cd5d0b75f5b93152374494cf97146ac52d332398d78d72d70154a21fed05435da13923213e76cd0da6b166274c5f6f2f0bcf118b58d41afaa06d13156-1"' }>
                                             <li class="link">
-                                                <a href="components/AcercaComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AcercaComponent</a>
-                                            </li>
-                                            <li class="link">
                                                 <a href="components/AppComponent-1.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/AppComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppComponent</a>
                                             </li>
                                             <li class="link">
-                                                <a href="components/CartComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CartComponent</a>
-                                            </li>
-                                            <li class="link">
-                                                <a href="components/ContactoComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ContactoComponent</a>
-                                            </li>
-                                            <li class="link">
-                                                <a href="components/CreateUserComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CreateUserComponent</a>
-                                            </li>
-                                            <li class="link">
-                                                <a href="components/HomeComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >HomeComponent</a>
-                                            </li>
-                                            <li class="link">
                                                 <a href="components/ListaEncargosComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ListaEncargosComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/ListaProductosComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ListaProductosComponent</a>
-                                            </li>
-                                            <li class="link">
-                                                <a href="components/PerfilComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PerfilComponent</a>
-                                            </li>
-                                            <li class="link">
-                                                <a href="components/ProductoDetalleComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ProductoDetalleComponent</a>
-                                            </li>
-                                            <li class="link">
-                                                <a href="components/RecuperarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >RecuperarComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -350,20 +326,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/SharedModule.html" data-type="entity-link" >SharedModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SharedModule-bcaf9646e4e5f6eab654a1f810f2c788c10b9b80d77fd338bb4c88ffb509587cda069b2c644ba0f5d64f3182b66f77162bdf698aba458fa2b543f7c0641f395a-1"' : 'data-bs-target="#xs-components-links-module-SharedModule-bcaf9646e4e5f6eab654a1f810f2c788c10b9b80d77fd338bb4c88ffb509587cda069b2c644ba0f5d64f3182b66f77162bdf698aba458fa2b543f7c0641f395a-1"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedModule-bcaf9646e4e5f6eab654a1f810f2c788c10b9b80d77fd338bb4c88ffb509587cda069b2c644ba0f5d64f3182b66f77162bdf698aba458fa2b543f7c0641f395a-1"' :
-                                            'id="xs-components-links-module-SharedModule-bcaf9646e4e5f6eab654a1f810f2c788c10b9b80d77fd338bb4c88ffb509587cda069b2c644ba0f5d64f3182b66f77162bdf698aba458fa2b543f7c0641f395a-1"' }>
-                                            <li class="link">
-                                                <a href="components/FooterComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FooterComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
                             </li>
                 </ul>
                 </li>

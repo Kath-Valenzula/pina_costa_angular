@@ -179,7 +179,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/productos.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/productos.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -247,8 +247,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/services/productos.service.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/services/productos.service.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -288,8 +288,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/services/productos.service.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/services/productos.service.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -372,7 +372,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/productos.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/productos.service.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -393,8 +393,11 @@ import { Producto } from &#x27;../models/producto.model&#x27;;
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-/** Servicio que obtiene productos desde un archivo JSON. */
+/**
+ * @description Servicio que obtiene productos desde un archivo JSON.
+ */
 export class ProductService {
+    /** @description Ruta local del archivo de productos */
   private productosUrl &#x3D; &#x27;assets/data/productos.json&#x27;;
 
   /**

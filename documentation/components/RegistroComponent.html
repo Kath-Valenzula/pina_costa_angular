@@ -253,7 +253,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/registro/registro.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/registro/registro.component.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -355,8 +355,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -428,8 +428,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="131"
-                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:131</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="145"
+                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:145</a></div>
                         </td>
                     </tr>
 
@@ -469,8 +469,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -512,8 +512,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:80</a></div>
                         </td>
                     </tr>
 
@@ -585,8 +585,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/pages/registro/registro.component.ts:108</a></div>
                         </td>
                     </tr>
 
@@ -636,7 +636,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/registro/registro.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/registro/registro.component.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -667,7 +667,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/registro/registro.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/registro/registro.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -693,7 +693,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/registro/registro.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/registro/registro.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -710,7 +710,16 @@
 import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from &#x27;@angular/forms&#x27;;
 
-/** Datos registrados de un usuario. */
+/**
+ * @description Datos registrados de un usuario.
+ * @property nombre Nombre del usuario
+ * @property email Correo electrónico
+ * @property password Contraseña
+ * @property rol Rol del usuario
+ * @property confirmPassword Confirmación de la contraseña
+ * @property direccionDespacho Dirección de despacho
+ * @property fechaNacimiento Fecha de nacimiento
+ */
 interface Usuario {
   nombre: string;
   email: string;
@@ -726,10 +735,15 @@ interface Usuario {
   templateUrl: &#x27;./registro.component.html&#x27;,
   styleUrls: [&#x27;./registro.component.css&#x27;]
 })
-/** Pantalla para registrar nuevos usuarios. */
+/**
+ * @description Pantalla para registrar nuevos usuarios.
+ */
 export class RegistroComponent implements OnInit {
+    /** @description Formulario reactivo de registro */
   registroForm!: FormGroup;
+    /** @description Mensaje de error mostrado al usuario */
   error &#x3D; &#x27;&#x27;;
+    /** @description Mensaje informativo tras el registro */
   mensaje &#x3D; &#x27;&#x27;;
 
   /**

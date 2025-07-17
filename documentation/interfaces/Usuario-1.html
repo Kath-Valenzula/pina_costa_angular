@@ -126,13 +126,6 @@
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Datos de un usuario registrado.</p>
-
-            </p>
 
 
         <section data-compodoc="block-index">
@@ -283,7 +276,12 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
-/** Datos de un usuario registrado. */
+/**
+ * @description Datos de un usuario registrado.
+ * @property username Nombre de usuario
+ * @property password Contraseña del usuario
+ * @property role Rol asignado al usuario
+ */
 export interface Usuario {
   username: string;
   password: string;
@@ -291,9 +289,13 @@ export interface Usuario {
 }
 
 @Injectable({ providedIn: &#x27;root&#x27; })
-/** Servicio para gestionar usuarios en localStorage. */
+/**
+ * @description Servicio para gestionar usuarios en localStorage.
+ */
 export class UserService {
+    /** @description Clave utilizada para guardar en localStorage */
   private STORAGE_KEY &#x3D; &#x27;pinna-users&#x27;;
+    /** @description Lista observable de usuarios registrados */
   private users$ &#x3D; new BehaviorSubject&lt;Usuario[]&gt;([]);
 
   /**

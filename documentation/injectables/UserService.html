@@ -193,7 +193,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/user.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/services/user.service.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -230,8 +230,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/services/user.service.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/services/user.service.ts:73</a></div>
                         </td>
                     </tr>
 
@@ -303,8 +303,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/services/user.service.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/services/user.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -376,8 +376,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/services/user.service.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/services/user.service.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -419,8 +419,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/services/user.service.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/services/user.service.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -492,8 +492,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="75"
-                                    class="link-to-prism">src/app/services/user.service.ts:75</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/services/user.service.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -576,7 +576,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/user.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/services/user.service.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -602,7 +602,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/user.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/services/user.service.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -618,7 +618,12 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
-/** Datos de un usuario registrado. */
+/**
+ * @description Datos de un usuario registrado.
+ * @property username Nombre de usuario
+ * @property password Contraseña del usuario
+ * @property role Rol asignado al usuario
+ */
 export interface Usuario {
   username: string;
   password: string;
@@ -626,9 +631,13 @@ export interface Usuario {
 }
 
 @Injectable({ providedIn: &#x27;root&#x27; })
-/** Servicio para gestionar usuarios en localStorage. */
+/**
+ * @description Servicio para gestionar usuarios en localStorage.
+ */
 export class UserService {
+    /** @description Clave utilizada para guardar en localStorage */
   private STORAGE_KEY &#x3D; &#x27;pinna-users&#x27;;
+    /** @description Lista observable de usuarios registrados */
   private users$ &#x3D; new BehaviorSubject&lt;Usuario[]&gt;([]);
 
   /**
