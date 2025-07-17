@@ -15,7 +15,12 @@ export class ContactoComponent implements OnInit {
   contactForm!: FormGroup;
   /** @description Indica si el mensaje fue enviado */
   enviado = false;
-
+  /**
+   * @description Inyecta dependencias necesarias para el formulario
+   * @param fb FormBuilder para crear los controles
+   * @param title Servicio para actualizar el título de la página
+   * @param meta Servicio para actualizar metadatos
+   */
   constructor(
     private fb: FormBuilder,
     private title: Title,

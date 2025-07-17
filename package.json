@@ -12,7 +12,8 @@
     "cypress:run": "cypress run",
     "docs": "compodoc -p tsconfig.json -d documentation --minimal",
     "deploy": "ng deploy --base-href=/pinna-costa-angular/",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "compodoc": "npx compodoc -p tsconfig.doc.json -d docs --disableGraph"
   },
   "private": true,
   "dependencies": {

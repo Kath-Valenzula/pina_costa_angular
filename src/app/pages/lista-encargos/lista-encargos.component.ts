@@ -10,10 +10,17 @@ import { Encargo } from '../../models/encargo.model';
 })
 /** Muestra y administra la lista de encargos obtenida desde GitHub Pages. */
 export class ListaEncargosComponent implements OnInit {
+   /** Encargos cargados desde el servicio */
   encargos: Encargo[] = [];
+  /** Modelo para crear un nuevo encargo */
   nuevo: Encargo = { id: 0, nombre: '', descripcion: '', precio: 0 };
+  /** Encargo actualmente en edición */
   editando?: Encargo;
 
+  /**
+   * @description Servicio encargado de las operaciones CRUD
+   * @param jsonSvc Servicio que maneja las peticiones a JSON
+   */
   constructor(private jsonSvc: JsonService) {}
 
   /** Carga los encargos al iniciar el componente. */

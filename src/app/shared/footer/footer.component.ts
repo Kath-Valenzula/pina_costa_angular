@@ -19,6 +19,7 @@ export class FooterComponent {
    * @description Constructor del componente Footer.
    * Actualmente no requiere inyección de dependencias.
    */
+   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
   /**

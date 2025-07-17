@@ -10,9 +10,17 @@ import { Producto } from '../../models/producto.model';
 })
 /** Muestra y administra la lista de productos obtenida desde GitHub Pages. */
 export class ListaProductosComponent implements OnInit {
+   /** Productos obtenidos desde el servicio */
   productos: Producto[] = [];
+  /** Modelo para crear un nuevo producto */
   nuevo: Producto = { id: 0, nombre: '', precio: 0, imagen: '', descripcion: '' };
+  /** Producto actualmente en edición */
   editando?: Producto;
+
+  /**
+   * @description Servicio para las operaciones con productos
+   * @param jsonSvc Servicio que realiza las peticiones a JSON
+   */
 
   constructor(private jsonSvc: JsonService) {}
 

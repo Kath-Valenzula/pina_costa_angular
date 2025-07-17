@@ -13,12 +13,15 @@ import { Producto } from '../models/producto.model';
  * responde a dichas peticiones.
  */
 export class JsonService {
-  /**
-   * Rutas a los archivos JSON. Se sirven desde `assets` para evitar
-   * dependencias externas que puedan producir errores 404.
-   */
+   /** Ruta al archivo de encargos */
   private encargosUrl = 'assets/data/encargos.json';
+  /** Ruta al archivo de productos */
   private productosUrl = 'assets/data/productos.json';
+
+  /**
+   * Inyecta HttpClient para realizar las peticiones.
+   * @param http Cliente HTTP de Angular
+   */
 
   constructor(private http: HttpClient) {}
 
