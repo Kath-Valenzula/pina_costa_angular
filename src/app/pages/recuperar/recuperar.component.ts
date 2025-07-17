@@ -7,10 +7,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './recuperar.component.html',
   styleUrls: ['./recuperar.component.css']
 })
-/** Formulario para solicitar recuperación de cuenta. */
+/**
+ * @description Formulario para solicitar recuperación de cuenta.
+ */
 export class RecuperarComponent implements OnInit {
+    /** @description Formulario de recuperación */
   recuperarForm!: FormGroup;
+    /** @description Indica si el formulario fue enviado */
   enviado = false;
+    /** @description Mensaje de error a mostrar */
   error = '';
 
   /**

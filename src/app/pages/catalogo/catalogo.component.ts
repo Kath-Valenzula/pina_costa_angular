@@ -9,8 +9,11 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
-/** Listado de productos disponibles en la tienda. */
+/**
+ * @description Listado de productos disponibles en la tienda.
+ */
 export class CatalogoComponent implements OnInit {
+  /** @description Productos cargados para mostrar */
   productos: Producto[] = [];
 
   /**

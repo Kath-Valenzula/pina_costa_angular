@@ -10,11 +10,18 @@ import { Producto } from '../../models/producto.model';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-/** Panel para gestionar usuarios y productos. */
+
+/**
+ * @description Panel para gestionar usuarios y productos.
+ */
 export class AdminComponent implements OnInit {
+  /** @description Usuario autenticado en el panel */
   usuario!: Usuario;
+  /** @description Lista de usuarios registrados */
   usuarios: Usuario[] = [];
+  /** @description Listado de productos disponibles */
   productos: Producto[] = [];
+  /** @description Formulario reactivo para productos */
   productoForm!: FormGroup;
   
   /**

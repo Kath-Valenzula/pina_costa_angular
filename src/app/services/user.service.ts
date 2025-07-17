@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-/** Datos de un usuario registrado. */
+/**
+ * @description Datos de un usuario registrado.
+ * @property username Nombre de usuario
+ * @property password Contraseña del usuario
+ * @property role Rol asignado al usuario
+ */
 export interface Usuario {
   username: string;
   password: string;
@@ -9,9 +14,13 @@ export interface Usuario {
 }
 
 @Injectable({ providedIn: 'root' })
-/** Servicio para gestionar usuarios en localStorage. */
+/**
+ * @description Servicio para gestionar usuarios en localStorage.
+ */
 export class UserService {
+    /** @description Clave utilizada para guardar en localStorage */
   private STORAGE_KEY = 'pinna-users';
+    /** @description Lista observable de usuarios registrados */
   private users$ = new BehaviorSubject<Usuario[]>([]);
 
   /**

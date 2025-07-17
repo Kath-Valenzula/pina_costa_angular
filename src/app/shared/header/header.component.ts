@@ -8,12 +8,22 @@ import { Producto } from '../../models/producto.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-/** Barra superior con navegación y login. */
+/**
+ * @description Barra superior con navegación y login.
+ */
 export class HeaderComponent implements OnInit {
+    /** @description Cantidad de productos en el carrito */
   cantidad = 0;
+    /** @description Indica si existe una sesión activa */
   estaAutenticado = false;
+    /** @description Nombre del usuario autenticado */
   nombreUsuario = '';
 
+    /**
+   * @description Lee la información del usuario desde localStorage
+   * y actualiza el estado de autenticación
+   * @returns void
+   */
   private leerSesion(): void {
     const usuario = localStorage.getItem('usuario');
     this.estaAutenticado = !!usuario;

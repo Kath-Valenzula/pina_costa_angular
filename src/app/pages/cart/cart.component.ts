@@ -8,8 +8,11 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-/** Página que lista los productos en el carrito. */
+/**
+ * @description Página que lista los productos en el carrito.
+ */
 export class CartComponent implements OnInit {
+  /** @description Productos actualmente en el carrito */
   items: Producto[] = [];
 
   /**

@@ -3,8 +3,11 @@ import { BehaviorSubject } from 'rxjs';
 import { UserService, Usuario } from './user.service';
 
 @Injectable({ providedIn: 'root' })
-/** Servicio de autenticación guardado en localStorage. */
+/**
+ * @description Servicio de autenticación guardado en localStorage.
+ */
 export class AuthService {
+    /** @description Usuario actualmente autenticado */
   private current$ = new BehaviorSubject<Usuario | null>(null);
 
   /**

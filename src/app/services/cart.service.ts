@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Producto } from '../models/producto.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-/** Maneja los productos añadidos al carrito. */
+/**
+ * @description Maneja los productos añadidos al carrito.
+ */
 export class CartService {
+    /** @description Lista interna de productos */
   private items: Producto[] = [];
+    /** @description Sujeto para emitir cambios del carrito */
   private carritoSubject = new BehaviorSubject<Producto[]>([]);
 
   /**
@@ -44,7 +48,7 @@ export class CartService {
    * @description Observable para notificar cambios
    * @returns Observable del carrito
    */
-  obtenerCarritoObservable() {
+    obtenerCarritoObservable(): Observable<Producto[]> {
     return this.carritoSubject.asObservable();
   }
 

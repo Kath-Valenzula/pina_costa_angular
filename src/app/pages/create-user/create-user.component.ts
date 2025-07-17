@@ -3,7 +3,14 @@ import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-/** Información de usuario creada desde el panel. */
+/**
+ * @description Información de usuario creada desde el panel.
+ * @property id Identificador del usuario
+ * @property nombre Nombre del usuario
+ * @property email Correo electrónico
+ * @property password Contraseña
+ * @property rol Rol asignado
+ */
 interface Usuario {
   id: number;
   nombre: string;
@@ -17,9 +24,13 @@ interface Usuario {
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
-/** Formulario para crear un usuario desde Admin. */
+/**
+ * @description Formulario para crear un usuario desde Admin.
+ */
 export class CreateUserComponent implements OnInit {
+    /** @description Formulario reactivo de creación */
   form!: FormGroup;
+    /** @description Mensaje de error mostrado al crear */
   error = '';
 
   /**
@@ -32,7 +43,10 @@ export class CreateUserComponent implements OnInit {
     private meta: Meta,
     private fb: FormBuilder
   ) {}
-
+  /**
+   * @description Inicializa el formulario de creación
+   * @returns void
+   */
   ngOnInit(): void {
     this.title.setTitle('Crear Usuario - Piña Costa');
     this.meta.updateTag({

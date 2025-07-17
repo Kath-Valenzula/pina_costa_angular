@@ -7,9 +7,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css']
 })
-/** Formulario de contacto con datos de la tienda. */
+/**
+ * @description Formulario de contacto con datos de la tienda.
+ */
 export class ContactoComponent implements OnInit {
+  /** @description Formulario para enviar el mensaje */
   contactForm!: FormGroup;
+  /** @description Indica si el mensaje fue enviado */
   enviado = false;
 
   constructor(
@@ -17,6 +21,11 @@ export class ContactoComponent implements OnInit {
     private title: Title,
     private meta: Meta
   ) {}
+
+    /**
+   * @description Inicializa el formulario de contacto
+   * @returns void
+   */
 
   ngOnInit(): void {
     this.title.setTitle('Contacto - Piña Costa');
@@ -31,7 +40,10 @@ export class ContactoComponent implements OnInit {
       mensaje: ['', Validators.required]
     });
   }
-
+  /**
+   * @description Envía el mensaje al destinatario
+   * @returns void
+   */
   enviarMensaje(): void {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
@@ -40,7 +52,10 @@ export class ContactoComponent implements OnInit {
     this.enviado = true;
     this.contactForm.reset();
   }
-
+  /**
+   * @description Limpia el formulario y estado
+   * @returns void
+   */
   limpiar(): void {
     this.contactForm.reset();
     this.enviado = false;

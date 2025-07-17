@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-/** Componente raíz mostrado al iniciar la aplicación. */
+/**
+ * @description Componente raíz mostrado al iniciar la aplicación.
+ */
 
 @Component({
   selector: 'app-root',

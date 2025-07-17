@@ -2,7 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
-/** Datos registrados de un usuario. */
+/**
+ * @description Datos registrados de un usuario.
+ * @property nombre Nombre del usuario
+ * @property email Correo electrónico
+ * @property password Contraseña
+ * @property rol Rol del usuario
+ * @property confirmPassword Confirmación de la contraseña
+ * @property direccionDespacho Dirección de despacho
+ * @property fechaNacimiento Fecha de nacimiento
+ */
 interface Usuario {
   nombre: string;
   email: string;
@@ -18,10 +27,15 @@ interface Usuario {
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-/** Pantalla para registrar nuevos usuarios. */
+/**
+ * @description Pantalla para registrar nuevos usuarios.
+ */
 export class RegistroComponent implements OnInit {
+    /** @description Formulario reactivo de registro */
   registroForm!: FormGroup;
+    /** @description Mensaje de error mostrado al usuario */
   error = '';
+    /** @description Mensaje informativo tras el registro */
   mensaje = '';
 
   /**

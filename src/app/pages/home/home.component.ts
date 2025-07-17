@@ -8,8 +8,11 @@ import { Producto } from '../../models/producto.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-/** Página principal con productos destacados. */
+/**
+ * @description Página principal con productos destacados.
+ */
 export class HomeComponent implements OnInit {
+    /** @description Productos mostrados en portada */
   productos: Producto[] = [];
 
   /**

@@ -7,7 +7,14 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-/** Datos básicos de un usuario registrado. */
+/**
+ * @description Datos básicos de un usuario registrado.
+ * @property nombre Nombre del usuario
+ * @property rol Rol del usuario
+ * @property email Correo del usuario
+ * @property direccionDespacho Dirección de despacho
+ * @property fechaNacimiento Fecha de nacimiento
+ */
 interface Usuario {
   nombre: string;
   rol?: string;
@@ -21,10 +28,15 @@ interface Usuario {
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
 })
-/** Vista para mostrar y editar datos del usuario. */
+/**
+ * @description Vista para mostrar y editar datos del usuario.
+ */
 export class PerfilComponent implements OnInit {
+    /** @description Formulario con los datos del usuario */
   perfilForm!: FormGroup;
+    /** @description Datos del usuario autenticado */
   usuario!: Usuario;
+    /** @description Indica si el formulario está en modo edición */
   editando = false;
 
   /**

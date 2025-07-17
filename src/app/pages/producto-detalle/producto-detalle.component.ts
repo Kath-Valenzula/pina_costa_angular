@@ -10,8 +10,11 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './producto-detalle.component.html',
   styleUrls: ['./producto-detalle.component.css']
 })
-/** Muestra la información de un producto concreto. */
+/**
+ * @description Muestra la información de un producto concreto.
+ */
 export class ProductoDetalleComponent implements OnInit {
+    /** @description Producto mostrado en la vista */
   producto!: Producto;
 
   /**

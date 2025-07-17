@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-/** Componente de pie de página compartido. */
+/**
+ * @description Componente de pie de página compartido.
+ */
 export class FooterComponent {
 
 }

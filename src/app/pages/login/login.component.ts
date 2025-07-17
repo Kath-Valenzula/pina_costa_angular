@@ -3,7 +3,15 @@ import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-/** Información de usuarios para el ejemplo de login. */
+/**
+ * @description Información de usuarios para el ejemplo de login.
+ * @property nombre Nombre del usuario
+ * @property email Correo electrónico
+ * @property password Contraseña
+ * @property rol Rol del usuario
+ * @property direccionDespacho Dirección de despacho
+ * @property fechaNacimiento Fecha de nacimiento
+ */
 interface Usuario {
   nombre: string;
   email: string;
@@ -18,9 +26,13 @@ interface Usuario {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-/** Componente para autenticar usuarios. */
+/**
+ * @description Componente para autenticar usuarios.
+ */
 export class LoginComponent implements OnInit {
+    /** @description Formulario de inicio de sesión */
   loginForm!: FormGroup;
+    /** @description Mensaje de error al validar */
   error = '';
 
   /**

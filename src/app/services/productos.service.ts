@@ -6,8 +6,11 @@ import { Producto } from '../models/producto.model';
 @Injectable({
   providedIn: 'root'
 })
-/** Servicio que obtiene productos desde un archivo JSON. */
+/**
+ * @description Servicio que obtiene productos desde un archivo JSON.
+ */
 export class ProductService {
+    /** @description Ruta local del archivo de productos */
   private productosUrl = 'assets/data/productos.json';
 
   /**

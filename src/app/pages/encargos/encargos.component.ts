@@ -8,8 +8,11 @@
    templateUrl: './encargos.component.html',
    styleUrls: ['./encargos.component.css']
  })
- /** Lista de encargos personalizados. */
+  /**
+  * @description Lista de encargos personalizados.
+  */
  export class EncargosComponent implements OnInit {
+     /** @description Encargos obtenidos del servicio */
    encargos: Encargo[] = [];
  
    constructor(
@@ -17,7 +20,10 @@
      private title: Title,
      private meta: Meta
    ) {}
- 
+    /**
+    * @description Carga la lista de encargos desde el servicio
+    * @returns void
+    */
    ngOnInit(): void {
      this.title.setTitle('Encargos - Piña Costa');
      this.meta.updateTag({ name: 'description', content: 'Solicita encargos personalizados en Piña Costa.' });
