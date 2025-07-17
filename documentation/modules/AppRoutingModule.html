@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -151,16 +151,16 @@ import { AcercaComponent } from &#x27;./pages/acerca/acerca.component&#x27;;
  */
 const routes: Routes &#x3D; [
   { path: &#x27;&#x27;, component: HomeComponent },
-  { path: &#x27;catalogo&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/catalogo/catalogo.module&#x27;).then(m &#x3D;&gt; m.CatalogoModule) },
-  { path: &#x27;encargos&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/encargos/encargos.module&#x27;).then(m &#x3D;&gt; m.EncargosModule) },
+  { path: &#x27;catalogo&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/catalogo/catalogo.module&#x27;).then(m &#x3D;&gt; m.CatalogoModule)&quot; },
+  { path: &#x27;encargos&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/encargos/encargos.module&#x27;).then(m &#x3D;&gt; m.EncargosModule)&quot; },
   { path: &#x27;producto/:id&#x27;, component: ProductoDetalleComponent },
   { path: &#x27;cart&#x27;, component: CartComponent },
-  { path: &#x27;login&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/login/login.module&#x27;).then(m &#x3D;&gt; m.LoginModule) },
-  { path: &#x27;registro&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/registro/registro.module&#x27;).then(m &#x3D;&gt; m.RegistroModule) },
+  { path: &#x27;login&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/login/login.module&#x27;).then(m &#x3D;&gt; m.LoginModule)&quot; },
+  { path: &#x27;registro&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/registro/registro.module&#x27;).then(m &#x3D;&gt; m.RegistroModule)&quot; },
   { path: &#x27;recuperar&#x27;, component: RecuperarComponent },
   { path: &#x27;perfil&#x27;, component: PerfilComponent, canActivate: [AuthGuard] },
   { path: &#x27;contacto&#x27;, component: ContactoComponent },
-  { path: &#x27;admin&#x27;, loadChildren: () &#x3D;&gt; import(&#x27;./pages/admin/admin.module&#x27;).then(m &#x3D;&gt; m.AdminModule), canActivate: [AdminGuard] },
+  { path: &#x27;admin&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./pages/admin/admin.module&#x27;).then(m &#x3D;&gt; m.AdminModule)&quot;, canActivate: [AdminGuard] },
   { path: &#x27;create-user&#x27;, component: CreateUserComponent },
   { path: &#x27;acerca&#x27;, component: AcercaComponent },
   // Ruta por defecto si no existe coincidencia
@@ -222,6 +222,7 @@ export class AppRoutingModule { }
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'AppRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -256,6 +257,10 @@ export class AppRoutingModule { }
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 

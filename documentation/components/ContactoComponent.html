@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -677,7 +677,7 @@ export class ContactoComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="contacto-container">  <div class="contacto-form">    <h2>Contáctanos</h2>    <form [formGroup]="contactForm" (ngSubmit)="enviarMensaje()">      <div class="form-group">        <label for="nombre">Nombre</label>        <input          id="nombre"          type="text"          formControlName="nombre"          class="form-control"          [class.is-invalid]="contactForm.get(\'nombre\')?.invalid && contactForm.get(\'nombre\')?.touched"        />        <div class="invalid-feedback" *ngIf="contactForm.get(\'nombre\')?.hasError(\'required\')">          El nombre es obligatorio.        </div>        </div>      <div class="form-group">        <label for="email">Correo electrónico</label>        <input          id="email"          type="email"          formControlName="email"          class="form-control"          [class.is-invalid]="contactForm.get(\'email\')?.invalid && contactForm.get(\'email\')?.touched"        />        <div class="invalid-feedback" *ngIf="contactForm.get(\'email\')?.hasError(\'required\')">          El correo es obligatorio.        </div>        <div class="invalid-feedback" *ngIf="contactForm.get(\'email\')?.hasError(\'email\')">          Formato de correo inválido.        </div>           </div>      <div class="form-group">        <label for="mensaje">Mensaje</label>        <textarea          id="mensaje"          formControlName="mensaje"          class="form-control"          rows="5"          placeholder="Escribe tu mensaje aquí..."          [class.is-invalid]="contactForm.get(\'mensaje\')?.invalid && contactForm.get(\'mensaje\')?.touched"        ></textarea>        <div class="invalid-feedback" *ngIf="contactForm.get(\'mensaje\')?.hasError(\'required\')">          El mensaje es obligatorio.        </div>      </div>      <button type="submit" class="btn-enviar" [disabled]="contactForm.invalid">Enviar mensaje</button>      <button type="button" class="btn btn-outline-dark mt-2" (click)="limpiar()">Limpiar</button>    </form>        <div class="alert alert-success mt-3" *ngIf="enviado">¡Mensaje enviado correctamente!</div>  </div>  <div class="contacto-info">    <h4>Horario de atención</h4>    <p>Lunes a Viernes: 9:00 - 18:00</p>    <p>Sábados: 10:00 - 14:00</p>    <h4>Correo</h4>    <p>contacto&#64;pinnacosta.cl</p>    <h4>Teléfono</h4>    <p>+56 9 1234 5678</p>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
+    var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ContactoComponent'};
 </script>
@@ -726,6 +726,7 @@ export class ContactoComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ContactoComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -760,6 +761,10 @@ export class ContactoComponent implements OnInit {
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 

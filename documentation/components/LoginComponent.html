@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -668,7 +668,7 @@ export class LoginComponent implements OnInit {
     });
 
     const seedAdmin: Usuario &#x3D; { nombre: &#x27;Admin&#x27;, email: &#x27;admin@example.com&#x27;, password: &#x27;admin123&#x27;, rol: &#x27;admin&#x27; };
-    const seedUser:  Usuario &#x3D; { nombre: &#x27;Usuario&#x27;, email: &#x27;usuario&#x27;, password: &#x27;usuario&#x27;, rol: &#x27;admin&#x27; };
+    const seedUser:  Usuario &#x3D; { nombre: &#x27;Usuario&#x27;, email: &#x27;usuario&#x27;, password: &#x27;usuario&#x27;, rol: &#x27;usuario&#x27; };
     const usuarios: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) || &#x27;[]&#x27;);
     if (!usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; seedAdmin.email)) usuarios.unshift(seedAdmin);
     if (!usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; seedUser.email))  usuarios.push(seedUser);
@@ -865,7 +865,7 @@ h2 {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="login-container">  <h2 class="text-center">Iniciar Sesión</h2>  <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()" class="login-form">    <div class="form-group mb-3">      <label for="email">Correo electrónico</label>      <input        id="email"        type="email"        formControlName="email"        class="form-control"        [class.is-invalid]="loginForm.get(\'email\')?.invalid && loginForm.get(\'email\')?.touched"      />      <div class="invalid-feedback" *ngIf="loginForm.get(\'email\')?.hasError(\'required\')">        El correo es obligatorio.      </div>      <div class="invalid-feedback" *ngIf="loginForm.get(\'email\')?.hasError(\'email\')">        Formato de correo inválido.      </div>    </div>    <div class="form-group mb-3">      <label for="password">Contraseña</label>      <input        id="password"        type="password"        formControlName="password"        class="form-control"        [class.is-invalid]="loginForm.get(\'password\')?.invalid && loginForm.get(\'password\')?.touched"      />      <div class="invalid-feedback" *ngIf="loginForm.get(\'password\')?.hasError(\'required\')">        La contraseña es obligatoria.      </div>    </div>    <button type="submit" class="btn btn-pink w-100 mt-3">Ingresar</button>    <button type="button" class="btn btn-outline-dark w-100 mt-2" (click)="limpiar()">Limpiar</button>    <div class="extra-links mt-3 text-center">      <button type="button" (click)="recuperarPassword()">¿Olvidaste tu contraseña?</button> |      <button type="button" (click)="registrarse()">Regístrate</button>    </div>    <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>  </form></div></div>'
-    var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
+    var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
 </script>
@@ -914,6 +914,7 @@ h2 {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'LoginComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -948,6 +949,10 @@ h2 {
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 

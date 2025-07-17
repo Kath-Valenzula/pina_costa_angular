@@ -25,10 +25,12 @@ import { mount } from 'cypress/angular'
 // your custom command.
 // Alternatively, can be defined in cypress/support/component.d.ts
 // with a <reference path="./component" /> at the top of your spec.
+/** Agrega el comando `cy.mount` para montar componentes Angular. */
 declare global {
   namespace Cypress {
     interface Chainable {
       mount: typeof mount
+      /** Monta un componente de Angular para pruebas. */
     }
   }
 }

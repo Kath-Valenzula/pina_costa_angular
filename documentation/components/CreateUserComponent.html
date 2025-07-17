@@ -70,7 +70,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -675,7 +675,7 @@ export class CreateUserComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="container mt-5">  <div class="card p-4 bg-light shadow">    <h2 class="text-center mb-4 text-rosado">Crear Nuevo Usuario</h2>    <form [formGroup]="form" (ngSubmit)="crearUsuario()" novalidate>      <div class="mb-3">        <label for="nombre" class="form-label">Nombre</label>        <input id="nombre" type="text" formControlName="nombre" class="form-control"          [class.is-invalid]="form.get(\'nombre\')?.invalid && form.get(\'nombre\')?.touched" />        <div class="invalid-feedback" *ngIf="form.get(\'nombre\')?.hasError(\'required\')">          El nombre es obligatorio.        </div>      </div>      <div class="mb-3">        <label for="email" class="form-label">Correo electrónico</label>        <input id="email" type="email" formControlName="email" class="form-control"          [class.is-invalid]="form.get(\'email\')?.invalid && form.get(\'email\')?.touched" />        <div class="invalid-feedback" *ngIf="form.get(\'email\')?.hasError(\'required\')">          El correo es obligatorio.        </div>        <div class="invalid-feedback" *ngIf="form.get(\'email\')?.hasError(\'email\')">          Formato de correo inválido.        </div>      </div>      <div class="mb-3">        <label for="password" class="form-label">Contraseña</label>        <input id="password" type="password" formControlName="password" class="form-control"          [class.is-invalid]="form.get(\'password\')?.invalid && form.get(\'password\')?.touched" />        <div class="invalid-feedback" *ngIf="form.get(\'password\')?.hasError(\'required\')">          La contraseña es obligatoria.        </div>        <div class="invalid-feedback" *ngIf="form.get(\'password\')?.hasError(\'pattern\')">          Debe tener 8 caracteres, mayúsculas, minúsculas, número y símbolo.        </div>      </div>      <div class="mb-3">        <label for="rol" class="form-label">Rol</label>        <select id="rol" formControlName="rol" class="form-select"          [class.is-invalid]="form.get(\'rol\')?.invalid && form.get(\'rol\')?.touched">          <option value="" disabled>Seleccione...</option>          <option value="Usuario">Usuario</option>          <option value="Administrador">Administrador</option>        </select>        <div class="invalid-feedback" *ngIf="form.get(\'rol\')?.hasError(\'required\')">          El rol es obligatorio.        </div>      </div>      <button type="submit" class="btn btn-rosado w-100" [disabled]="form.invalid">Guardar Usuario</button>      <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>    </form>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
+    var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CreateUserComponent'};
 </script>
@@ -724,6 +724,7 @@ export class CreateUserComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'CreateUserComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script>
@@ -758,6 +759,10 @@ export class CreateUserComponent implements OnInit {
        <script src="../js/libs/clipboard.min.js"></script>
        <script src="../js/libs/prism.js"></script>
        <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
        <script src="../js/lazy-load-graphs.js"></script>
 
 
