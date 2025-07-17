@@ -15,11 +15,9 @@ export interface Usuario {
 
 /**
  * @description Servicio para gestionar usuarios utilizando localStorage.
+ *
  * Permite obtener, agregar, actualizar y buscar usuarios.
  */
-@Injectable({
-  providedIn: 'root'
-})
 export class UserService {
   /**
    * @description Clave usada para almacenar los usuarios en localStorage.
@@ -103,3 +101,11 @@ export class UserService {
     this.save(list);
   }
 }
+
+/**
+ * @description Decorador que hace disponible el servicio UserService a toda la app.
+ */
+@Injectable({
+  providedIn: 'root'
+})
+export class InjectableUserService extends UserService {}
