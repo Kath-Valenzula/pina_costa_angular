@@ -182,7 +182,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/auth.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -212,7 +212,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>Servicio de usuarios</p>
+                                                                <p>Servicio de usuarios para validar credenciales.</p>
 
                                                         </td>
                                                 </tr>
@@ -250,8 +250,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/services/auth.service.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/services/auth.service.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -264,7 +264,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>Usuario actual o null</p>
+                                <p>Objeto <code>Usuario</code> o <code>null</code> si no hay sesión activa.</p>
 
                             </div>
                 </td>
@@ -291,8 +291,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/services/auth.service.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/services/auth.service.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -325,7 +325,7 @@
 
 
                                             <td>
-                                                    <p>Nombre de usuario</p>
+                                                    <p>Nombre de usuario.</p>
 
                                             </td>
                                         </tr>
@@ -341,7 +341,7 @@
 
 
                                             <td>
-                                                    <p>Contraseña</p>
+                                                    <p>Contraseña del usuario.</p>
 
                                             </td>
                                         </tr>
@@ -353,7 +353,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>true si las credenciales son válidas</p>
+                                <p><code>true</code> si las credenciales coinciden, <code>false</code> en caso contrario.</p>
 
                             </div>
                 </td>
@@ -380,8 +380,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/services/auth.service.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/services/auth.service.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -426,7 +426,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/auth.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -443,29 +443,30 @@
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 import { UserService, Usuario } from &#x27;./user.service&#x27;;
 
-@Injectable({ providedIn: &#x27;root&#x27; })
 /**
- * @description Servicio de autenticación guardado en localStorage.
+ * @description Servicio de autenticación. Gestiona login, logout y persistencia en localStorage.
  */
+@Injectable({ providedIn: &#x27;root&#x27; })
 export class AuthService {
-    /** @description Usuario actualmente autenticado */
+  /**
+   * @description Usuario actualmente autenticado, almacenado como observable.
+   */
   private current$ &#x3D; new BehaviorSubject&lt;Usuario | null&gt;(null);
 
   /**
-   * @description Carga la sesión existente si la hay
-   * @param userSvc Servicio de usuarios
+   * @description Constructor que carga una sesión previa desde localStorage si existe.
+   * @param userSvc Servicio de usuarios para validar credenciales.
    */
   constructor(private userSvc: UserService) {
-    // restore session si existe
     const raw &#x3D; localStorage.getItem(&#x27;currentUser&#x27;);
     if (raw) this.current$.next(JSON.parse(raw));
   }
 
   /**
-   * @description Intenta iniciar sesión con un usuario
-   * @param username Nombre de usuario
-   * @param password Contraseña
-   * @returns true si las credenciales son válidas
+   * @description Inicia sesión si las credenciales son válidas. Persiste la sesión en localStorage.
+   * @param username Nombre de usuario.
+   * @param password Contraseña del usuario.
+   * @returns &#x60;true&#x60; si las credenciales coinciden, &#x60;false&#x60; en caso contrario.
    */
   login(username: string, password: string): boolean {
     const u &#x3D; this.userSvc.find(username);
@@ -478,7 +479,7 @@ export class AuthService {
   }
 
   /**
-   * @description Cierra la sesión actual
+   * @description Cierra la sesión actual y elimina el usuario del localStorage.
    * @returns void
    */
   logout(): void {
@@ -487,14 +488,13 @@ export class AuthService {
   }
 
   /**
-   * @description Devuelve el usuario autenticado o null
-   * @returns Usuario actual o null
+   * @description Devuelve el usuario actualmente autenticado.
+   * @returns Objeto &#x60;Usuario&#x60; o &#x60;null&#x60; si no hay sesión activa.
    */
   getCurrent(): Usuario | null {
     return this.current$.value;
   }
-}
-</code></pre>
+}</code></pre>
     </div>
 
 </div>

@@ -2,20 +2,25 @@ import { Injectable } from '@angular/core';
 import { Producto } from '../models/producto.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+/**
+ * @description Servicio que maneja los productos añadidos al carrito, incluyendo almacenamiento en localStorage y emisión de cambios.
+ */
 @Injectable({
   providedIn: 'root'
 })
-/**
- * @description Maneja los productos añadidos al carrito.
- */
 export class CartService {
-    /** @description Lista interna de productos */
+  /**
+   * @description Lista interna de productos del carrito.
+   */
   private items: Producto[] = [];
-    /** @description Sujeto para emitir cambios del carrito */
+
+  /**
+   * @description Sujeto observable que emite los cambios del carrito a los componentes suscritos.
+   */
   private carritoSubject = new BehaviorSubject<Producto[]>([]);
 
   /**
-   * @description Carga el carrito guardado
+   * @description Constructor que carga el carrito guardado desde localStorage, si existe.
    */
   constructor() {
     const data = localStorage.getItem('carrito');
@@ -26,8 +31,8 @@ export class CartService {
   }
 
   /**
-   * @description Agrega un producto al carrito
-   * @param producto Producto a agregar
+   * @description Agrega un producto al carrito, lo guarda y emite el nuevo estado.
+   * @param producto Producto que se desea agregar al carrito.
    * @returns void
    */
   agregar(producto: Producto): void {
@@ -37,23 +42,23 @@ export class CartService {
   }
 
   /**
-   * @description Devuelve los productos actuales
-   * @returns Lista de productos
+   * @description Devuelve todos los productos actualmente almacenados en el carrito.
+   * @returns Arreglo de productos en el carrito.
    */
   obtenerItems(): Producto[] {
     return this.items;
   }
 
   /**
-   * @description Observable para notificar cambios
-   * @returns Observable del carrito
+   * @description Devuelve un observable para suscribirse a los cambios del carrito.
+   * @returns Observable que emite la lista de productos actualizada.
    */
-    obtenerCarritoObservable(): Observable<Producto[]> {
+  obtenerCarritoObservable(): Observable<Producto[]> {
     return this.carritoSubject.asObservable();
   }
 
   /**
-   * @description Vacía el carrito por completo
+   * @description Elimina todos los productos del carrito y actualiza el almacenamiento y observable.
    * @returns void
    */
   limpiarCarrito(): void {
@@ -63,7 +68,7 @@ export class CartService {
   }
 
   /**
-   * @description Persiste en localStorage
+   * @description Guarda el contenido actual del carrito en localStorage.
    * @returns void
    */
   private guardar(): void {
@@ -71,7 +76,7 @@ export class CartService {
   }
 
   /**
-   * @description Actualiza los suscriptores
+   * @description Notifica a los observadores con la versión actualizada del carrito.
    * @returns void
    */
   private actualizarCarrito(): void {

@@ -280,7 +280,7 @@ import { BehaviorSubject } from &#x27;rxjs&#x27;;
  * @description Datos de un usuario registrado.
  * @property username Nombre de usuario
  * @property password Contraseña del usuario
- * @property role Rol asignado al usuario
+ * @property role Rol asignado al usuario (&#x27;admin&#x27; o &#x27;usuario&#x27;)
  */
 export interface Usuario {
   username: string;
@@ -288,23 +288,30 @@ export interface Usuario {
   role: &#x27;admin&#x27; | &#x27;usuario&#x27;;
 }
 
-@Injectable({ providedIn: &#x27;root&#x27; })
 /**
- * @description Servicio para gestionar usuarios en localStorage.
+ * @description Servicio para gestionar usuarios utilizando localStorage.
+ * Permite obtener, agregar, actualizar y buscar usuarios.
  */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
 export class UserService {
-    /** @description Clave utilizada para guardar en localStorage */
+  /**
+   * @description Clave usada para almacenar los usuarios en localStorage.
+   */
   private STORAGE_KEY &#x3D; &#x27;pinna-users&#x27;;
-    /** @description Lista observable de usuarios registrados */
+
+  /**
+   * @description Lista observable de usuarios registrados.
+   */
   private users$ &#x3D; new BehaviorSubject&lt;Usuario[]&gt;([]);
 
   /**
-   * @description Carga usuarios del almacenamiento o crea uno por defecto
+   * @description Constructor del servicio. Carga los usuarios desde localStorage o inicializa uno por defecto (admin).
    */
   constructor() {
     const raw &#x3D; localStorage.getItem(this.STORAGE_KEY);
     if (!raw) {
-      // Seed: un solo admin por defecto
       const admin: Usuario &#x3D; { username: &#x27;admin&#x27;, password: &#x27;admin&#x27;, role: &#x27;admin&#x27; };
       this.users$.next([admin]);
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify([admin]));
@@ -314,35 +321,35 @@ export class UserService {
   }
 
   /**
-   * @description Guarda la lista en localStorage
-   * @param list Lista de usuarios
+   * @description Guarda la lista de usuarios en localStorage y actualiza el observable.
+   * @param list Lista completa de usuarios.
    * @returns void
    */
-  private save(list: Usuario[]) {
+  private save(list: Usuario[]): void {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(list));
     this.users$.next(list);
   }
 
   /**
-   * @description Devuelve todos los usuarios
-   * @returns Lista de usuarios
+   * @description Retorna todos los usuarios registrados.
+   * @returns Arreglo de objetos Usuario.
    */
   getAll(): Usuario[] {
     return this.users$.value;
   }
 
   /**
-   * @description Busca un usuario por nombre
-   * @param username Nombre de usuario
-   * @returns Usuario encontrado o undefined
+   * @description Busca un usuario por su nombre de usuario.
+   * @param username Nombre del usuario a buscar.
+   * @returns El objeto Usuario si existe, o undefined si no se encuentra.
    */
   find(username: string): Usuario | undefined {
     return this.getAll().find(u &#x3D;&gt; u.username &#x3D;&#x3D;&#x3D; username);
   }
 
   /**
-   * @description Agrega un nuevo usuario
-   * @param user Usuario a agregar
+   * @description Agrega un nuevo usuario a la lista y actualiza el almacenamiento.
+   * @param user Objeto Usuario a agregar.
    * @returns void
    */
   add(user: Usuario): void {
@@ -352,16 +359,25 @@ export class UserService {
   }
 
   /**
-   * @description Actualiza un usuario existente
-   * @param user Usuario a actualizar
+   * @description Actualiza la información de un usuario existente.
+   * @param user Objeto Usuario actualizado.
    * @returns void
    */
   update(user: Usuario): void {
     const list &#x3D; this.getAll().map(u &#x3D;&gt; u.username &#x3D;&#x3D;&#x3D; user.username ? user : u);
     this.save(list);
   }
-}
-</code></pre>
+
+  /**
+   * @description Elimina un usuario de la lista por su nombre de usuario.
+   * @param username Nombre del usuario a eliminar.
+   * @returns void
+   */
+  delete(username: string): void {
+    const list &#x3D; this.getAll().filter(u &#x3D;&gt; u.username !&#x3D;&#x3D; username);
+    this.save(list);
+  }
+}</code></pre>
     </div>
 </div>
 

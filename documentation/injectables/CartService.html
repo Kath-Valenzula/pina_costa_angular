@@ -197,7 +197,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/cart.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/services/cart.service.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -236,8 +236,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/app/services/cart.service.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/app/services/cart.service.ts:82</a></div>
                         </td>
                     </tr>
 
@@ -277,8 +277,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/services/cart.service.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/app/services/cart.service.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -311,7 +311,7 @@
 
 
                                             <td>
-                                                    <p>Producto a agregar</p>
+                                                    <p>Producto que se desea agregar al carrito.</p>
 
                                             </td>
                                         </tr>
@@ -352,8 +352,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/services/cart.service.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/services/cart.service.ts:74</a></div>
                         </td>
                     </tr>
 
@@ -393,8 +393,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/services/cart.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/services/cart.service.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -434,8 +434,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/app/services/cart.service.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/services/cart.service.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -448,7 +448,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>Observable del carrito</p>
+                                <p>Observable que emite la lista de productos actualizada.</p>
 
                             </div>
                 </td>
@@ -475,8 +475,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/services/cart.service.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/services/cart.service.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -489,7 +489,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>Lista de productos</p>
+                                <p>Arreglo de productos en el carrito.</p>
 
                             </div>
                 </td>
@@ -521,7 +521,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/cart.service.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/services/cart.service.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -553,7 +553,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/cart.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/cart.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -570,20 +570,25 @@
 import { Producto } from &#x27;../models/producto.model&#x27;;
 import { BehaviorSubject, Observable } from &#x27;rxjs&#x27;;
 
+/**
+ * @description Servicio que maneja los productos añadidos al carrito, incluyendo almacenamiento en localStorage y emisión de cambios.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-/**
- * @description Maneja los productos añadidos al carrito.
- */
 export class CartService {
-    /** @description Lista interna de productos */
+  /**
+   * @description Lista interna de productos del carrito.
+   */
   private items: Producto[] &#x3D; [];
-    /** @description Sujeto para emitir cambios del carrito */
+
+  /**
+   * @description Sujeto observable que emite los cambios del carrito a los componentes suscritos.
+   */
   private carritoSubject &#x3D; new BehaviorSubject&lt;Producto[]&gt;([]);
 
   /**
-   * @description Carga el carrito guardado
+   * @description Constructor que carga el carrito guardado desde localStorage, si existe.
    */
   constructor() {
     const data &#x3D; localStorage.getItem(&#x27;carrito&#x27;);
@@ -594,8 +599,8 @@ export class CartService {
   }
 
   /**
-   * @description Agrega un producto al carrito
-   * @param producto Producto a agregar
+   * @description Agrega un producto al carrito, lo guarda y emite el nuevo estado.
+   * @param producto Producto que se desea agregar al carrito.
    * @returns void
    */
   agregar(producto: Producto): void {
@@ -605,23 +610,23 @@ export class CartService {
   }
 
   /**
-   * @description Devuelve los productos actuales
-   * @returns Lista de productos
+   * @description Devuelve todos los productos actualmente almacenados en el carrito.
+   * @returns Arreglo de productos en el carrito.
    */
   obtenerItems(): Producto[] {
     return this.items;
   }
 
   /**
-   * @description Observable para notificar cambios
-   * @returns Observable del carrito
+   * @description Devuelve un observable para suscribirse a los cambios del carrito.
+   * @returns Observable que emite la lista de productos actualizada.
    */
-    obtenerCarritoObservable(): Observable&lt;Producto[]&gt; {
+  obtenerCarritoObservable(): Observable&lt;Producto[]&gt; {
     return this.carritoSubject.asObservable();
   }
 
   /**
-   * @description Vacía el carrito por completo
+   * @description Elimina todos los productos del carrito y actualiza el almacenamiento y observable.
    * @returns void
    */
   limpiarCarrito(): void {
@@ -631,7 +636,7 @@ export class CartService {
   }
 
   /**
-   * @description Persiste en localStorage
+   * @description Guarda el contenido actual del carrito en localStorage.
    * @returns void
    */
   private guardar(): void {
@@ -639,14 +644,13 @@ export class CartService {
   }
 
   /**
-   * @description Actualiza los suscriptores
+   * @description Notifica a los observadores con la versión actualizada del carrito.
    * @returns void
    */
   private actualizarCarrito(): void {
     this.carritoSubject.next(this.items);
   }
-}
-</code></pre>
+}</code></pre>
     </div>
 
 </div>

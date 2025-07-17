@@ -179,7 +179,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/productos.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/productos.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -209,7 +209,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>Cliente HTTP de Angular</p>
+                                                                <p>Cliente HTTP proporcionado por Angular para consumo de datos remotos o locales.</p>
 
                                                         </td>
                                                 </tr>
@@ -247,8 +247,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/services/productos.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/app/services/productos.service.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -261,7 +261,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>Observable con la lista de productos</p>
+                                <p>Observable que emite un array de productos.</p>
 
                             </div>
                 </td>
@@ -288,8 +288,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/services/productos.service.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/services/productos.service.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -322,7 +322,7 @@
 
 
                                             <td>
-                                                    <p>Identificador del producto</p>
+                                                    <p>Identificador único del producto a buscar.</p>
 
                                             </td>
                                         </tr>
@@ -334,7 +334,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>Observable con el producto encontrado o undefined</p>
+                                <p>Observable que emite el producto encontrado o undefined si no existe.</p>
 
                             </div>
                 </td>
@@ -372,7 +372,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/productos.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/productos.service.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -390,34 +390,36 @@ import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { Producto } from &#x27;../models/producto.model&#x27;;
 
+/**
+ * @description Servicio que gestiona la obtención de productos desde un archivo JSON.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-/**
- * @description Servicio que obtiene productos desde un archivo JSON.
- */
 export class ProductService {
-    /** @description Ruta local del archivo de productos */
+  /**
+   * @description Ruta relativa al archivo de productos almacenado localmente.
+   */
   private productosUrl &#x3D; &#x27;assets/data/productos.json&#x27;;
 
   /**
-   * @description HttpClient para leer el JSON
-   * @param http Cliente HTTP de Angular
+   * @description Constructor del servicio. Inyecta HttpClient para realizar peticiones HTTP.
+   * @param http Cliente HTTP proporcionado por Angular para consumo de datos remotos o locales.
    */
   constructor(private http: HttpClient) {}
 
   /**
-   * @description Devuelve todos los productos
-   * @returns Observable con la lista de productos
+   * @description Devuelve todos los productos disponibles desde el archivo JSON.
+   * @returns Observable que emite un array de productos.
    */
   getAll(): Observable&lt;Producto[]&gt; {
     return this.http.get&lt;Producto[]&gt;(this.productosUrl);
   }
 
   /**
-   * @description Busca un producto por su id
-   * @param id Identificador del producto
-   * @returns Observable con el producto encontrado o undefined
+   * @description Busca un producto específico por su identificador.
+   * @param id Identificador único del producto a buscar.
+   * @returns Observable que emite el producto encontrado o undefined si no existe.
    */
   getById(id: number): Observable&lt;Producto | undefined&gt; {
     return new Observable(observer &#x3D;&gt; {
@@ -428,8 +430,7 @@ export class ProductService {
       });
     });
   }
-}
-</code></pre>
+}</code></pre>
     </div>
 
 </div>
