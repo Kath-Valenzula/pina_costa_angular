@@ -9,12 +9,17 @@
 }
 
 .login-container {
-  max-width: 400px;
-  margin: 40px auto;
+  width: 100%;
   padding: 30px;
   background-color: #fff0f5;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+}
+
+@media (max-width: 575.98px) {
+  .login-container {
+    padding: 20px;
+  }
 }
 
 h2 {

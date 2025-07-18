@@ -1,5 +1,7 @@
-<div class="container mt-5" style="max-width: 500px;">
-  <h2 class="text-center text-pink mb-4">Registrarse</h2>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6 registro-container">
+      <h2 class="text-center text-pink mb-4">Registrarse</h2>
 
   <form [formGroup]="registroForm" (ngSubmit)="registrar()" class="bg-white p-4 shadow rounded">
    
@@ -90,5 +92,7 @@
 
   <div class="text-center mt-3">
     <a routerLink="/login" class="text-decoration-none text-pink">¿Ya tienes cuenta? Iniciar sesión</a>
+  </div>
+    </div>
   </div>
 </div>
