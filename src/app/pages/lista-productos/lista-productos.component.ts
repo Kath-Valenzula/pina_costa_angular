@@ -71,11 +71,11 @@ export class ListaProductosComponent implements OnInit {
   /**
    * Actualiza una propiedad según el modo actual del formulario.
    */
-  actualizarCampo(campo: keyof Producto, valor: any): void {
+  actualizarCampo<K extends keyof Producto>(campo: K, valor: Producto[K]): void {
     if (this.editando) {
-      (this.editando as any)[campo] = valor;
+      this.editando[campo] = valor;
     } else {
-      (this.nuevo as any)[campo] = valor;
+      this.nuevo[campo] = valor;
     }
   }
 }

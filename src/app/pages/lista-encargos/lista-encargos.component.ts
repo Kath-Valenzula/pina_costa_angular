@@ -71,11 +71,11 @@ export class ListaEncargosComponent implements OnInit {
    * Actualiza una propiedad en el objeto que corresponda
    * según si se está en modo edición o creación.
    */
-  actualizarCampo(campo: keyof Encargo, valor: any): void {
+  actualizarCampo<K extends keyof Encargo>(campo: K, valor: Encargo[K]): void {
     if (this.editando) {
-      (this.editando as any)[campo] = valor;
+      this.editando[campo] = valor;
     } else {
-      (this.nuevo as any)[campo] = valor;
+      this.nuevo[campo] = valor;
     }
   }
 }
