@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Representa un usuario registrado en el sistema.
  */
 export interface Usuario {
-  /** Nombre de usuario */
-  username: string;
+  /** Correo del usuario */
+  email: string;
   /** Contraseña del usuario */
   password: string;
   /** Rol del usuario ('admin' o 'usuario') */
-  role: 'admin' | 'usuario';
+  rol: 'admin' | 'usuario';
 }
 
 /**
@@ -20,8 +21,8 @@ export interface IUserService {
   /** Obtiene todos los usuarios */
   getAll(): Usuario[];
 
-  /** Busca un usuario por nombre */
-  find(username: string): Usuario | undefined;
+  /** Busca un usuario por email */
+  find(email: string): Usuario | undefined;
 
   /** Agrega un nuevo usuario */
   add(user: Usuario): void;
@@ -29,8 +30,8 @@ export interface IUserService {
   /** Actualiza un usuario existente */
   update(user: Usuario): void;
 
-  /** Elimina un usuario por nombre */
-  delete(username: string): void;
+  /** Elimina un usuario por email */
+  delete(email: string): void;
 
   /** Inicializa los datos desde localStorage */
   init(): void;
@@ -45,6 +46,10 @@ export interface IUserService {
 export class UserService implements IUserService {
   /** Clave usada para almacenar usuarios */
   private STORAGE_KEY = 'pinna-users';
+  /** Ruta al archivo JSON con usuarios */
+  private usersUrl = 'assets/data/usuarios.json';
+
+  constructor(private http: HttpClient) {}
 
   /** Lista observable de usuarios */
   private users$ = new BehaviorSubject<Usuario[]>([]);
@@ -58,15 +63,20 @@ export class UserService implements IUserService {
    * Inicializa el almacenamiento con usuarios desde localStorage.
    * Si no existen, crea un admin por defecto.
    */
-  public init(): void {
-    const raw = localStorage.getItem(this.STORAGE_KEY);
-    if (!raw) {
-      const admin: Usuario = { username: 'admin', password: 'admin', role: 'admin' };
-      this.users$.next([admin]);
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify([admin]));
-    } else {
-      this.users$.next(JSON.parse(raw));
-    }
+  public init(): Promise<void> {
+    return new Promise(resolve => {
+      const raw = localStorage.getItem(this.STORAGE_KEY);
+      if (raw) {
+        this.users$.next(JSON.parse(raw));
+        resolve();
+        return;
+      }
+      this.http.get<Usuario[]>(this.usersUrl).subscribe(data => {
+        this.users$.next(data);
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
+        resolve();
+      }, () => resolve());
+    });
   }
 
   /**
@@ -87,12 +97,12 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Busca un usuario por nombre.
-   * @param username Nombre de usuario
+   * Busca un usuario por su email.
+   * @param email Correo electrónico
    * @returns Usuario encontrado o undefined
    */
-  public find(username: string): Usuario | undefined {
-    return this.getAll().find(u => u.username === username);
+  public find(email: string): Usuario | undefined {
+    return this.getAll().find(u => u.email === email);
   }
 
   /**
@@ -110,16 +120,16 @@ export class UserService implements IUserService {
    * @param user Usuario con datos actualizados
    */
   public update(user: Usuario): void {
-    const list = this.getAll().map(u => u.username === user.username ? user : u);
+    const list = this.getAll().map(u => u.email === user.email ? user : u);
     this.save(list);
   }
 
   /**
-   * Elimina un usuario por su nombre.
-   * @param username Nombre de usuario a eliminar
+   * Elimina un usuario por su email.
+   * @param email Correo electrónico a eliminar
    */
-  public delete(username: string): void {
-    const list = this.getAll().filter(u => u.username !== username);
+  public delete(email: string): void {
+    const list = this.getAll().filter(u => u.email !== email);
     this.save(list);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 /**
  * @description Información de usuarios para el ejemplo de login.
@@ -47,7 +48,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    private auth: AuthService
   ) {}
 
   /**
@@ -63,12 +65,6 @@ export class LoginComponent implements OnInit {
       content: 'Accede a tu cuenta de Piña Costa.'
     });
 
-    const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'Admin#123', rol: 'admin' };
-    const seedUser:  Usuario = { nombre: 'Usuario', email: 'user@example.com', password: 'User#123', rol: 'usuario' };
-    const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    if (!usuarios.find(u => u.email === seedAdmin.email)) usuarios.unshift(seedAdmin);
-    if (!usuarios.find(u => u.email === seedUser.email))  usuarios.push(seedUser);
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
     this.loginForm = this.fb.group({
       email:    ['', [Validators.required, Validators.email]],
@@ -90,14 +86,16 @@ export class LoginComponent implements OnInit {
       return;
     }
     const { email, password } = this.loginForm.value;
-    const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const usuario = usuarios.find(u => u.email === email && u.password === password);
-    if (!usuario) {
+    const ok = this.auth.login(email, password);
+    if (!ok) {
       this.error = 'Correo o contraseña incorrectos';
       return;
     }
-    localStorage.setItem('usuario', JSON.stringify(usuario));
-    this.router.navigate([ usuario.rol === 'admin' ? '/admin' : '/perfil' ]);
+    const usuario = this.auth.getCurrent();
+    if (usuario) {
+      localStorage.setItem('usuario', JSON.stringify(usuario));
+      this.router.navigate([usuario.rol === 'admin' ? '/admin' : '/perfil']);
+    }
   }
 
   /**

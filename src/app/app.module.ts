@@ -1,7 +1,7 @@
 /**
  * @description Módulo principal que reúne componentes y servicios.
  */
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -47,7 +48,14 @@ import { ListaProductosComponent } from './pages/lista-productos/lista-productos
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (userSvc: UserService) => () => userSvc.init(),
+      deps: [UserService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 /**
