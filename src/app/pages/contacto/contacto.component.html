@@ -46,6 +46,9 @@
         <div class="invalid-feedback" *ngIf="contactForm.get('mensaje')?.hasError('required')">
           El mensaje es obligatorio.
         </div>
+        <div class="invalid-feedback" *ngIf="contactForm.get('mensaje')?.hasError('minlength')">
+          Debe tener al menos 10 caracteres.
+        </div>
       </div>
 
       <button type="submit" class="btn-enviar" [disabled]="contactForm.invalid">Enviar mensaje</button>

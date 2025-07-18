@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-recuperar',
@@ -60,6 +61,21 @@ export class RecuperarComponent implements OnInit {
       this.enviado = false;
       return;
     }
+
+    const { email, direccionDespacho, fechaNacimiento } = this.recuperarForm.value;
+    const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const encontrado = usuarios.find(u =>
+      u.email === email &&
+      u.fechaNacimiento === fechaNacimiento &&
+      (!direccionDespacho || u.direccionDespacho === direccionDespacho)
+    );
+
+    if (!encontrado) {
+      this.error = 'Los datos no coinciden con ninguna cuenta registrada.';
+      this.enviado = false;
+      return;
+    }
+
     this.enviado = true;
     this.error = '';
     this.recuperarForm.reset();

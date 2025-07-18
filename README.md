@@ -10,8 +10,8 @@
 - **Catálogo de productos** con imágenes, descripción y precio.
 - **Carrito de compras**: añade/quita productos y muestra contador en el header.
 - **Autenticación simulada**  
-  - **Admin** (`admin@example.com` / `admin123`): acceso a panel de administración.  
-  - **Usuario**: acceso a su perfil.  
+  - **Admin** (`admin@example.com` / `Admin#123`): acceso a panel de administración.
+  - **Usuario** (`user@example.com` / `User#123`): acceso a su perfil.
 - **Formularios Reactivos** con validaciones:
   - Todos los campos “obligatorios” usan `Validators.required`.
   - Email con `Validators.email`.
