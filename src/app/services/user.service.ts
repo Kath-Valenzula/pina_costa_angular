@@ -50,10 +50,9 @@ export class UserService implements IUserService {
   private users$ = new BehaviorSubject<Usuario[]>([]);
 
   /**
-   * Constructor del servicio. No realiza carga de datos.
-   * Se debe invocar el método `init()` para cargar usuarios.
+   * Inicializa el servicio sin cargar datos automáticamente.
+   * Para cargar usuarios se debe llamar explícitamente al método `init()`.
    */
-  constructor() {}
 
   /**
    * Inicializa el almacenamiento con usuarios desde localStorage.
