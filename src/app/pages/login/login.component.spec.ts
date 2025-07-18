@@ -38,13 +38,13 @@ describe('LoginComponent', () => {
   });
 
   // Admin válido redirige al panel
-  it('debe navegar a /admin con credenciales admin@example.com/admin123', () => {
+  it('debe navegar a /admin con credenciales admin@example.com/Admin#123', () => {
     spyOn(router, 'navigate');
     localStorage.setItem('usuarios', JSON.stringify([
-      { nombre: 'admin', email: 'admin@example.com', password: 'admin123', rol: 'admin' }
+      { nombre: 'admin', email: 'admin@example.com', password: 'Admin#123', rol: 'admin' }
     ]));
     component.loginForm.get('email')?.setValue('admin@example.com');
-    component.loginForm.get('password')?.setValue('admin123');
+    component.loginForm.get('password')?.setValue('Admin#123');
     component.iniciarSesion();
     expect(router.navigate).toHaveBeenCalledWith(['/admin']);
   });
@@ -53,10 +53,10 @@ describe('LoginComponent', () => {
   it('debe navegar a /perfil con credenciales de usuario normal', () => {
     spyOn(router, 'navigate');
     localStorage.setItem('usuarios', JSON.stringify([
-      { nombre: 'User', email: 'user@example.com', password: 'userpwd' }
+      { nombre: 'User', email: 'user@example.com', password: 'User#123' }
     ]));
     component.loginForm.get('email')?.setValue('user@example.com');
-    component.loginForm.get('password')?.setValue('userpwd');
+    component.loginForm.get('password')?.setValue('User#123');
     component.iniciarSesion();
     expect(router.navigate).toHaveBeenCalledWith(['/perfil']);
   });

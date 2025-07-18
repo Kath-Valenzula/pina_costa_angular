@@ -63,8 +63,8 @@ export class LoginComponent implements OnInit {
       content: 'Accede a tu cuenta de Piña Costa.'
     });
 
-    const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'admin123', rol: 'admin' };
-    const seedUser:  Usuario = { nombre: 'Usuario', email: 'usuario', password: 'usuario', rol: 'usuario' };
+    const seedAdmin: Usuario = { nombre: 'Admin', email: 'admin@example.com', password: 'Admin#123', rol: 'admin' };
+    const seedUser:  Usuario = { nombre: 'Usuario', email: 'user@example.com', password: 'User#123', rol: 'usuario' };
     const usuarios: Usuario[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
     if (!usuarios.find(u => u.email === seedAdmin.email)) usuarios.unshift(seedAdmin);
     if (!usuarios.find(u => u.email === seedUser.email))  usuarios.push(seedUser);
@@ -72,7 +72,10 @@ export class LoginComponent implements OnInit {
 
     this.loginForm = this.fb.group({
       email:    ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [
+        Validators.required,
+        Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/)
+      ]]
     });
   }
 
