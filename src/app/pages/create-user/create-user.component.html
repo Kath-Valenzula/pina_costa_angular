@@ -1,6 +1,8 @@
-<div class="container mt-5">
-  <div class="card p-4 bg-light shadow">
-    <h2 class="text-center mb-4 text-rosado">Crear Nuevo Usuario</h2>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card p-4 bg-light shadow">
+        <h2 class="text-center mb-4 text-rosado">Crear Nuevo Usuario</h2>
 
     <form [formGroup]="form" (ngSubmit)="crearUsuario()" novalidate>
       <div class="mb-3">
@@ -52,5 +54,7 @@
       <button type="submit" class="btn btn-rosado w-100" [disabled]="form.invalid">Guardar Usuario</button>
       <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>
     </form>
+      </div>
+    </div>
   </div>
 </div>

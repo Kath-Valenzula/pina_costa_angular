@@ -1,5 +1,7 @@
-<div class="login-container">
-  <h2 class="text-center">Iniciar Sesión</h2>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-4 login-container">
+      <h2 class="text-center">Iniciar Sesión</h2>
 
   <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()" class="login-form">
     <div class="form-group mb-3">
@@ -43,4 +45,6 @@
 
     <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>
   </form>
+    </div>
+  </div>
 </div>

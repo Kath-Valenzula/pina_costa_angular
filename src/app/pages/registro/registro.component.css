@@ -1,10 +1,15 @@
 .registro-container {
-  max-width: 480px;
-  margin: 2rem auto;
+  width: 100%;
   padding: 1.5rem;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
+}
+
+@media (max-width: 575.98px) {
+  .registro-container {
+    padding: 1rem;
+  }
 }
 .form-group {
   margin-bottom: 1rem;
