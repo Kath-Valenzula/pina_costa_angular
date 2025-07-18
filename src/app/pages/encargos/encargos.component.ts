@@ -10,6 +10,7 @@
  })
   /**
   * @description Lista de encargos personalizados.
+  * 
   */
 export class EncargosComponent implements OnInit {
     /** @description Encargos obtenidos del servicio */
@@ -17,6 +18,7 @@ export class EncargosComponent implements OnInit {
   /**
    * @description Inyecta servicios para manejar encargos
    * @param encargosSvc Servicio de encargos
+   * 
    * @param title Servicio para modificar el título
    * @param meta Servicio para modificar metadatos
    */
@@ -27,6 +29,7 @@ export class EncargosComponent implements OnInit {
   ) {}
     /**
     * @description Carga la lista de encargos desde el servicio
+    * 
     * @returns void
     */
    ngOnInit(): void {

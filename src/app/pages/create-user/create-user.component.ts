@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @description Información de usuario creada desde el panel.
+ * 
  * @property id Identificador del usuario
  * @property nombre Nombre del usuario
  * @property email Correo electrónico
@@ -26,6 +27,7 @@ interface Usuario {
 })
 /**
  * @description Formulario para crear un usuario desde Admin.
+ * 
  */
 export class CreateUserComponent implements OnInit {
     /** @description Formulario reactivo de creación */
@@ -35,6 +37,7 @@ export class CreateUserComponent implements OnInit {
 
   /**
    * @description Router para volver al panel
+   * 
    * @param router Manejador de rutas
    */
   constructor(
@@ -45,6 +48,7 @@ export class CreateUserComponent implements OnInit {
   ) {}
   /**
    * @description Inicializa el formulario de creación
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -67,6 +71,7 @@ export class CreateUserComponent implements OnInit {
 
   /**
    * @description Guarda un nuevo usuario en localStorage
+   * 
    * @returns void
    */
   crearUsuario(): void {

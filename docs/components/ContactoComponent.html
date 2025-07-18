@@ -242,7 +242,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/contacto/contacto.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/contacto/contacto.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -256,6 +256,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -270,6 +271,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>FormBuilder para crear los controles</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>title</td>
@@ -282,6 +287,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para actualizar el título de la página</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>meta</td>
@@ -294,6 +303,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para actualizar metadatos</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -333,8 +346,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/pages/contacto/contacto.component.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/pages/contacto/contacto.component.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -374,8 +387,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/pages/contacto/contacto.component.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/pages/contacto/contacto.component.ts:69</a></div>
                         </td>
                     </tr>
 
@@ -415,8 +428,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/pages/contacto/contacto.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/app/pages/contacto/contacto.component.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -461,7 +474,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/contacto/contacto.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/contacto/contacto.component.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -486,7 +499,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/contacto/contacto.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/contacto/contacto.component.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -510,13 +523,20 @@ import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 })
 /**
  * @description Formulario de contacto con datos de la tienda.
+ * 
  */
 export class ContactoComponent implements OnInit {
   /** @description Formulario para enviar el mensaje */
   contactForm!: FormGroup;
   /** @description Indica si el mensaje fue enviado */
   enviado &#x3D; false;
-
+  /**
+   * @description Inyecta dependencias necesarias para el formulario
+   * 
+   * @param fb FormBuilder para crear los controles
+   * @param title Servicio para actualizar el título de la página
+   * @param meta Servicio para actualizar metadatos
+   */
   constructor(
     private fb: FormBuilder,
     private title: Title,
@@ -525,6 +545,7 @@ export class ContactoComponent implements OnInit {
 
     /**
    * @description Inicializa el formulario de contacto
+   * 
    * @returns void
    */
 
@@ -543,6 +564,7 @@ export class ContactoComponent implements OnInit {
   }
   /**
    * @description Envía el mensaje al destinatario
+   * 
    * @returns void
    */
   enviarMensaje(): void {
@@ -555,6 +577,7 @@ export class ContactoComponent implements OnInit {
   }
   /**
    * @description Limpia el formulario y estado
+   * 
    * @returns void
    */
   limpiar(): void {

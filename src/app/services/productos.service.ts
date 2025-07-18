@@ -5,6 +5,7 @@ import { Producto } from '../models/producto.model';
 
 /**
  * @description Servicio que gestiona la obtención de productos desde un archivo JSON.
+ * 
  */
 @Injectable({
   providedIn: 'root'

@@ -176,12 +176,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/encargos.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/encargos.service.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Crea una instancia de EncargosService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -190,6 +192,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -204,6 +207,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Cliente HTTP utilizado para las peticiones</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -239,21 +246,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/app/services/encargos.service.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/services/encargos.service.ts:27</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene todos los encargos.</p>
+                        <div class="io-description"><p>Obtiene todos los encargos almacenados.</p>
 </div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Encargo.html" target="_self" >Observable&lt;Encargo[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable con la lista de encargos</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -289,10 +300,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/encargos.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/encargos.service.ts:14</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ruta al archivo de encargos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -310,13 +327,24 @@ import { Encargo } from &#x27;../models/encargo.model&#x27;;
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-/** Servicio que obtiene encargos desde un JSON. */
+/**
+ * Servicio que obtiene encargos desde un archivo JSON local.
+ */
 export class EncargosService {
+  /** Ruta al archivo de encargos */
   private encargosUrl &#x3D; &#x27;assets/data/encargos.json&#x27;;
 
+  /**
+   * Crea una instancia de EncargosService.
+   * @param http Cliente HTTP utilizado para las peticiones
+   */
   constructor(private http: HttpClient) {}
 
-  /** Obtiene todos los encargos. */
+  /**
+   * Obtiene todos los encargos almacenados.
+   * @returns Observable con la lista de encargos
+   */
+
   getAll(): Observable&lt;Encargo[]&gt; {
     return this.http.get&lt;Encargo[]&gt;(this.encargosUrl);
   }

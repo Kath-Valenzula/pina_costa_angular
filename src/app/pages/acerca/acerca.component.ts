@@ -8,15 +8,18 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 /**
  * @description Página con información de la tienda.
+ * 
  */
 export class AcercaComponent implements OnInit {
   /**
    * @description Inyección de dependencias si fuera necesario
+   * 
    */
   constructor(private title: Title, private meta: Meta) { }
 
   /**
    * @description Aquí podría cargarse información adicional
+   * 
    * @returns void
    */
   ngOnInit(): void {

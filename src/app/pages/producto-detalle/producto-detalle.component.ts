@@ -12,6 +12,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 /**
  * @description Muestra la información de un producto concreto.
+ * 
  */
 export class ProductoDetalleComponent implements OnInit {
     /** @description Producto mostrado en la vista */
@@ -19,6 +20,7 @@ export class ProductoDetalleComponent implements OnInit {
 
   /**
    * @description Inyecta servicios necesarios
+   * 
    * @param route Ruta activa para obtener parámetros
    * @param productService Servicio de productos
    * @param cartService Servicio de carrito
@@ -33,6 +35,7 @@ export class ProductoDetalleComponent implements OnInit {
 
   /**
    * @description Busca el producto según el id de la URL
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -54,6 +57,7 @@ export class ProductoDetalleComponent implements OnInit {
 
   /**
    * @description Añade el producto actual al carrito
+   * 
    * @returns void
    */
   agregarAlCarrito(): void {

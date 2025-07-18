@@ -182,7 +182,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/auth.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -250,8 +250,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/services/auth.service.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/services/auth.service.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -291,8 +291,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/services/auth.service.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/services/auth.service.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -380,8 +380,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/app/services/auth.service.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/services/auth.service.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -426,7 +426,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/auth.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -445,16 +445,19 @@ import { UserService, Usuario } from &#x27;./user.service&#x27;;
 
 /**
  * @description Servicio de autenticación. Gestiona login, logout y persistencia en localStorage.
+ * 
  */
 @Injectable({ providedIn: &#x27;root&#x27; })
 export class AuthService {
   /**
    * @description Usuario actualmente autenticado, almacenado como observable.
+   * 
    */
   private current$ &#x3D; new BehaviorSubject&lt;Usuario | null&gt;(null);
 
   /**
    * @description Constructor que carga una sesión previa desde localStorage si existe.
+   * 
    * @param userSvc Servicio de usuarios para validar credenciales.
    */
   constructor(private userSvc: UserService) {
@@ -464,6 +467,7 @@ export class AuthService {
 
   /**
    * @description Inicia sesión si las credenciales son válidas. Persiste la sesión en localStorage.
+   * 
    * @param username Nombre de usuario.
    * @param password Contraseña del usuario.
    * @returns &#x60;true&#x60; si las credenciales coinciden, &#x60;false&#x60; en caso contrario.
@@ -480,6 +484,7 @@ export class AuthService {
 
   /**
    * @description Cierra la sesión actual y elimina el usuario del localStorage.
+   * 
    * @returns void
    */
   logout(): void {
@@ -489,12 +494,14 @@ export class AuthService {
 
   /**
    * @description Devuelve el usuario actualmente autenticado.
+   * 
    * @returns Objeto &#x60;Usuario&#x60; o &#x60;null&#x60; si no hay sesión activa.
    */
   getCurrent(): Usuario | null {
     return this.current$.value;
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 
 </div>

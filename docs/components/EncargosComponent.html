@@ -233,7 +233,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/encargos/encargos.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/encargos/encargos.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -247,6 +247,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -261,6 +262,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de encargos</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>title</td>
@@ -273,6 +278,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para modificar el título</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>meta</td>
@@ -285,6 +294,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para modificar metadatos</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -324,8 +337,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/pages/encargos/encargos.component.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/pages/encargos/encargos.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -375,7 +388,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/encargos/encargos.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/encargos/encargos.component.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -400,18 +413,26 @@
  })
   /**
   * @description Lista de encargos personalizados.
+  * 
   */
- export class EncargosComponent implements OnInit {
-     /** @description Encargos obtenidos del servicio */
-   encargos: Encargo[] &#x3D; [];
- 
-   constructor(
-     private encargosSvc: EncargosService,
-     private title: Title,
-     private meta: Meta
-   ) {}
+export class EncargosComponent implements OnInit {
+    /** @description Encargos obtenidos del servicio */
+  encargos: Encargo[] &#x3D; [];
+  /**
+   * @description Inyecta servicios para manejar encargos
+   * @param encargosSvc Servicio de encargos
+   * 
+   * @param title Servicio para modificar el título
+   * @param meta Servicio para modificar metadatos
+   */
+  constructor(
+    private encargosSvc: EncargosService,
+    private title: Title,
+    private meta: Meta
+  ) {}
     /**
     * @description Carga la lista de encargos desde el servicio
+    * 
     * @returns void
     */
    ngOnInit(): void {

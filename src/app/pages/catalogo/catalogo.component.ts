@@ -11,6 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 /**
  * @description Listado de productos disponibles en la tienda.
+ * 
  */
 export class CatalogoComponent implements OnInit {
   /** @description Productos cargados para mostrar */
@@ -19,6 +20,7 @@ export class CatalogoComponent implements OnInit {
   /**
    * @description Constructor con servicios
    * @param http Cliente HTTP para cargar datos
+   * 
    * @param cartService Servicio del carrito
    */
   constructor(
@@ -30,6 +32,7 @@ export class CatalogoComponent implements OnInit {
 
   /**
    * @description Al iniciar, carga la lista de productos
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -44,6 +47,7 @@ export class CatalogoComponent implements OnInit {
 
   /**
    * @description Obtiene los productos desde un archivo
+   * 
    * @returns void
    */
   cargarProductos(): void {
@@ -59,6 +63,7 @@ export class CatalogoComponent implements OnInit {
 
   /**
    * @description Añade un producto al carrito
+   * 
    * @param producto Producto a agregar
    * @returns void
    */

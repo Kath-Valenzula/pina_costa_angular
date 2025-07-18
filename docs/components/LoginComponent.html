@@ -248,7 +248,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/login/login.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/login/login.component.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -364,8 +364,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="79"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:79</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -405,8 +405,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="99"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:99</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -446,8 +446,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -487,8 +487,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="108"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:108</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -528,8 +528,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="116"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:116</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -579,7 +579,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/login/login.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/login/login.component.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -605,7 +605,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/login/login.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/login/login.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -625,6 +625,7 @@ import { Router } from &#x27;@angular/router&#x27;;
 
 /**
  * @description Información de usuarios para el ejemplo de login.
+ * 
  * @property nombre Nombre del usuario
  * @property email Correo electrónico
  * @property password Contraseña
@@ -648,6 +649,7 @@ interface Usuario {
 })
 /**
  * @description Componente para autenticar usuarios.
+ * 
  */
 export class LoginComponent implements OnInit {
     /** @description Formulario de inicio de sesión */
@@ -657,6 +659,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Constructor con inyección de dependencias
+   * 
    * @param fb FormBuilder para crear el formulario
    * @param router Controlador de rutas
    */
@@ -669,6 +672,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Inicializa usuarios de ejemplo y el formulario
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -694,6 +698,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Valida credenciales y navega según el rol
+   * 
    * @returns void
    */
   iniciarSesion(): void {
@@ -714,6 +719,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Limpia el formulario y errores
+   * 
    * @returns void
    */
   limpiar(): void {
@@ -723,6 +729,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Redirige a recuperación de contraseña
+   * 
    * @returns void
    */
   recuperarPassword(): void {
@@ -731,6 +738,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Redirige a la página de registro
+   * 
    * @returns void
    */
   registrarse(): void {

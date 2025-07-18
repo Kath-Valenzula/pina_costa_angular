@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 /**
  * @description Información de usuarios para el ejemplo de login.
+ * 
  * @property nombre Nombre del usuario
  * @property email Correo electrónico
  * @property password Contraseña
@@ -28,6 +29,7 @@ interface Usuario {
 })
 /**
  * @description Componente para autenticar usuarios.
+ * 
  */
 export class LoginComponent implements OnInit {
     /** @description Formulario de inicio de sesión */
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Constructor con inyección de dependencias
+   * 
    * @param fb FormBuilder para crear el formulario
    * @param router Controlador de rutas
    */
@@ -49,6 +52,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Inicializa usuarios de ejemplo y el formulario
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -74,6 +78,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Valida credenciales y navega según el rol
+   * 
    * @returns void
    */
   iniciarSesion(): void {
@@ -94,6 +99,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Limpia el formulario y errores
+   * 
    * @returns void
    */
   limpiar(): void {
@@ -103,6 +109,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Redirige a recuperación de contraseña
+   * 
    * @returns void
    */
   recuperarPassword(): void {
@@ -111,6 +118,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * @description Redirige a la página de registro
+   * 
    * @returns void
    */
   registrarse(): void {

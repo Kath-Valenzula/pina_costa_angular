@@ -10,6 +10,7 @@ import { Producto } from '../../models/producto.model';
 })
 /**
  * @description Página principal con productos destacados.
+ * 
  */
 export class HomeComponent implements OnInit {
     /** @description Productos mostrados en portada */
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   /**
    * @description Servicio para obtener productos
+   * 
    * @param productSvc Servicio de productos
    */
   constructor(
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
 
   /**
    * @description Carga los productos al iniciar
+   * 
    * @returns void
    */
   ngOnInit(): void {

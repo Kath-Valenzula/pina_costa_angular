@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors }
 
 /**
  * @description Datos registrados de un usuario.
+ * 
  * @property nombre Nombre del usuario
  * @property email Correo electrónico
  * @property password Contraseña
@@ -29,6 +30,7 @@ interface Usuario {
 })
 /**
  * @description Pantalla para registrar nuevos usuarios.
+ * 
  */
 export class RegistroComponent implements OnInit {
     /** @description Formulario reactivo de registro */

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 
 /**
  * @description Datos básicos de un usuario registrado.
+ * 
  * @property nombre Nombre del usuario
  * @property rol Rol del usuario
  * @property email Correo del usuario
@@ -30,6 +31,7 @@ interface Usuario {
 })
 /**
  * @description Vista para mostrar y editar datos del usuario.
+ * 
  */
 export class PerfilComponent implements OnInit {
     /** @description Formulario con los datos del usuario */
@@ -41,6 +43,7 @@ export class PerfilComponent implements OnInit {
 
   /**
    * @description Obtiene formularios y router por inyección
+   * 
    * @param fb FormBuilder para construir el formulario
    * @param router Navegación entre rutas
    */
@@ -53,6 +56,7 @@ export class PerfilComponent implements OnInit {
 
   /**
    * @description Carga el usuario guardado y crea el formulario
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -82,6 +86,7 @@ export class PerfilComponent implements OnInit {
 
   /**
    * @description Pone el formulario en modo edición
+   * 
    * @returns void
    */
   editar(): void {
@@ -90,6 +95,7 @@ export class PerfilComponent implements OnInit {
 
   /**
    * @description Guarda los cambios en localStorage
+   * 
    * @returns void
    */
   guardarCambios(): void {
@@ -110,6 +116,7 @@ export class PerfilComponent implements OnInit {
 
   /**
    * @description Restaura los valores sin guardar
+   * 
    * @returns void
    */
   cancelar(): void {
@@ -124,6 +131,7 @@ export class PerfilComponent implements OnInit {
 
   /**
    * @description Limpia el formulario dejando datos actuales
+   * 
    * @returns void
    */
   limpiar(): void {
@@ -137,6 +145,7 @@ export class PerfilComponent implements OnInit {
 
   /**
    * @description Elimina la sesión actual
+   * 
    * @returns void
    */
   cerrarSesion(): void {

@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 /**
  * @description Página que lista los productos en el carrito.
+ * 
  */
 export class CartComponent implements OnInit {
   /** @description Productos actualmente en el carrito */
@@ -17,6 +18,7 @@ export class CartComponent implements OnInit {
 
   /**
    * @description Servicio que gestiona el carrito
+   * 
    * @param cartService Servicio del carrito
    */
   constructor(
@@ -27,6 +29,7 @@ export class CartComponent implements OnInit {
 
   /**
    * @description Carga los productos almacenados
+   * 
    * @returns void
    */
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 /**
  * @description Componente raíz mostrado al iniciar la aplicación.
+ *  
  */
 
 @Component({
@@ -11,6 +12,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   /**
    * @description Título mostrado en la plantilla
+   * 
    */
   title = 'pinna-costa';
 }

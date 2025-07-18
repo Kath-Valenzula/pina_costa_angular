@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 /**
  * @description Formulario para solicitar recuperación de cuenta.
+ * 
  */
 export class RecuperarComponent implements OnInit {
     /** @description Formulario de recuperación */
@@ -20,6 +21,7 @@ export class RecuperarComponent implements OnInit {
 
   /**
    * @description FormBuilder para crear el formulario
+   * 
    * @param fb FormBuilder inyectado
    */
   constructor(
@@ -30,6 +32,7 @@ export class RecuperarComponent implements OnInit {
 
   /**
    * @description Inicializa el formulario de recuperación
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -48,6 +51,7 @@ export class RecuperarComponent implements OnInit {
 
   /**
    * @description Envía la solicitud de recuperación
+   * 
    * @returns void
    */
   onSubmit(): void {
@@ -63,6 +67,7 @@ export class RecuperarComponent implements OnInit {
 
   /**
    * @description Reinicia el formulario
+   * 
    * @returns void
    */
   limpiar(): void {

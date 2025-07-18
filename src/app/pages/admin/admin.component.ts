@@ -13,6 +13,7 @@ import { Producto } from '../../models/producto.model';
 
 /**
  * @description Panel para gestionar usuarios y productos.
+ * 
  */
 export class AdminComponent implements OnInit {
   /** @description Usuario autenticado en el panel */
@@ -27,6 +28,7 @@ export class AdminComponent implements OnInit {
   /**
    * @description Recibe Router para navegar
    * @param router Manejador de rutas
+   * 
    */
   constructor(
     private router: Router,
@@ -37,6 +39,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Carga datos iniciales del panel
+   * 
    * @returns void
    */
   ngOnInit(): void {
@@ -60,6 +63,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Obtiene la lista de usuarios almacenados
+   * 
    * @returns void
    */
   cargarUsuarios(): void {
@@ -69,6 +73,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Obtiene los productos guardados
+   * 
    * @returns void
    */
   cargarProductos(): void {
@@ -78,6 +83,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Redirige al formulario de registro
+   * 
    * @returns void
    */
   crearUsuario(): void {
@@ -86,6 +92,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Muestra un aviso para editar un usuario
+   * 
    * @param usuario Usuario seleccionado
    * @returns void
    */
@@ -95,6 +102,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Elimina un usuario tras confirmar
+   * 
    * @param usuario Usuario a eliminar
    * @returns void
    */
@@ -107,6 +115,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Carga el producto seleccionado en el formulario
+   * 
    * @param producto Producto a editar
    * @returns void
    */
@@ -116,6 +125,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Elimina un producto tras confirmar
+   * 
    * @param producto Producto a eliminar
    * @returns void
    */
@@ -128,6 +138,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Guarda el producto nuevo o editado
+   * 
    * @returns void
    */
   guardarProducto(): void {
@@ -155,6 +166,7 @@ export class AdminComponent implements OnInit {
 
   /**
    * @description Quita la sesión y vuelve a login
+   * 
    * @returns void
    */
   cerrarSesion(): void {

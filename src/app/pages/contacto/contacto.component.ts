@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 /**
  * @description Formulario de contacto con datos de la tienda.
+ * 
  */
 export class ContactoComponent implements OnInit {
   /** @description Formulario para enviar el mensaje */
@@ -17,6 +18,7 @@ export class ContactoComponent implements OnInit {
   enviado = false;
   /**
    * @description Inyecta dependencias necesarias para el formulario
+   * 
    * @param fb FormBuilder para crear los controles
    * @param title Servicio para actualizar el título de la página
    * @param meta Servicio para actualizar metadatos
@@ -29,6 +31,7 @@ export class ContactoComponent implements OnInit {
 
     /**
    * @description Inicializa el formulario de contacto
+   * 
    * @returns void
    */
 
@@ -47,6 +50,7 @@ export class ContactoComponent implements OnInit {
   }
   /**
    * @description Envía el mensaje al destinatario
+   * 
    * @returns void
    */
   enviarMensaje(): void {
@@ -59,6 +63,7 @@ export class ContactoComponent implements OnInit {
   }
   /**
    * @description Limpia el formulario y estado
+   * 
    * @returns void
    */
   limpiar(): void {
