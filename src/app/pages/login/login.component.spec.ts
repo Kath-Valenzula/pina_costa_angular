@@ -3,18 +3,23 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
+import { AuthService } from '../../services/auth.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let router: Router;
+  let authSpy: jasmine.SpyObj<AuthService>;
 
   // Configura el entorno de pruebas
   beforeEach(async () => {
+    authSpy = jasmine.createSpyObj('AuthService', ['login', 'getCurrent']);
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [ ReactiveFormsModule, RouterTestingModule ]
+      imports: [ ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule ],
+      providers: [ { provide: AuthService, useValue: authSpy } ]
     }).compileComponents();
   });
 
@@ -40,9 +45,8 @@ describe('LoginComponent', () => {
   // Admin válido redirige al panel
   it('debe navegar a /admin con credenciales admin@example.com/Admin#123', () => {
     spyOn(router, 'navigate');
-    localStorage.setItem('usuarios', JSON.stringify([
-      { nombre: 'admin', email: 'admin@example.com', password: 'Admin#123', rol: 'admin' }
-    ]));
+    authSpy.login.and.returnValue(true);
+    authSpy.getCurrent.and.returnValue({ email: 'admin@example.com', password: 'Admin#123', rol: 'admin' });
     component.loginForm.get('email')?.setValue('admin@example.com');
     component.loginForm.get('password')?.setValue('Admin#123');
     component.iniciarSesion();
@@ -52,9 +56,8 @@ describe('LoginComponent', () => {
   // Usuario normal redirige a su perfil
   it('debe navegar a /perfil con credenciales de usuario normal', () => {
     spyOn(router, 'navigate');
-    localStorage.setItem('usuarios', JSON.stringify([
-      { nombre: 'User', email: 'user@example.com', password: 'User#123' }
-    ]));
+    authSpy.login.and.returnValue(true);
+    authSpy.getCurrent.and.returnValue({ email: 'user@example.com', password: 'User#123', rol: 'usuario' });
     component.loginForm.get('email')?.setValue('user@example.com');
     component.loginForm.get('password')?.setValue('User#123');
     component.iniciarSesion();

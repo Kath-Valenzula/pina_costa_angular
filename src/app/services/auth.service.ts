@@ -27,12 +27,12 @@ export class AuthService {
   /**
    * @description Inicia sesión si las credenciales son válidas. Persiste la sesión en localStorage.
    * 
-   * @param username Nombre de usuario.
+   * @param email Correo electrónico del usuario.
    * @param password Contraseña del usuario.
    * @returns `true` si las credenciales coinciden, `false` en caso contrario.
    */
-  login(username: string, password: string): boolean {
-    const u = this.userSvc.find(username);
+  login(email: string, password: string): boolean {
+    const u = this.userSvc.find(email);
     if (u && u.password === password) {
       this.current$.next(u);
       localStorage.setItem('currentUser', JSON.stringify(u));
