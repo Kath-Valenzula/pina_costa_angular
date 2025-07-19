@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginComponent } from './login.component';
 import { AuthService } from '../../services/auth.service';
@@ -62,5 +63,32 @@ describe('LoginComponent', () => {
     component.loginForm.get('password')?.setValue('User#123');
     component.iniciarSesion();
     expect(router.navigate).toHaveBeenCalledWith(['/perfil']);
+  });
+
+  it('debe limpiar el formulario al presionar el bot\xC3\xB3n Limpiar', () => {
+    component.loginForm.get('email')?.setValue('test@example.com');
+    component.loginForm.get('password')?.setValue('Pass#123');
+    component.error = 'msg';
+    fixture.detectChanges();
+
+    const btn = fixture.debugElement.query(By.css('button.btn-outline-dark'));
+    btn.triggerEventHandler('click', null);
+    expect(component.loginForm.get('email')?.value).toBeNull();
+    expect(component.loginForm.get('password')?.value).toBeNull();
+    expect(component.error).toBe('');
+  });
+
+  it('debe navegar a /recuperar al pulsar \xC2\xBFOlvidaste tu contrase\xC3\xB1a?', () => {
+    spyOn(router, 'navigate');
+    const btns = fixture.debugElement.queryAll(By.css('.extra-links button'));
+    btns[0].triggerEventHandler('click', null);
+    expect(router.navigate).toHaveBeenCalledWith(['/recuperar']);
+  });
+
+  it('debe navegar a /registro al hacer clic en Reg\xC3\xADstrate', () => {
+    spyOn(router, 'navigate');
+    const btns = fixture.debugElement.queryAll(By.css('.extra-links button'));
+    btns[1].triggerEventHandler('click', null);
+    expect(router.navigate).toHaveBeenCalledWith(['/registro']);
   });
 });
