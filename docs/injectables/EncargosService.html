@@ -182,8 +182,6 @@
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Crea una instancia de EncargosService.</p>
-</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -254,8 +252,6 @@
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene todos los encargos almacenados.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Encargo.html" target="_self" >Observable&lt;Encargo[]&gt;</a></code>
@@ -328,23 +324,23 @@ import { Encargo } from &#x27;../models/encargo.model&#x27;;
   providedIn: &#x27;root&#x27;
 })
 /**
- * Servicio que obtiene encargos desde un archivo JSON local.
+ * @description Servicio que obtiene encargos desde un archivo JSON local.
  */
 export class EncargosService {
   /** Ruta al archivo de encargos */
   private encargosUrl &#x3D; &#x27;assets/data/encargos.json&#x27;;
 
   /**
-   * Crea una instancia de EncargosService.
+   * @description Crea una instancia de EncargosService.
    * @param http Cliente HTTP utilizado para las peticiones
+   * @returns void
    */
   constructor(private http: HttpClient) {}
 
   /**
-   * Obtiene todos los encargos almacenados.
+   * @description Obtiene todos los encargos almacenados.
    * @returns Observable con la lista de encargos
    */
-
   getAll(): Observable&lt;Encargo[]&gt; {
     return this.http.get&lt;Encargo[]&gt;(this.encargosUrl);
   }

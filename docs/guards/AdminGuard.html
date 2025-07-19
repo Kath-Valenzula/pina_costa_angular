@@ -159,12 +159,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: Router)</code>
+<code>constructor(router: Router, auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/app/guards/admin.guard.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/guards/admin.guard.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -196,6 +196,20 @@
                                                         <td>
                                                                 <p>Inyectado para redirecciones si no es administrador</p>
 
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -232,8 +246,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/app/guards/admin.guard.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/guards/admin.guard.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -262,6 +276,7 @@
         <div class="tab-pane fade  tab-source-code" id="source">
             <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { CanActivate, Router } from &#x27;@angular/router&#x27;;
+import { AuthService } from &#x27;../services/auth.service&#x27;;
 
 @Injectable({ providedIn: &#x27;root&#x27; })
 /** Evita que usuarios no administradores accedan a rutas de administración. */
@@ -269,23 +284,18 @@ export class AdminGuard implements CanActivate {
   /**
    * @param router Inyectado para redirecciones si no es administrador
    */
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   /**
    * Verifica si hay un usuario administrador logueado
    * @returns &#x60;true&#x60; si tiene permisos de administrador
    */
   canActivate(): boolean {
-    const raw &#x3D; localStorage.getItem(&#x27;usuario&#x27;);
-    if (!raw) {
-      this.router.navigate([&#x27;/login&#x27;]);
-      return false;
-    }
-    const user &#x3D; JSON.parse(raw);
-    if (user.rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;) {
+    const user &#x3D; this.auth.getCurrent();
+    if (user &amp;&amp; user.rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27;) {
       return true;
     }
-    this.router.navigate([&#x27;/perfil&#x27;]);
+    this.router.navigate([user ? &#x27;/perfil&#x27; : &#x27;/login&#x27;]);
     return false;
   }
 }

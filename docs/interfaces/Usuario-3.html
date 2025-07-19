@@ -412,6 +412,7 @@
 import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
 
 /**
  * @description Información de usuarios para el ejemplo de login.
@@ -457,7 +458,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    private auth: AuthService
   ) {}
 
   /**
@@ -473,16 +475,13 @@ export class LoginComponent implements OnInit {
       content: &#x27;Accede a tu cuenta de Piña Costa.&#x27;
     });
 
-    const seedAdmin: Usuario &#x3D; { nombre: &#x27;Admin&#x27;, email: &#x27;admin@example.com&#x27;, password: &#x27;admin123&#x27;, rol: &#x27;admin&#x27; };
-    const seedUser:  Usuario &#x3D; { nombre: &#x27;Usuario&#x27;, email: &#x27;usuario&#x27;, password: &#x27;usuario&#x27;, rol: &#x27;usuario&#x27; };
-    const usuarios: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) || &#x27;[]&#x27;);
-    if (!usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; seedAdmin.email)) usuarios.unshift(seedAdmin);
-    if (!usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; seedUser.email))  usuarios.push(seedUser);
-    localStorage.setItem(&#x27;usuarios&#x27;, JSON.stringify(usuarios));
 
     this.loginForm &#x3D; this.fb.group({
       email:    [&#x27;&#x27;, [Validators.required, Validators.email]],
-      password: [&#x27;&#x27;, Validators.required]
+      password: [&#x27;&#x27;, [
+        Validators.required,
+        Validators.pattern(/^(?&#x3D;.*[A-Z])(?&#x3D;.*[a-z])(?&#x3D;.*\d)(?&#x3D;.*[^A-Za-z0-9]).{8,}$/)
+      ]]
     });
   }
 
@@ -497,14 +496,16 @@ export class LoginComponent implements OnInit {
       return;
     }
     const { email, password } &#x3D; this.loginForm.value;
-    const usuarios: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) || &#x27;[]&#x27;);
-    const usuario &#x3D; usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; email &amp;&amp; u.password &#x3D;&#x3D;&#x3D; password);
-    if (!usuario) {
+    const ok &#x3D; this.auth.login(email, password);
+    if (!ok) {
       this.error &#x3D; &#x27;Correo o contraseña incorrectos&#x27;;
       return;
     }
-    localStorage.setItem(&#x27;usuario&#x27;, JSON.stringify(usuario));
-    this.router.navigate([ usuario.rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27; ? &#x27;/admin&#x27; : &#x27;/perfil&#x27; ]);
+    const usuario &#x3D; this.auth.getCurrent();
+    if (usuario) {
+      localStorage.setItem(&#x27;usuario&#x27;, JSON.stringify(usuario));
+      this.router.navigate([usuario.rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27; ? &#x27;/admin&#x27; : &#x27;/perfil&#x27;]);
+    }
   }
 
   /**

@@ -409,7 +409,7 @@ export class FooterComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;footer class&#x3D;&quot;py-5 bg-dark&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;footer class&#x3D;&quot;py-5 footer text-center&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
     &lt;nav class&#x3D;&quot;nav justify-content-center mb-3&quot;&gt;
       &lt;a class&#x3D;&quot;nav-link px-2 text-white&quot; routerLink&#x3D;&quot;/acerca&quot;&gt;Acerca de&lt;/a&gt;
@@ -427,7 +427,19 @@ export class FooterComponent {
                 <p class="comment">
                     <code>./footer.component.css</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
+                <pre class="line-numbers"><code class="language-scss">footer.footer {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+footer.footer .nav-link {
+  color: #fff;
+}
+
+footer.footer .nav-link:hover {
+  color: var(--color-secondary);
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="tree">
@@ -455,7 +467,7 @@ export class FooterComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><footer class="py-5 bg-dark">  <div class="container">    <nav class="nav justify-content-center mb-3">      <a class="nav-link px-2 text-white" routerLink="/acerca">Acerca de</a>      <a class="nav-link px-2 text-white" routerLink="/catalogo">Productos</a>      <a class="nav-link px-2 text-white" routerLink="/contacto">Contacto</a>      <a class="nav-link px-2 text-white" routerLink="/cart">Carrito</a>    </nav>    <p class="m-0 text-center text-white">Copyright © Piña Costa 2025</p>  </div></footer></div>'
+        var COMPONENT_TEMPLATE = '<div><footer class="py-5 footer text-center">  <div class="container">    <nav class="nav justify-content-center mb-3">      <a class="nav-link px-2 text-white" routerLink="/acerca">Acerca de</a>      <a class="nav-link px-2 text-white" routerLink="/catalogo">Productos</a>      <a class="nav-link px-2 text-white" routerLink="/contacto">Contacto</a>      <a class="nav-link px-2 text-white" routerLink="/cart">Carrito</a>    </nav>    <p class="m-0 text-center text-white">Copyright © Piña Costa 2025</p>  </div></footer></div>'
     var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FooterComponent'};

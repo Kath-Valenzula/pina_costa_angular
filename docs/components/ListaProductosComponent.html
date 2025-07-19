@@ -395,7 +395,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>actualizarCampo(campo, valor: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>actualizarCampo(campo: K, valor: <a href="../interfaces/Producto.html" target="_self">Producto</a>)</code>
                 </td>
             </tr>
 
@@ -407,6 +407,14 @@
                         </td>
                     </tr>
 
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>K</li>
+                            </ul>
+                        </td>
+                    </tr>
 
             <tr>
                 <td class="col-md-4">
@@ -428,6 +436,7 @@
                                         <tr>
                                                 <td>campo</td>
                                             <td>
+                                                        <code>K</code>
                                             </td>
 
                                             <td>
@@ -439,7 +448,7 @@
                                         <tr>
                                                 <td>valor</td>
                                             <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                            <code><a href="../interfaces/Producto.html" target="_self" >Producto</a></code>
                                             </td>
 
                                             <td>
@@ -978,11 +987,11 @@ export class ListaProductosComponent implements OnInit {
   /**
    * Actualiza una propiedad según el modo actual del formulario.
    */
-  actualizarCampo(campo: keyof Producto, valor: any): void {
+  actualizarCampo&lt;K extends keyof Producto&gt;(campo: K, valor: Producto[K]): void {
     if (this.editando) {
-      (this.editando as any)[campo] &#x3D; valor;
+      this.editando[campo] &#x3D; valor;
     } else {
-      (this.nuevo as any)[campo] &#x3D; valor;
+      this.nuevo[campo] &#x3D; valor;
     }
   }
 }

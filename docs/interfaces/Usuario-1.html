@@ -148,21 +148,21 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                        <a href="#email" 
+>
+                                            email
+                                        </a>
+                                </li>
+                                <li>
                                         <a href="#password" 
 >
                                             password
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#role" 
+                                        <a href="#rol" 
 >
-                                            role
-                                        </a>
-                                </li>
-                                <li>
-                                        <a href="#username" 
->
-                                            username
+                                            rol
                                         </a>
                                 </li>
                             </ul>
@@ -176,6 +176,45 @@
 
             <section data-compodoc="block-properties">
                 <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="email"></a>
+                                        <span class="name "><b>email</b>
+                                            <a href="#email">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>email:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Correo del usuario</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -219,9 +258,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="role"></a>
-                                        <span class="name "><b>role</b>
-                                            <a href="#role">
+                                        <a name="rol"></a>
+                                        <span class="name "><b>rol</b>
+                                            <a href="#rol">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -229,7 +268,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>role:     <code>&quot;admin&quot; | &quot;usuario&quot;</code>
+                                        <code>rol:     <code>&quot;admin&quot; | &quot;usuario&quot;</code>
 </code>
                                     </td>
                                 </tr>
@@ -254,45 +293,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="username"></a>
-                                        <span class="name "><b>username</b>
-                                            <a href="#username">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>username:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Nombre de usuario</p>
-</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
             </section>
     </div>
 
@@ -300,17 +300,18 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
 
 /**
  * Representa un usuario registrado en el sistema.
  */
 export interface Usuario {
-  /** Nombre de usuario */
-  username: string;
+  /** Correo del usuario */
+  email: string;
   /** Contraseña del usuario */
   password: string;
   /** Rol del usuario (&#x27;admin&#x27; o &#x27;usuario&#x27;) */
-  role: &#x27;admin&#x27; | &#x27;usuario&#x27;;
+  rol: &#x27;admin&#x27; | &#x27;usuario&#x27;;
 }
 
 /**
@@ -320,8 +321,8 @@ export interface IUserService {
   /** Obtiene todos los usuarios */
   getAll(): Usuario[];
 
-  /** Busca un usuario por nombre */
-  find(username: string): Usuario | undefined;
+  /** Busca un usuario por email */
+  find(email: string): Usuario | undefined;
 
   /** Agrega un nuevo usuario */
   add(user: Usuario): void;
@@ -329,15 +330,15 @@ export interface IUserService {
   /** Actualiza un usuario existente */
   update(user: Usuario): void;
 
-  /** Elimina un usuario por nombre */
-  delete(username: string): void;
+  /** Elimina un usuario por email */
+  delete(email: string): void;
 
   /** Inicializa los datos desde localStorage */
   init(): void;
 }
 
 /**
- * Servicio para manejar usuarios usando localStorage.
+ * @description Servicio para manejar usuarios usando localStorage.
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -345,34 +346,49 @@ export interface IUserService {
 export class UserService implements IUserService {
   /** Clave usada para almacenar usuarios */
   private STORAGE_KEY &#x3D; &#x27;pinna-users&#x27;;
+  /** Ruta al archivo JSON con usuarios */
+  private usersUrl &#x3D; &#x27;assets/data/usuarios.json&#x27;;
 
-  /** Lista observable de usuarios */
+  /**
+   * @description Crea una instancia de UserService
+   * @param http Cliente HTTP para cargar usuarios iniciales
+   * @returns void
+   */
+  constructor(private http: HttpClient) {}
+
+  /** @description Lista observable de usuarios */
   private users$ &#x3D; new BehaviorSubject&lt;Usuario[]&gt;([]);
 
   /**
-   * Constructor del servicio. No realiza carga de datos.
-   * Se debe invocar el método &#x60;init()&#x60; para cargar usuarios.
+   * @description Inicializa el servicio sin cargar datos automáticamente.
+   * Para cargar usuarios se debe llamar explícitamente al método &#x60;init()&#x60;.
    */
-  constructor() {}
 
   /**
-   * Inicializa el almacenamiento con usuarios desde localStorage.
+   * @description Inicializa el almacenamiento con usuarios desde localStorage.
    * Si no existen, crea un admin por defecto.
+   * @returns Promesa que resuelve cuando termina la carga
    */
-  public init(): void {
-    const raw &#x3D; localStorage.getItem(this.STORAGE_KEY);
-    if (!raw) {
-      const admin: Usuario &#x3D; { username: &#x27;admin&#x27;, password: &#x27;admin&#x27;, role: &#x27;admin&#x27; };
-      this.users$.next([admin]);
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify([admin]));
-    } else {
-      this.users$.next(JSON.parse(raw));
-    }
+  public init(): Promise&lt;void&gt; {
+    return new Promise(resolve &#x3D;&gt; {
+      const raw &#x3D; localStorage.getItem(this.STORAGE_KEY);
+      if (raw) {
+        this.users$.next(JSON.parse(raw));
+        resolve();
+        return;
+      }
+      this.http.get&lt;Usuario[]&gt;(this.usersUrl).subscribe(data &#x3D;&gt; {
+        this.users$.next(data);
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
+        resolve();
+      }, () &#x3D;&gt; resolve());
+    });
   }
 
   /**
-   * Guarda la lista en localStorage.
+   * @description Guarda la lista en localStorage.
    * @param list Lista de usuarios
+   * @returns void
    */
   private save(list: Usuario[]): void {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(list));
@@ -380,7 +396,7 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Retorna todos los usuarios registrados.
+   * @description Retorna todos los usuarios registrados.
    * @returns Arreglo de usuarios
    */
   public getAll(): Usuario[] {
@@ -388,17 +404,18 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Busca un usuario por nombre.
-   * @param username Nombre de usuario
+   * @description Busca un usuario por su email.
+   * @param email Correo electrónico
    * @returns Usuario encontrado o undefined
    */
-  public find(username: string): Usuario | undefined {
-    return this.getAll().find(u &#x3D;&gt; u.username &#x3D;&#x3D;&#x3D; username);
+  public find(email: string): Usuario | undefined {
+    return this.getAll().find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; email);
   }
 
   /**
-   * Agrega un nuevo usuario a la lista.
+   * @description Agrega un nuevo usuario a la lista.
    * @param user Usuario a agregar
+   * @returns void
    */
   public add(user: Usuario): void {
     const list &#x3D; this.getAll();
@@ -407,20 +424,22 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Actualiza un usuario existente.
+   * @description Actualiza un usuario existente.
    * @param user Usuario con datos actualizados
+   * @returns void
    */
   public update(user: Usuario): void {
-    const list &#x3D; this.getAll().map(u &#x3D;&gt; u.username &#x3D;&#x3D;&#x3D; user.username ? user : u);
+    const list &#x3D; this.getAll().map(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; user.email ? user : u);
     this.save(list);
   }
 
   /**
-   * Elimina un usuario por su nombre.
-   * @param username Nombre de usuario a eliminar
+   * @description Elimina un usuario por su email.
+   * @param email Correo electrónico a eliminar
+   * @returns void
    */
-  public delete(username: string): void {
-    const list &#x3D; this.getAll().filter(u &#x3D;&gt; u.username !&#x3D;&#x3D; username);
+  public delete(email: string): void {
+    const list &#x3D; this.getAll().filter(u &#x3D;&gt; u.email !&#x3D;&#x3D; email);
     this.save(list);
   }
 }
