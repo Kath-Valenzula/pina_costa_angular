@@ -485,12 +485,27 @@ export class HomeComponent implements OnInit {
                 <pre class="line-numbers"><code class="language-scss">
 .hero {
   background: url(&#x27;/assets/img/hero-bg.jpg&#x27;) center/cover no-repeat;
-  height: 70vh;
+  height: 80vh;
 }
 
-@media (max-width: 768px) {
+/* Pantallas pequeñas */
+@media (max-width: 575.98px) {
   .hero {
-    height: 50vh;
+    height: 40vh;
+  }
+}
+
+/* Pantallas medianas */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .hero {
+    height: 60vh;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 992px) {
+  .hero {
+    height: 80vh;
   }
 }
 </code></pre>

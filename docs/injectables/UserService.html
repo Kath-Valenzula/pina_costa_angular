@@ -119,13 +119,6 @@
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Servicio para manejar usuarios usando localStorage.</p>
-
-            </p>
 
 
 
@@ -148,6 +141,10 @@
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#users$" >users$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#usersUrl" >usersUrl</a>
                             </li>
                         </ul>
                     </td>
@@ -207,7 +204,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+<code>constructor(http: HttpClient)</code>
                     </td>
                 </tr>
                         <tr>
@@ -218,9 +215,37 @@
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Constructor del servicio. No realiza carga de datos.
-Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
-</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Cliente HTTP para cargar usuarios iniciales</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
                     </td>
                 </tr>
             </tbody>
@@ -254,16 +279,14 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="103"
-                                    class="link-to-prism">src/app/services/user.service.ts:103</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/services/user.service.ts:120</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Agrega un nuevo usuario a la lista.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -302,7 +325,8 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>void</p>
+
                             </div>
                 </td>
             </tr>
@@ -323,23 +347,21 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>delete(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>delete(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="122"
-                                    class="link-to-prism">src/app/services/user.service.ts:122</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/services/user.service.ts:141</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina un usuario por su nombre.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -355,7 +377,7 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>username</td>
+                                                <td>email</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -366,7 +388,7 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
 
 
                                             <td>
-                                                    <p>Nombre de usuario a eliminar</p>
+                                                    <p>Correo electrónico a eliminar</p>
 
                                             </td>
                                         </tr>
@@ -378,7 +400,8 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>void</p>
+
                             </div>
                 </td>
             </tr>
@@ -399,23 +422,21 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>find(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>find(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="95"
-                                    class="link-to-prism">src/app/services/user.service.ts:95</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/services/user.service.ts:111</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Busca un usuario por nombre.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -431,7 +452,7 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>username</td>
+                                                <td>email</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -442,7 +463,7 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
 
 
                                             <td>
-                                                    <p>Nombre de usuario</p>
+                                                    <p>Correo electrónico</p>
 
                                             </td>
                                         </tr>
@@ -483,16 +504,14 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="86"
-                                    class="link-to-prism">src/app/services/user.service.ts:86</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/services/user.service.ts:102</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Retorna todos los usuarios registrados.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>Usuario[]</code>
@@ -528,20 +547,19 @@ Se debe invocar el método <code>init()</code> para cargar usuarios.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/services/user.service.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/services/user.service.ts:72</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Inicializa el almacenamiento con usuarios desde localStorage.
-Si no existen, crea un admin por defecto.</p>
+                        <div class="io-description"><p>Si no existen, crea un admin por defecto.</p>
 </div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                         </div>
                 </td>
@@ -570,16 +588,14 @@ Si no existen, crea un admin por defecto.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/app/services/user.service.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/services/user.service.ts:93</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Guarda la lista en localStorage.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -618,7 +634,8 @@ Si no existen, crea un admin por defecto.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>void</p>
+
                             </div>
                 </td>
             </tr>
@@ -646,16 +663,14 @@ Si no existen, crea un admin por defecto.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="113"
-                                    class="link-to-prism">src/app/services/user.service.ts:113</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/services/user.service.ts:131</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Actualiza un usuario existente.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -694,7 +709,8 @@ Si no existen, crea un admin por defecto.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>void</p>
+
                             </div>
                 </td>
             </tr>
@@ -731,7 +747,7 @@ Si no existen, crea un admin por defecto.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/services/user.service.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/services/user.service.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -763,13 +779,45 @@ Si no existen, crea un admin por defecto.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/services/user.service.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usersUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>usersUrl</b></span>
+                        <a href="#usersUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;assets/data/usuarios.json&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
                                 <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/services/user.service.ts:50</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Lista observable de usuarios</p>
+                    <div class="io-description"><p>Ruta al archivo JSON con usuarios</p>
 </div>
                 </td>
             </tr>
@@ -784,17 +832,18 @@ Si no existen, crea un admin por defecto.</p>
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
 
 /**
  * Representa un usuario registrado en el sistema.
  */
 export interface Usuario {
-  /** Nombre de usuario */
-  username: string;
+  /** Correo del usuario */
+  email: string;
   /** Contraseña del usuario */
   password: string;
   /** Rol del usuario (&#x27;admin&#x27; o &#x27;usuario&#x27;) */
-  role: &#x27;admin&#x27; | &#x27;usuario&#x27;;
+  rol: &#x27;admin&#x27; | &#x27;usuario&#x27;;
 }
 
 /**
@@ -804,8 +853,8 @@ export interface IUserService {
   /** Obtiene todos los usuarios */
   getAll(): Usuario[];
 
-  /** Busca un usuario por nombre */
-  find(username: string): Usuario | undefined;
+  /** Busca un usuario por email */
+  find(email: string): Usuario | undefined;
 
   /** Agrega un nuevo usuario */
   add(user: Usuario): void;
@@ -813,15 +862,15 @@ export interface IUserService {
   /** Actualiza un usuario existente */
   update(user: Usuario): void;
 
-  /** Elimina un usuario por nombre */
-  delete(username: string): void;
+  /** Elimina un usuario por email */
+  delete(email: string): void;
 
   /** Inicializa los datos desde localStorage */
   init(): void;
 }
 
 /**
- * Servicio para manejar usuarios usando localStorage.
+ * @description Servicio para manejar usuarios usando localStorage.
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -829,34 +878,49 @@ export interface IUserService {
 export class UserService implements IUserService {
   /** Clave usada para almacenar usuarios */
   private STORAGE_KEY &#x3D; &#x27;pinna-users&#x27;;
+  /** Ruta al archivo JSON con usuarios */
+  private usersUrl &#x3D; &#x27;assets/data/usuarios.json&#x27;;
 
-  /** Lista observable de usuarios */
+  /**
+   * @description Crea una instancia de UserService
+   * @param http Cliente HTTP para cargar usuarios iniciales
+   * @returns void
+   */
+  constructor(private http: HttpClient) {}
+
+  /** @description Lista observable de usuarios */
   private users$ &#x3D; new BehaviorSubject&lt;Usuario[]&gt;([]);
 
   /**
-   * Constructor del servicio. No realiza carga de datos.
-   * Se debe invocar el método &#x60;init()&#x60; para cargar usuarios.
+   * @description Inicializa el servicio sin cargar datos automáticamente.
+   * Para cargar usuarios se debe llamar explícitamente al método &#x60;init()&#x60;.
    */
-  constructor() {}
 
   /**
-   * Inicializa el almacenamiento con usuarios desde localStorage.
+   * @description Inicializa el almacenamiento con usuarios desde localStorage.
    * Si no existen, crea un admin por defecto.
+   * @returns Promesa que resuelve cuando termina la carga
    */
-  public init(): void {
-    const raw &#x3D; localStorage.getItem(this.STORAGE_KEY);
-    if (!raw) {
-      const admin: Usuario &#x3D; { username: &#x27;admin&#x27;, password: &#x27;admin&#x27;, role: &#x27;admin&#x27; };
-      this.users$.next([admin]);
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify([admin]));
-    } else {
-      this.users$.next(JSON.parse(raw));
-    }
+  public init(): Promise&lt;void&gt; {
+    return new Promise(resolve &#x3D;&gt; {
+      const raw &#x3D; localStorage.getItem(this.STORAGE_KEY);
+      if (raw) {
+        this.users$.next(JSON.parse(raw));
+        resolve();
+        return;
+      }
+      this.http.get&lt;Usuario[]&gt;(this.usersUrl).subscribe(data &#x3D;&gt; {
+        this.users$.next(data);
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
+        resolve();
+      }, () &#x3D;&gt; resolve());
+    });
   }
 
   /**
-   * Guarda la lista en localStorage.
+   * @description Guarda la lista en localStorage.
    * @param list Lista de usuarios
+   * @returns void
    */
   private save(list: Usuario[]): void {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(list));
@@ -864,7 +928,7 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Retorna todos los usuarios registrados.
+   * @description Retorna todos los usuarios registrados.
    * @returns Arreglo de usuarios
    */
   public getAll(): Usuario[] {
@@ -872,17 +936,18 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Busca un usuario por nombre.
-   * @param username Nombre de usuario
+   * @description Busca un usuario por su email.
+   * @param email Correo electrónico
    * @returns Usuario encontrado o undefined
    */
-  public find(username: string): Usuario | undefined {
-    return this.getAll().find(u &#x3D;&gt; u.username &#x3D;&#x3D;&#x3D; username);
+  public find(email: string): Usuario | undefined {
+    return this.getAll().find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; email);
   }
 
   /**
-   * Agrega un nuevo usuario a la lista.
+   * @description Agrega un nuevo usuario a la lista.
    * @param user Usuario a agregar
+   * @returns void
    */
   public add(user: Usuario): void {
     const list &#x3D; this.getAll();
@@ -891,20 +956,22 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Actualiza un usuario existente.
+   * @description Actualiza un usuario existente.
    * @param user Usuario con datos actualizados
+   * @returns void
    */
   public update(user: Usuario): void {
-    const list &#x3D; this.getAll().map(u &#x3D;&gt; u.username &#x3D;&#x3D;&#x3D; user.username ? user : u);
+    const list &#x3D; this.getAll().map(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; user.email ? user : u);
     this.save(list);
   }
 
   /**
-   * Elimina un usuario por su nombre.
-   * @param username Nombre de usuario a eliminar
+   * @description Elimina un usuario por su email.
+   * @param email Correo electrónico a eliminar
+   * @returns void
    */
-  public delete(username: string): void {
-    const list &#x3D; this.getAll().filter(u &#x3D;&gt; u.username !&#x3D;&#x3D; username);
+  public delete(email: string): void {
+    const list &#x3D; this.getAll().filter(u &#x3D;&gt; u.email !&#x3D;&#x3D; email);
     this.save(list);
   }
 }

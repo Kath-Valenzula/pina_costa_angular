@@ -38,7 +38,7 @@ export interface IUserService {
 }
 
 /**
- * Servicio para manejar usuarios usando localStorage.
+ * @description Servicio para manejar usuarios usando localStorage.
  */
 @Injectable({
   providedIn: 'root'
@@ -49,19 +49,25 @@ export class UserService implements IUserService {
   /** Ruta al archivo JSON con usuarios */
   private usersUrl = 'assets/data/usuarios.json';
 
+  /**
+   * @description Crea una instancia de UserService
+   * @param http Cliente HTTP para cargar usuarios iniciales
+   * @returns void
+   */
   constructor(private http: HttpClient) {}
 
-  /** Lista observable de usuarios */
+  /** @description Lista observable de usuarios */
   private users$ = new BehaviorSubject<Usuario[]>([]);
 
   /**
-   * Inicializa el servicio sin cargar datos automáticamente.
+   * @description Inicializa el servicio sin cargar datos automáticamente.
    * Para cargar usuarios se debe llamar explícitamente al método `init()`.
    */
 
   /**
-   * Inicializa el almacenamiento con usuarios desde localStorage.
+   * @description Inicializa el almacenamiento con usuarios desde localStorage.
    * Si no existen, crea un admin por defecto.
+   * @returns Promesa que resuelve cuando termina la carga
    */
   public init(): Promise<void> {
     return new Promise(resolve => {
@@ -80,8 +86,9 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Guarda la lista en localStorage.
+   * @description Guarda la lista en localStorage.
    * @param list Lista de usuarios
+   * @returns void
    */
   private save(list: Usuario[]): void {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(list));
@@ -89,7 +96,7 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Retorna todos los usuarios registrados.
+   * @description Retorna todos los usuarios registrados.
    * @returns Arreglo de usuarios
    */
   public getAll(): Usuario[] {
@@ -97,7 +104,7 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Busca un usuario por su email.
+   * @description Busca un usuario por su email.
    * @param email Correo electrónico
    * @returns Usuario encontrado o undefined
    */
@@ -106,8 +113,9 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Agrega un nuevo usuario a la lista.
+   * @description Agrega un nuevo usuario a la lista.
    * @param user Usuario a agregar
+   * @returns void
    */
   public add(user: Usuario): void {
     const list = this.getAll();
@@ -116,8 +124,9 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Actualiza un usuario existente.
+   * @description Actualiza un usuario existente.
    * @param user Usuario con datos actualizados
+   * @returns void
    */
   public update(user: Usuario): void {
     const list = this.getAll().map(u => u.email === user.email ? user : u);
@@ -125,8 +134,9 @@ export class UserService implements IUserService {
   }
 
   /**
-   * Elimina un usuario por su email.
+   * @description Elimina un usuario por su email.
    * @param email Correo electrónico a eliminar
+   * @returns void
    */
   public delete(email: string): void {
     const list = this.getAll().filter(u => u.email !== email);

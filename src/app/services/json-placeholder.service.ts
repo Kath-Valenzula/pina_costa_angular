@@ -5,20 +5,21 @@ import { Post } from '../models/post.model';
 
 @Injectable({ providedIn: 'root' })
 /**
- * Servicio para interactuar con jsonplaceholder.typicode.com.
+ * @description Servicio para interactuar con jsonplaceholder.typicode.com.
  */
 export class JsonPlaceholderService {
   /** Endpoint base de la API */
   private baseUrl = 'https://jsonplaceholder.typicode.com/posts';
 
   /**
-   * Crea una instancia del servicio.
+   * @description Crea una instancia del servicio.
    * @param http Cliente HTTP para enviar solicitudes
+   * @returns void
    */
   constructor(private http: HttpClient) {}
 
   /**
-   * Obtiene todas las publicaciones.
+   * @description Obtiene todas las publicaciones.
    * @returns Observable con la lista de posts
    */
   getPosts(): Observable<Post[]> {
@@ -26,7 +27,7 @@ export class JsonPlaceholderService {
   }
 
   /**
-   * Crea una nueva publicación.
+   * @description Crea una nueva publicación.
    * @param post Post a agregar
    * @returns Observable con el post creado
    */
@@ -35,7 +36,7 @@ export class JsonPlaceholderService {
   }
 
   /**
-   * Actualiza una publicación existente.
+   * @description Actualiza una publicación existente.
    * @param id Identificador de la publicación
    * @param post Datos a actualizar
    * @returns Observable con el post actualizado
@@ -45,7 +46,7 @@ export class JsonPlaceholderService {
   }
 
   /**
-   * Elimina una publicación por id.
+   * @description Elimina una publicación por id.
    * @param id Identificador de la publicación
    * @returns Observable vacío cuando finaliza
    */

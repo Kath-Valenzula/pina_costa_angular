@@ -243,12 +243,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(fb: FormBuilder, router: Router, title: Title, meta: Meta)</code>
+<code>constructor(fb: FormBuilder, router: Router, title: Title, meta: Meta, auth: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/login/login.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/login/login.component.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -326,6 +326,20 @@
                                                         <td>
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -364,8 +378,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="84"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:84</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:83</a></div>
                         </td>
                     </tr>
 
@@ -405,8 +419,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="105"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:105</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -446,8 +460,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -487,8 +501,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="115"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:115</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:116</a></div>
                         </td>
                     </tr>
 
@@ -528,8 +542,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="124"
-                                    class="link-to-prism">src/app/pages/login/login.component.ts:124</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/pages/login/login.component.ts:125</a></div>
                         </td>
                     </tr>
 
@@ -579,7 +593,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/pages/login/login.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/login/login.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -605,7 +619,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/login/login.component.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/login/login.component.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -622,6 +636,7 @@
 import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
 
 /**
  * @description Información de usuarios para el ejemplo de login.
@@ -667,7 +682,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private title: Title,
-    private meta: Meta
+    private meta: Meta,
+    private auth: AuthService
   ) {}
 
   /**
@@ -683,16 +699,13 @@ export class LoginComponent implements OnInit {
       content: &#x27;Accede a tu cuenta de Piña Costa.&#x27;
     });
 
-    const seedAdmin: Usuario &#x3D; { nombre: &#x27;Admin&#x27;, email: &#x27;admin@example.com&#x27;, password: &#x27;admin123&#x27;, rol: &#x27;admin&#x27; };
-    const seedUser:  Usuario &#x3D; { nombre: &#x27;Usuario&#x27;, email: &#x27;usuario&#x27;, password: &#x27;usuario&#x27;, rol: &#x27;usuario&#x27; };
-    const usuarios: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) || &#x27;[]&#x27;);
-    if (!usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; seedAdmin.email)) usuarios.unshift(seedAdmin);
-    if (!usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; seedUser.email))  usuarios.push(seedUser);
-    localStorage.setItem(&#x27;usuarios&#x27;, JSON.stringify(usuarios));
 
     this.loginForm &#x3D; this.fb.group({
       email:    [&#x27;&#x27;, [Validators.required, Validators.email]],
-      password: [&#x27;&#x27;, Validators.required]
+      password: [&#x27;&#x27;, [
+        Validators.required,
+        Validators.pattern(/^(?&#x3D;.*[A-Z])(?&#x3D;.*[a-z])(?&#x3D;.*\d)(?&#x3D;.*[^A-Za-z0-9]).{8,}$/)
+      ]]
     });
   }
 
@@ -707,14 +720,16 @@ export class LoginComponent implements OnInit {
       return;
     }
     const { email, password } &#x3D; this.loginForm.value;
-    const usuarios: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) || &#x27;[]&#x27;);
-    const usuario &#x3D; usuarios.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; email &amp;&amp; u.password &#x3D;&#x3D;&#x3D; password);
-    if (!usuario) {
+    const ok &#x3D; this.auth.login(email, password);
+    if (!ok) {
       this.error &#x3D; &#x27;Correo o contraseña incorrectos&#x27;;
       return;
     }
-    localStorage.setItem(&#x27;usuario&#x27;, JSON.stringify(usuario));
-    this.router.navigate([ usuario.rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27; ? &#x27;/admin&#x27; : &#x27;/perfil&#x27; ]);
+    const usuario &#x3D; this.auth.getCurrent();
+    if (usuario) {
+      localStorage.setItem(&#x27;usuario&#x27;, JSON.stringify(usuario));
+      this.router.navigate([usuario.rol &#x3D;&#x3D;&#x3D; &#x27;admin&#x27; ? &#x27;/admin&#x27; : &#x27;/perfil&#x27;]);
+    }
   }
 
   /**
@@ -749,8 +764,10 @@ export class LoginComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;login-container&quot;&gt;
-  &lt;h2 class&#x3D;&quot;text-center&quot;&gt;Iniciar Sesión&lt;/h2&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container py-5&quot;&gt;
+  &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12 col-md-8 col-lg-4 login-container&quot;&gt;
+      &lt;h2 class&#x3D;&quot;text-center&quot;&gt;Iniciar Sesión&lt;/h2&gt;
 
   &lt;form [formGroup]&#x3D;&quot;loginForm&quot; (ngSubmit)&#x3D;&quot;iniciarSesion()&quot; class&#x3D;&quot;login-form&quot;&gt;
     &lt;div class&#x3D;&quot;form-group mb-3&quot;&gt;
@@ -782,6 +799,9 @@ export class LoginComponent implements OnInit {
       &lt;div class&#x3D;&quot;invalid-feedback&quot; *ngIf&#x3D;&quot;loginForm.get(&#x27;password&#x27;)?.hasError(&#x27;required&#x27;)&quot;&gt;
         La contraseña es obligatoria.
       &lt;/div&gt;
+      &lt;div class&#x3D;&quot;invalid-feedback&quot; *ngIf&#x3D;&quot;loginForm.get(&#x27;password&#x27;)?.hasError(&#x27;pattern&#x27;)&quot;&gt;
+        Debe tener al menos 8 caracteres, mayúsculas, minúsculas, número y símbolo.
+      &lt;/div&gt;
     &lt;/div&gt;
 
     &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-pink w-100 mt-3&quot;&gt;Ingresar&lt;/button&gt;
@@ -794,6 +814,8 @@ export class LoginComponent implements OnInit {
 
     &lt;div class&#x3D;&quot;alert alert-danger mt-3&quot; *ngIf&#x3D;&quot;error&quot;&gt;{{ error }}&lt;/div&gt;
   &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
@@ -813,12 +835,17 @@ export class LoginComponent implements OnInit {
 }
 
 .login-container {
-  max-width: 400px;
-  margin: 40px auto;
+  width: 100%;
   padding: 30px;
   background-color: #fff0f5;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+}
+
+@media (max-width: 575.98px) {
+  .login-container {
+    padding: 20px;
+  }
 }
 
 h2 {
@@ -884,7 +911,7 @@ h2 {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="login-container">  <h2 class="text-center">Iniciar Sesión</h2>  <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()" class="login-form">    <div class="form-group mb-3">      <label for="email">Correo electrónico</label>      <input        id="email"        type="email"        formControlName="email"        class="form-control"        [class.is-invalid]="loginForm.get(\'email\')?.invalid && loginForm.get(\'email\')?.touched"      />      <div class="invalid-feedback" *ngIf="loginForm.get(\'email\')?.hasError(\'required\')">        El correo es obligatorio.      </div>      <div class="invalid-feedback" *ngIf="loginForm.get(\'email\')?.hasError(\'email\')">        Formato de correo inválido.      </div>    </div>    <div class="form-group mb-3">      <label for="password">Contraseña</label>      <input        id="password"        type="password"        formControlName="password"        class="form-control"        [class.is-invalid]="loginForm.get(\'password\')?.invalid && loginForm.get(\'password\')?.touched"      />      <div class="invalid-feedback" *ngIf="loginForm.get(\'password\')?.hasError(\'required\')">        La contraseña es obligatoria.      </div>    </div>    <button type="submit" class="btn btn-pink w-100 mt-3">Ingresar</button>    <button type="button" class="btn btn-outline-dark w-100 mt-2" (click)="limpiar()">Limpiar</button>    <div class="extra-links mt-3 text-center">      <button type="button" (click)="recuperarPassword()">¿Olvidaste tu contraseña?</button> |      <button type="button" (click)="registrarse()">Regístrate</button>    </div>    <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container py-5">  <div class="row justify-content-center">    <div class="col-12 col-md-8 col-lg-4 login-container">      <h2 class="text-center">Iniciar Sesión</h2>  <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()" class="login-form">    <div class="form-group mb-3">      <label for="email">Correo electrónico</label>      <input        id="email"        type="email"        formControlName="email"        class="form-control"        [class.is-invalid]="loginForm.get(\'email\')?.invalid && loginForm.get(\'email\')?.touched"      />      <div class="invalid-feedback" *ngIf="loginForm.get(\'email\')?.hasError(\'required\')">        El correo es obligatorio.      </div>      <div class="invalid-feedback" *ngIf="loginForm.get(\'email\')?.hasError(\'email\')">        Formato de correo inválido.      </div>    </div>    <div class="form-group mb-3">      <label for="password">Contraseña</label>      <input        id="password"        type="password"        formControlName="password"        class="form-control"        [class.is-invalid]="loginForm.get(\'password\')?.invalid && loginForm.get(\'password\')?.touched"      />      <div class="invalid-feedback" *ngIf="loginForm.get(\'password\')?.hasError(\'required\')">        La contraseña es obligatoria.      </div>      <div class="invalid-feedback" *ngIf="loginForm.get(\'password\')?.hasError(\'pattern\')">        Debe tener al menos 8 caracteres, mayúsculas, minúsculas, número y símbolo.      </div>    </div>    <button type="submit" class="btn btn-pink w-100 mt-3">Ingresar</button>    <button type="button" class="btn btn-outline-dark w-100 mt-2" (click)="limpiar()">Limpiar</button>    <div class="extra-links mt-3 text-center">      <button type="button" (click)="recuperarPassword()">¿Olvidaste tu contraseña?</button> |      <button type="button" (click)="registrarse()">Regístrate</button>    </div>    <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>  </form>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};

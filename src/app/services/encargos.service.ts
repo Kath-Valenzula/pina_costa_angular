@@ -7,23 +7,23 @@ import { Encargo } from '../models/encargo.model';
   providedIn: 'root'
 })
 /**
- * Servicio que obtiene encargos desde un archivo JSON local.
+ * @description Servicio que obtiene encargos desde un archivo JSON local.
  */
 export class EncargosService {
   /** Ruta al archivo de encargos */
   private encargosUrl = 'assets/data/encargos.json';
 
   /**
-   * Crea una instancia de EncargosService.
+   * @description Crea una instancia de EncargosService.
    * @param http Cliente HTTP utilizado para las peticiones
+   * @returns void
    */
   constructor(private http: HttpClient) {}
 
   /**
-   * Obtiene todos los encargos almacenados.
+   * @description Obtiene todos los encargos almacenados.
    * @returns Observable con la lista de encargos
    */
-
   getAll(): Observable<Encargo[]> {
     return this.http.get<Encargo[]>(this.encargosUrl);
   }

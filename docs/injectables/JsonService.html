@@ -207,8 +207,6 @@
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Inyecta HttpClient para realizar las peticiones.</p>
-</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -271,16 +269,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/services/json.service.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/services/json.service.ts:41</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Crea un nuevo encargo (requiere API con permisos de escritura).</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -291,6 +287,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -305,6 +302,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Encargo a agregar</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -314,7 +315,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable con el encargo creado</p>
+
                             </div>
                 </td>
             </tr>
@@ -340,16 +342,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/services/json.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/services/json.service.ts:76</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Crea un nuevo producto (requiere API con permisos de escritura).</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -360,6 +360,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -374,6 +375,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Producto a agregar</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -383,7 +388,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable con el producto creado</p>
+
                             </div>
                 </td>
             </tr>
@@ -409,16 +415,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/app/services/json.service.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/services/json.service.ts:59</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina un encargo por su id.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -429,6 +433,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -443,6 +448,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identificador del encargo</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -452,7 +461,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable vacío cuando finaliza</p>
+
                             </div>
                 </td>
             </tr>
@@ -478,16 +488,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/services/json.service.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/app/services/json.service.ts:94</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina un producto por su id.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -498,6 +506,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -512,6 +521,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identificador del producto</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -521,7 +534,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable vacío cuando finaliza</p>
+
                             </div>
                 </td>
             </tr>
@@ -547,21 +561,23 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/services/json.service.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/services/json.service.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene la lista completa de encargos.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Encargo.html" target="_self" >Observable&lt;Encargo[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable con el arreglo de encargos</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -586,21 +602,23 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/services/json.service.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/services/json.service.ts:67</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene la lista completa de productos.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Producto.html" target="_self" >Observable&lt;Producto[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable con el arreglo de productos</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -625,16 +643,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/services/json.service.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/services/json.service.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Actualiza un encargo existente por su id.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -645,6 +661,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -659,6 +676,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Encargo con datos actualizados</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -668,7 +689,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable con el encargo actualizado</p>
+
                             </div>
                 </td>
             </tr>
@@ -694,16 +716,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/services/json.service.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/services/json.service.ts:85</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Actualiza un producto existente por su id.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -714,6 +734,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -728,6 +749,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Producto con datos actualizados</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -737,7 +762,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable con el producto actualizado</p>
+
                             </div>
                 </td>
             </tr>
@@ -839,7 +865,7 @@ import { Producto } from &#x27;../models/producto.model&#x27;;
 
 @Injectable({ providedIn: &#x27;root&#x27; })
 /**
- * Servicio para interactuar con los archivos JSON de la aplicación.
+ * @description Servicio para interactuar con los archivos JSON de la aplicación.
  * Las rutas apuntan a la carpeta &#x60;assets&#x60;, de modo que estén
  * disponibles incluso sin un backend externo. Las operaciones de
  * escritura (POST/PUT/DELETE) solo funcionarán si el servidor
@@ -852,48 +878,78 @@ export class JsonService {
   private productosUrl &#x3D; &#x27;assets/data/productos.json&#x27;;
 
   /**
-   * Inyecta HttpClient para realizar las peticiones.
+   * @description Inyecta HttpClient para realizar las peticiones.
    * @param http Cliente HTTP de Angular
+   * @returns void
    */
-
   constructor(private http: HttpClient) {}
 
-  /** Obtiene la lista completa de encargos. */
+  /**
+   * @description Obtiene la lista completa de encargos.
+   * @returns Observable con el arreglo de encargos
+   */
   getEncargos(): Observable&lt;Encargo[]&gt; {
     return this.http.get&lt;Encargo[]&gt;(this.encargosUrl);
   }
 
-  /** Crea un nuevo encargo (requiere API con permisos de escritura). */
+  /**
+   * @description Crea un nuevo encargo (requiere API con permisos de escritura).
+   * @param encargo Encargo a agregar
+   * @returns Observable con el encargo creado
+   */
   addEncargo(encargo: Encargo): Observable&lt;Encargo&gt; {
     return this.http.post&lt;Encargo&gt;(this.encargosUrl, encargo);
   }
 
-  /** Actualiza un encargo existente por su id. */
+  /**
+   * @description Actualiza un encargo existente por su id.
+   * @param encargo Encargo con datos actualizados
+   * @returns Observable con el encargo actualizado
+   */
   updateEncargo(encargo: Encargo): Observable&lt;Encargo&gt; {
     return this.http.put&lt;Encargo&gt;(&#x60;${this.encargosUrl}/${encargo.id}&#x60;, encargo);
   }
 
-  /** Elimina un encargo por su id. */
+  /**
+   * @description Elimina un encargo por su id.
+   * @param id Identificador del encargo
+   * @returns Observable vacío cuando finaliza
+   */
   deleteEncargo(id: number): Observable&lt;void&gt; {
     return this.http.delete&lt;void&gt;(&#x60;${this.encargosUrl}/${id}&#x60;);
   }
 
-  /** Obtiene la lista completa de productos. */
+  /**
+   * @description Obtiene la lista completa de productos.
+   * @returns Observable con el arreglo de productos
+   */
   getProductos(): Observable&lt;Producto[]&gt; {
     return this.http.get&lt;Producto[]&gt;(this.productosUrl);
   }
 
-  /** Crea un nuevo producto (requiere API con permisos de escritura). */
+  /**
+   * @description Crea un nuevo producto (requiere API con permisos de escritura).
+   * @param producto Producto a agregar
+   * @returns Observable con el producto creado
+   */
   addProducto(producto: Producto): Observable&lt;Producto&gt; {
     return this.http.post&lt;Producto&gt;(this.productosUrl, producto);
   }
 
-  /** Actualiza un producto existente por su id. */
+  /**
+   * @description Actualiza un producto existente por su id.
+   * @param producto Producto con datos actualizados
+   * @returns Observable con el producto actualizado
+   */
   updateProducto(producto: Producto): Observable&lt;Producto&gt; {
     return this.http.put&lt;Producto&gt;(&#x60;${this.productosUrl}/${producto.id}&#x60;, producto);
   }
 
-  /** Elimina un producto por su id. */
+  /**
+   * @description Elimina un producto por su id.
+   * @param id Identificador del producto
+   * @returns Observable vacío cuando finaliza
+   */
   deleteProducto(id: number): Observable&lt;void&gt; {
     return this.http.delete&lt;void&gt;(&#x60;${this.productosUrl}/${id}&#x60;);
   }

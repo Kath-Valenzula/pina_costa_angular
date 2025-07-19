@@ -395,7 +395,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>actualizarCampo(campo, valor: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>actualizarCampo(campo: K, valor: <a href="../interfaces/Encargo.html" target="_self">Encargo</a>)</code>
                 </td>
             </tr>
 
@@ -407,6 +407,14 @@
                         </td>
                     </tr>
 
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Type parameters :</b>
+                            <ul class="type-parameters">
+                                    <li>K</li>
+                            </ul>
+                        </td>
+                    </tr>
 
             <tr>
                 <td class="col-md-4">
@@ -429,6 +437,7 @@ según si se está en modo edición o creación.</p>
                                         <tr>
                                                 <td>campo</td>
                                             <td>
+                                                        <code>K</code>
                                             </td>
 
                                             <td>
@@ -440,7 +449,7 @@ según si se está en modo edición o creación.</p>
                                         <tr>
                                                 <td>valor</td>
                                             <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                            <code><a href="../interfaces/Encargo.html" target="_self" >Encargo</a></code>
                                             </td>
 
                                             <td>
@@ -979,11 +988,11 @@ export class ListaEncargosComponent implements OnInit {
    * Actualiza una propiedad en el objeto que corresponda
    * según si se está en modo edición o creación.
    */
-  actualizarCampo(campo: keyof Encargo, valor: any): void {
+  actualizarCampo&lt;K extends keyof Encargo&gt;(campo: K, valor: Encargo[K]): void {
     if (this.editando) {
-      (this.editando as any)[campo] &#x3D; valor;
+      this.editando[campo] &#x3D; valor;
     } else {
-      (this.nuevo as any)[campo] &#x3D; valor;
+      this.nuevo[campo] &#x3D; valor;
     }
   }
 }

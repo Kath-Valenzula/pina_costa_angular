@@ -245,7 +245,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -345,8 +345,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="73"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:73</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -386,8 +386,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -427,8 +427,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -472,7 +472,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -503,7 +503,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -529,7 +529,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/recuperar/recuperar.component.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -545,6 +545,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { Title, Meta } from &#x27;@angular/platform-browser&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { Usuario } from &#x27;../../models/usuario.model&#x27;;
 
 @Component({
   selector: &#x27;app-recuperar&#x27;,
@@ -604,6 +605,21 @@ export class RecuperarComponent implements OnInit {
       this.enviado &#x3D; false;
       return;
     }
+
+    const { email, direccionDespacho, fechaNacimiento } &#x3D; this.recuperarForm.value;
+    const usuarios: Usuario[] &#x3D; JSON.parse(localStorage.getItem(&#x27;usuarios&#x27;) || &#x27;[]&#x27;);
+    const encontrado &#x3D; usuarios.find(u &#x3D;&gt;
+      u.email &#x3D;&#x3D;&#x3D; email &amp;&amp;
+      u.fechaNacimiento &#x3D;&#x3D;&#x3D; fechaNacimiento &amp;&amp;
+      (!direccionDespacho || u.direccionDespacho &#x3D;&#x3D;&#x3D; direccionDespacho)
+    );
+
+    if (!encontrado) {
+      this.error &#x3D; &#x27;Los datos no coinciden con ninguna cuenta registrada.&#x27;;
+      this.enviado &#x3D; false;
+      return;
+    }
+
     this.enviado &#x3D; true;
     this.error &#x3D; &#x27;&#x27;;
     this.recuperarForm.reset();
@@ -624,8 +640,10 @@ export class RecuperarComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;recuperar-container&quot;&gt;
-  &lt;h2&gt;Recuperar Contraseña&lt;/h2&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container py-5&quot;&gt;
+  &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
+    &lt;div class&#x3D;&quot;col-12 col-md-8 col-lg-4 recuperar-container&quot;&gt;
+      &lt;h2&gt;Recuperar Contraseña&lt;/h2&gt;
 
   &lt;form [formGroup]&#x3D;&quot;recuperarForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; novalidate&gt;
     &lt;div class&#x3D;&quot;form-group mb-3&quot;&gt;
@@ -661,6 +679,8 @@ export class RecuperarComponent implements OnInit {
     ¡Revisa tu correo para recuperar tu contraseña!
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;alert alert-danger mt-3&quot; *ngIf&#x3D;&quot;error&quot;&gt;{{ error }}&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
@@ -670,12 +690,17 @@ export class RecuperarComponent implements OnInit {
                     <code>./recuperar.component.css</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.recuperar-container {
-  max-width: 400px;
-  margin: 2rem auto;
+  width: 100%;
   padding: 1.5rem;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
+}
+
+@media (max-width: 575.98px) {
+  .recuperar-container {
+    padding: 1rem;
+  }
 }
 .form-group {
   margin-bottom: 1rem;
@@ -715,7 +740,7 @@ button[disabled] { opacity: .6; cursor: not-allowed; }
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="recuperar-container">  <h2>Recuperar Contraseña</h2>  <form [formGroup]="recuperarForm" (ngSubmit)="onSubmit()" novalidate>    <div class="form-group mb-3">      <label for="emailRec">Email *</label>      <input id="emailRec" type="email" formControlName="email"        class="form-control"        [class.is-invalid]="recuperarForm.get(\'email\')?.invalid && recuperarForm.get(\'email\')?.touched"/>      <div class="invalid-feedback" *ngIf="recuperarForm.get(\'email\')?.hasError(\'required\')">        El correo es obligatorio.      </div>      <div class="invalid-feedback" *ngIf="recuperarForm.get(\'email\')?.hasError(\'email\')">        Formato de correo inválido.      </div>    </div>    <div class="form-group mb-3">      <label for="direccionDespachoRec">Dirección de despacho</label>      <input id="direccionDespachoRec" type="text" formControlName="direccionDespacho"        class="form-control"/>    </div>    <div class="mb-3">      <label for="fechaNacimientoRec" class="form-label text-dark">Fecha de nacimiento</label>      <input id="fechaNacimientoRec" type="date" formControlName="fechaNacimiento"        class="form-control"/>    </div>    <button type="submit" class="btn btn-primary w-100" [disabled]="recuperarForm.invalid">Enviar enlace</button>    <button type="button" class="btn btn-outline-dark w-100 mt-2" (click)="limpiar()">Limpiar</button>  </form>  <div class="alert alert-success mt-3" *ngIf="enviado">    ¡Revisa tu correo para recuperar tu contraseña!  </div>  <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container py-5">  <div class="row justify-content-center">    <div class="col-12 col-md-8 col-lg-4 recuperar-container">      <h2>Recuperar Contraseña</h2>  <form [formGroup]="recuperarForm" (ngSubmit)="onSubmit()" novalidate>    <div class="form-group mb-3">      <label for="emailRec">Email *</label>      <input id="emailRec" type="email" formControlName="email"        class="form-control"        [class.is-invalid]="recuperarForm.get(\'email\')?.invalid && recuperarForm.get(\'email\')?.touched"/>      <div class="invalid-feedback" *ngIf="recuperarForm.get(\'email\')?.hasError(\'required\')">        El correo es obligatorio.      </div>      <div class="invalid-feedback" *ngIf="recuperarForm.get(\'email\')?.hasError(\'email\')">        Formato de correo inválido.      </div>    </div>    <div class="form-group mb-3">      <label for="direccionDespachoRec">Dirección de despacho</label>      <input id="direccionDespachoRec" type="text" formControlName="direccionDespacho"        class="form-control"/>    </div>    <div class="mb-3">      <label for="fechaNacimientoRec" class="form-label text-dark">Fecha de nacimiento</label>      <input id="fechaNacimientoRec" type="date" formControlName="fechaNacimiento"        class="form-control"/>    </div>    <button type="submit" class="btn btn-primary w-100" [disabled]="recuperarForm.invalid">Enviar enlace</button>    <button type="button" class="btn btn-outline-dark w-100 mt-2" (click)="limpiar()">Limpiar</button>  </form>  <div class="alert alert-success mt-3" *ngIf="enviado">    ¡Revisa tu correo para recuperar tu contraseña!  </div>  <div class="alert alert-danger mt-3" *ngIf="error">{{ error }}</div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AcercaComponent', 'selector': 'app-acerca'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CatalogoComponent', 'selector': 'app-catalogo'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'CreateUserComponent', 'selector': 'app-create-user'},{'name': 'EncargosComponent', 'selector': 'app-encargos'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListaEncargosComponent', 'selector': 'app-lista-encargos'},{'name': 'ListaProductosComponent', 'selector': 'app-lista-productos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProductoDetalleComponent', 'selector': 'app-producto-detalle'},{'name': 'RecuperarComponent', 'selector': 'app-recuperar'},{'name': 'RegistroComponent', 'selector': 'app-registro'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RecuperarComponent'};

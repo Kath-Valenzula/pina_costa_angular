@@ -193,7 +193,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">/**
  * @description Módulo principal que reúne componentes y servicios.
  */
-import { NgModule } from &#x27;@angular/core&#x27;;
+import { NgModule, APP_INITIALIZER } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;; 
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;; 
@@ -201,6 +201,7 @@ import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 
 import { AppRoutingModule } from &#x27;./app-routing.module&#x27;;
 import { SharedModule } from &#x27;./shared/shared.module&#x27;;
+import { UserService } from &#x27;./services/user.service&#x27;;
 
 import { AppComponent } from &#x27;./app.component&#x27;;
 import { HomeComponent } from &#x27;./pages/home/home.component&#x27;;
@@ -239,7 +240,14 @@ import { ListaProductosComponent } from &#x27;./pages/lista-productos/lista-prod
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (userSvc: UserService) &#x3D;&gt; () &#x3D;&gt; userSvc.init(),
+      deps: [UserService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 /**

@@ -191,8 +191,6 @@
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Crea una instancia del servicio.</p>
-</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -255,16 +253,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:34</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Crea una nueva publicación.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -330,16 +326,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina una publicación por id.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -405,16 +399,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:25</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene todas las publicaciones.</p>
-</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/Post.html" target="_self" >Observable&lt;Post[]&gt;</a></code>
@@ -448,16 +440,14 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/services/json-placeholder.service.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Actualiza una publicación existente.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -576,20 +566,21 @@ import { Post } from &#x27;../models/post.model&#x27;;
 
 @Injectable({ providedIn: &#x27;root&#x27; })
 /**
- * Servicio para interactuar con jsonplaceholder.typicode.com.
+ * @description Servicio para interactuar con jsonplaceholder.typicode.com.
  */
 export class JsonPlaceholderService {
   /** Endpoint base de la API */
   private baseUrl &#x3D; &#x27;https://jsonplaceholder.typicode.com/posts&#x27;;
 
   /**
-   * Crea una instancia del servicio.
+   * @description Crea una instancia del servicio.
    * @param http Cliente HTTP para enviar solicitudes
+   * @returns void
    */
   constructor(private http: HttpClient) {}
 
   /**
-   * Obtiene todas las publicaciones.
+   * @description Obtiene todas las publicaciones.
    * @returns Observable con la lista de posts
    */
   getPosts(): Observable&lt;Post[]&gt; {
@@ -597,7 +588,7 @@ export class JsonPlaceholderService {
   }
 
   /**
-   * Crea una nueva publicación.
+   * @description Crea una nueva publicación.
    * @param post Post a agregar
    * @returns Observable con el post creado
    */
@@ -606,7 +597,7 @@ export class JsonPlaceholderService {
   }
 
   /**
-   * Actualiza una publicación existente.
+   * @description Actualiza una publicación existente.
    * @param id Identificador de la publicación
    * @param post Datos a actualizar
    * @returns Observable con el post actualizado
@@ -616,7 +607,7 @@ export class JsonPlaceholderService {
   }
 
   /**
-   * Elimina una publicación por id.
+   * @description Elimina una publicación por id.
    * @param id Identificador de la publicación
    * @returns Observable vacío cuando finaliza
    */

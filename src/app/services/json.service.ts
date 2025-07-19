@@ -6,7 +6,7 @@ import { Producto } from '../models/producto.model';
 
 @Injectable({ providedIn: 'root' })
 /**
- * Servicio para interactuar con los archivos JSON de la aplicación.
+ * @description Servicio para interactuar con los archivos JSON de la aplicación.
  * Las rutas apuntan a la carpeta `assets`, de modo que estén
  * disponibles incluso sin un backend externo. Las operaciones de
  * escritura (POST/PUT/DELETE) solo funcionarán si el servidor
@@ -19,48 +19,78 @@ export class JsonService {
   private productosUrl = 'assets/data/productos.json';
 
   /**
-   * Inyecta HttpClient para realizar las peticiones.
+   * @description Inyecta HttpClient para realizar las peticiones.
    * @param http Cliente HTTP de Angular
+   * @returns void
    */
-
   constructor(private http: HttpClient) {}
 
-  /** Obtiene la lista completa de encargos. */
+  /**
+   * @description Obtiene la lista completa de encargos.
+   * @returns Observable con el arreglo de encargos
+   */
   getEncargos(): Observable<Encargo[]> {
     return this.http.get<Encargo[]>(this.encargosUrl);
   }
 
-  /** Crea un nuevo encargo (requiere API con permisos de escritura). */
+  /**
+   * @description Crea un nuevo encargo (requiere API con permisos de escritura).
+   * @param encargo Encargo a agregar
+   * @returns Observable con el encargo creado
+   */
   addEncargo(encargo: Encargo): Observable<Encargo> {
     return this.http.post<Encargo>(this.encargosUrl, encargo);
   }
 
-  /** Actualiza un encargo existente por su id. */
+  /**
+   * @description Actualiza un encargo existente por su id.
+   * @param encargo Encargo con datos actualizados
+   * @returns Observable con el encargo actualizado
+   */
   updateEncargo(encargo: Encargo): Observable<Encargo> {
     return this.http.put<Encargo>(`${this.encargosUrl}/${encargo.id}`, encargo);
   }
 
-  /** Elimina un encargo por su id. */
+  /**
+   * @description Elimina un encargo por su id.
+   * @param id Identificador del encargo
+   * @returns Observable vacío cuando finaliza
+   */
   deleteEncargo(id: number): Observable<void> {
     return this.http.delete<void>(`${this.encargosUrl}/${id}`);
   }
 
-  /** Obtiene la lista completa de productos. */
+  /**
+   * @description Obtiene la lista completa de productos.
+   * @returns Observable con el arreglo de productos
+   */
   getProductos(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.productosUrl);
   }
 
-  /** Crea un nuevo producto (requiere API con permisos de escritura). */
+  /**
+   * @description Crea un nuevo producto (requiere API con permisos de escritura).
+   * @param producto Producto a agregar
+   * @returns Observable con el producto creado
+   */
   addProducto(producto: Producto): Observable<Producto> {
     return this.http.post<Producto>(this.productosUrl, producto);
   }
 
-  /** Actualiza un producto existente por su id. */
+  /**
+   * @description Actualiza un producto existente por su id.
+   * @param producto Producto con datos actualizados
+   * @returns Observable con el producto actualizado
+   */
   updateProducto(producto: Producto): Observable<Producto> {
     return this.http.put<Producto>(`${this.productosUrl}/${producto.id}`, producto);
   }
 
-  /** Elimina un producto por su id. */
+  /**
+   * @description Elimina un producto por su id.
+   * @param id Identificador del producto
+   * @returns Observable vacío cuando finaliza
+   */
   deleteProducto(id: number): Observable<void> {
     return this.http.delete<void>(`${this.productosUrl}/${id}`);
   }

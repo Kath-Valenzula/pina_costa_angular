@@ -284,7 +284,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>login(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>login(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -314,7 +314,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>username</td>
+                                                <td>email</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -325,7 +325,7 @@
 
 
                                             <td>
-                                                    <p>Nombre de usuario.</p>
+                                                    <p>Correo electrónico del usuario.</p>
 
                                             </td>
                                         </tr>
@@ -468,12 +468,12 @@ export class AuthService {
   /**
    * @description Inicia sesión si las credenciales son válidas. Persiste la sesión en localStorage.
    * 
-   * @param username Nombre de usuario.
+   * @param email Correo electrónico del usuario.
    * @param password Contraseña del usuario.
    * @returns &#x60;true&#x60; si las credenciales coinciden, &#x60;false&#x60; en caso contrario.
    */
-  login(username: string, password: string): boolean {
-    const u &#x3D; this.userSvc.find(username);
+  login(email: string, password: string): boolean {
+    const u &#x3D; this.userSvc.find(email);
     if (u &amp;&amp; u.password &#x3D;&#x3D;&#x3D; password) {
       this.current$.next(u);
       localStorage.setItem(&#x27;currentUser&#x27;, JSON.stringify(u));
